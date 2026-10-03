@@ -113,7 +113,7 @@
       <h2><span class="n">04</span>Result</h2>
       <div class="cs-content">
         <p class="result-callout">~3–4 hours <span class="arrow">→</span> seconds</p>
-        <p>~3–4 hours of manual entry per batch of 150–200 documents became a few seconds of upload, check and paste. Every application is tracked from the day it's started, with far fewer typing errors.</p>
+        <p>~3–4 hours of manual entry when a pouch of 150–200 documents arrived became a few seconds of upload, check and paste each day. Every application is tracked from the day it's started, with far fewer typing errors.</p>
       </div>
     </section>
 
@@ -229,7 +229,7 @@
       if (r.broken) {
         broken++;
         return '<tr class="row-bad"><td class="mono">' + esc(date || '—') + '</td><td class="mono">' + esc(r.caseId) + '</td>' +
-          '<td colspan="5" class="bad-text">Couldn\'t read this line – check the fee columns</td></tr>';
+          '<td colspan="5" class="bad-text"><span>Couldn\'t read this line – check the fee columns</span></td></tr>';
       }
       read++;
       var pending = r.provisional && !confirmed[r.caseId];

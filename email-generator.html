@@ -225,6 +225,8 @@
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  // Browsers differ on the comma after the weekday ("Monday, 12 October"); drop it so every date reads the same
+  function niceDate(s) { return cap(s.replace(/^([^\s,]+),/, '$1')); }
   function nextWeekday() {
     var d = new Date();
     d.setDate(d.getDate() + 7);
@@ -241,8 +243,8 @@
     var time = state.time === 'other' ? otherEl.value : state.time;
     return {
       t: t, p: p, name: name,
-      shortDate: okDate ? cap(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long' })) : null,
-      longDate: okDate ? cap(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })) : null,
+      shortDate: okDate ? niceDate(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long' })) : null,
+      longDate: okDate ? niceDate(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })) : null,
       time: time || null
     };
   }
