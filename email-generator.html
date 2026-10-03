@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confirmation Email Generator · Carolina Pagliano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="case">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#top"><span class="brand-full">Carolina Pagliano</span><span class="brand-short">C<span class="brand-mark">.</span>P</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#work" aria-current="page">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
+      <p class="eyebrow">Case study 02 of 05</p>
+      <h1>Confirmation Email Generator</h1>
+      <p class="lede">A one-click generator that turns appointment details into a clearly formatted confirmation email, ready to paste into Outlook.</p>
+      <dl class="cs-meta">
+        <div><dt>Key result</dt><dd>3–5 min → under 30 sec per email</dd></div>
+        <div><dt>Volume</dt><dd>25–50 emails a week</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap cs-body">
+    <section class="cs-block">
+      <h2><span class="n">01</span>Problem</h2>
+      <div class="cs-content">
+        <p>Confirmation emails were long blocks of unformatted text. Applicants didn't read them, so they arrived without the required documents and didn't reply with the information we asked for. Staff also spent 3–5 minutes on each email, checking requirements and retyping details.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">02</span>What I built</h2>
+      <div class="cs-content">
+        <p>A one-click generator. Staff choose the language, applicant name, date and time, then click the procedure. A clearly formatted email with the subject line is ready to paste into Outlook. Requirements are shown as a short checklist, and the information we need back is in its own box.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">03</span>How it works</h2>
+      <div class="cs-content">
+        <div class="ba-grid" aria-label="Before and after comparison">
+          <div class="ba ba-before">
+            <div class="ba-head"><strong>Before</strong><span>Typed by hand</span></div>
+            <div class="old-mail" aria-label="Example of the old email format">
+              <p>Dear applicant,</p>
+              <p>We confirm your appointment for <b><u>MONDAY 12 OCTOBER AT 10.45</u></b>. <b>If you cannot attend, please let us know by email.</b></p>
+              <p class="red">Please send us the following information:</p>
+              <p><b>Full name:</b><br><b>ID number:</b><br><b>Date of birth:</b><br><b>Phone number:</b></p>
+              <p>We also remind you that on the day of your appointment you must bring the following <b><u>requirements:</u></b></p>
+              <p><b><u>a) Your latest ID.</u></b></p>
+              <p class="sub">o&nbsp; If you do <b><u>not have</u></b> your <b><u>current ID because it was lost or stolen</u></b>, both procedures must be completed at the same appointment, and you must present your valid passport and/or another identity document issued by the same country.</p>
+              <p class="sub">o&nbsp; If you live in this area and your ID shows an address in another country, a <b>change of address</b> must also be completed on the same day, which requires proof of address dated within the last three months in your full name, such as a utility bill, bank statement or council tax letter.</p>
+              <p><b><u>b) Your birth certificate</u></b>, original, in good condition and with all pages, together with any previous documents you may hold.</p>
+            </div>
+          </div>
+          <div class="ba ba-after">
+            <div class="ba-head"><strong>After</strong><span>Generated in one click</span></div>
+            <div class="mail-subject">Subject: <strong>Appointment confirmed: ID + passport – Monday 12 October, 10:45</strong></div>
+            <div class="mail-paper">
+              <p>Dear Emily Brown,</p>
+              <div class="mail-when">Monday 12 October 2026 · 10:45</div>
+              <h4>Please bring</h4>
+              <ul class="mail-check"><li>Your current ID card</li><li>Your previous passport, if you have one</li><li>Proof of address dated within the last 3 months</li></ul>
+              <div class="mail-reply"><strong>Please reply with</strong><span>full name · ID number · date of birth · phone</span></div>
+              <p class="mail-note">If you can't attend, please let us know by email.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="try">
+          <span class="step-label">How to try it</span>
+          <ol class="try-steps">
+            <li>Click <strong>Try with sample data</strong></li>
+            <li>Choose a procedure</li>
+            <li>Copy the finished email</li>
+          </ol>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="demo-tag">Live demo</span>
+            <div class="demo-bar-actions">
+              <button type="button" class="btn btn-primary btn-small pulse" id="eg-sample">Try with sample data</button>
+              <button type="button" class="btn btn-secondary btn-small" id="eg-reset" hidden>Start over</button>
+            </div>
+          </div>
+          <div class="demo-body">
+            <div class="demo-top">
+              <span class="step-label">Email language</span>
+              <div class="seg" role="group" aria-label="Email language">
+                <button type="button" data-lang="es" aria-pressed="false">Español</button>
+                <button type="button" data-lang="en" aria-pressed="true">English</button>
+              </div>
+            </div>
+            <div class="eg-grid">
+              <div class="field"><label for="eg-name">Applicant name (optional)</label><input id="eg-name" type="text" autocomplete="off" placeholder="e.g. Emily Brown"></div>
+              <div class="field"><label for="eg-date">Appointment date</label><input id="eg-date" type="date"></div>
+            </div>
+            <div class="field">
+              <span class="step-label" id="eg-time-label">Time</span>
+              <div class="chip-btns" role="group" aria-labelledby="eg-time-label" id="eg-times">
+                <button type="button" class="chip-btn" data-time="10:00" aria-pressed="false">10:00</button>
+                <button type="button" class="chip-btn" data-time="10:45" aria-pressed="false">10:45</button>
+                <button type="button" class="chip-btn" data-time="11:30" aria-pressed="false">11:30</button>
+                <button type="button" class="chip-btn" data-time="12:15" aria-pressed="false">12:15</button>
+                <button type="button" class="chip-btn" data-time="other" aria-pressed="false">Other</button>
+                <span class="time-other" id="eg-other-wrap" hidden><label class="visually-hidden" for="eg-other">Other time</label><input class="chip-btn" id="eg-other" type="time"></span>
+              </div>
+            </div>
+            <div class="field">
+              <span class="step-label">Procedure: click one to create the email</span>
+              <div class="proc-grid" id="eg-procs"></div>
+            </div>
+            <div class="preview" id="eg-preview"></div>
+            <p class="msg" id="eg-msg" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="demo-note">The real tool covers 17 procedures, including children's documents and urgent cases. The demo shows 4. Requirements are illustrative.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">04</span>Result</h2>
+      <div class="cs-content">
+        <p class="result-callout">3–5 min <span class="arrow">→</span> under 30 sec per email</p>
+        <p>Each email went from 3–5 minutes to under 30 seconds, across 25–50 emails a week plus urgent appointments. Because the emails are easier to read, more applicants now arrive with the right documents and reply with the information we ask for.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">05</span>Built with</h2>
+      <div class="cs-content">
+        <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">Built with AI assistance (Claude and Gemini)</li></ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<nav class="cs-pager" aria-label="Case studies">
+  <div class="wrap">
+    <a class="prev" href="triage.html"><span>Previous</span><strong>← Self-Service Triage Tool</strong></a>
+    <a class="next" href="formatter.html"><span>Next</span><strong>Data Formatter →</strong></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Carolina Pagliano</span>
+    <span>All demo data on this site is fictional.</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  // All requirements are illustrative.
+  var TEXT = {
+    en: {
+      locale: 'en-GB', copy: 'Copy email', copied: 'Copied ✓', subjectLabel: 'Subject',
+      subject: 'Appointment confirmed', dear: 'Dear', applicant: 'applicant', comma: ',',
+      confirmed: 'Your appointment is confirmed:', bring: 'Please bring',
+      reply: 'Please reply with', replyItems: 'full name · ID number · date of birth · phone',
+      cant: "If you can't attend, please let us know by email.",
+      sign: 'Kind regards,\nDocument Services Team', time: '[choose a time]', date: '[choose a date]',
+      procs: {
+        passport: { name: 'Passport', reqs: ['Your current ID card', 'Your previous passport, if you have one', 'This email, printed or on your phone'] },
+        id: { name: 'ID card', reqs: ['Your current ID card, or your birth certificate if this is your first ID', 'Proof of address dated within the last 3 months', 'This email, printed or on your phone'] },
+        both: { name: 'ID + passport', reqs: ['Your current ID card', 'Your previous passport, if you have one', 'Proof of address dated within the last 3 months', 'This email, printed or on your phone'] },
+        emergency: { name: 'Emergency passport', reqs: ['Proof of travel, such as a flight booking', 'Your ID card or any other photo ID', 'A loss or theft report, if your passport was lost or stolen', 'This email, printed or on your phone'] }
+      }
+    },
+    es: {
+      locale: 'es-ES', copy: 'Copiar correo', copied: 'Copiado ✓', subjectLabel: 'Asunto',
+      subject: 'Turno confirmado', dear: 'Estimado/a', applicant: 'solicitante', comma: ':',
+      confirmed: 'Su turno está confirmado:', bring: 'Por favor, traiga',
+      reply: 'Por favor, responda con', replyItems: 'nombre completo · número de documento · fecha de nacimiento · teléfono',
+      cant: 'Si no puede asistir, avísenos por correo electrónico.',
+      sign: 'Saludos cordiales,\nEquipo de Documentación', time: '[elija una hora]', date: '[elija una fecha]',
+      procs: {
+        passport: { name: 'Pasaporte', reqs: ['Su tarjeta de identidad actual', 'Su pasaporte anterior, si lo tiene', 'Este correo, impreso o en el teléfono'] },
+        id: { name: 'Tarjeta de identidad', reqs: ['Su tarjeta de identidad actual, o su partida de nacimiento si es su primer documento', 'Un comprobante de domicilio de los últimos 3 meses', 'Este correo, impreso o en el teléfono'] },
+        both: { name: 'Tarjeta de identidad + pasaporte', reqs: ['Su tarjeta de identidad actual', 'Su pasaporte anterior, si lo tiene', 'Un comprobante de domicilio de los últimos 3 meses', 'Este correo, impreso o en el teléfono'] },
+        emergency: { name: 'Pasaporte de emergencia', reqs: ['Un comprobante de viaje, como la reserva del vuelo', 'Su tarjeta de identidad u otro documento con foto', 'Una denuncia de pérdida o robo, si su pasaporte se perdió o fue robado', 'Este correo, impreso o en el teléfono'] }
+      }
+    }
+  };
+  var ORDER = ['passport', 'id', 'both', 'emergency'];
+
+  var state = { lang: 'en', time: null, proc: null };
+  function $(id) { return document.getElementById(id); }
+  var nameEl = $('eg-name'), dateEl = $('eg-date'), otherWrap = $('eg-other-wrap'), otherEl = $('eg-other');
+  var procsEl = $('eg-procs'), preview = $('eg-preview'), msg = $('eg-msg');
+  var sampleBtn = $('eg-sample'), resetBtn = $('eg-reset');
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+  function nextWeekday() {
+    var d = new Date();
+    d.setDate(d.getDate() + 7);
+    while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1);
+    return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  }
+
+  function parts() {
+    var t = TEXT[state.lang];
+    var p = t.procs[state.proc];
+    var name = nameEl.value.trim().replace(/\s+/g, ' ') || t.applicant;
+    var dt = dateEl.value ? new Date(dateEl.value + 'T12:00:00') : null;
+    var okDate = dt && !isNaN(dt);
+    var time = state.time === 'other' ? otherEl.value : state.time;
+    return {
+      t: t, p: p, name: name,
+      shortDate: okDate ? cap(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long' })) : null,
+      longDate: okDate ? cap(dt.toLocaleDateString(t.locale, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })) : null,
+      time: time || null
+    };
+  }
+  // Missing values: highlighted in the preview, plain text in the copy
+  function val(v, placeholder, html) { return v ? (html ? esc(v) : v) : (html ? '<mark class="ph-mark">' + esc(placeholder) + '</mark>' : placeholder); }
+
+  function renderProcs() {
+    var t = TEXT[state.lang];
+    procsEl.innerHTML = ORDER.map(function (k) {
+      return '<button type="button" class="proc-btn' + (k === state.proc ? ' is-active' : '') + '" data-proc="' + k + '" aria-pressed="' + (k === state.proc) + '">' +
+        '<strong>' + esc(t.procs[k].name) + '</strong></button>';
+    }).join('');
+  }
+
+  function renderPreview() {
+    if (!state.proc) {
+      preview.innerHTML = '<div class="empty-state">Your formatted email will appear here.</div>';
+      preview.classList.add('is-empty');
+      return;
+    }
+    preview.classList.remove('is-empty');
+    var x = parts(), t = x.t;
+    preview.innerHTML =
+      '<div class="mail-subject toolbar"><span>' + t.subjectLabel + ': <strong>' + esc(t.subject + ': ' + x.p.name + ' – ') + val(x.shortDate, t.date, true) + ', ' + val(x.time, t.time, true) + '</strong></span>' +
+        '<button type="button" class="btn btn-primary btn-small" id="eg-copy">' + esc(t.copy) + '</button></div>' +
+      '<div class="mail-paper">' +
+        '<p>' + esc(t.dear + ' ' + x.name + t.comma) + '</p>' +
+        '<p>' + esc(t.confirmed) + '</p>' +
+        '<div class="mail-when">' + val(x.longDate, t.date, true) + ' · ' + val(x.time, t.time, true) + '</div>' +
+        '<h4>' + esc(t.bring) + '</h4>' +
+        '<ul class="mail-check">' + x.p.reqs.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
+        '<div class="mail-reply"><strong>' + esc(t.reply) + '</strong><span>' + esc(t.replyItems) + '</span></div>' +
+        '<p class="mail-note">' + esc(t.cant) + '</p>' +
+        '<p class="mail-sign">' + esc(t.sign) + '</p>' +
+      '</div>';
+  }
+
+  // Formatted version for pasting into Outlook (inline styles), plus a plain-text fallback
+  function emailHtml() {
+    var x = parts(), t = x.t;
+    var when = val(x.longDate, t.date) + ' · ' + val(x.time, t.time);
+    return '<div style="font-family:Calibri,Arial,sans-serif;font-size:11pt;color:#1b2a42">' +
+      '<p><b>' + t.subjectLabel + ':</b> ' + esc(t.subject + ': ' + x.p.name + ' – ' + val(x.shortDate, t.date) + ', ' + val(x.time, t.time)) + '</p>' +
+      '<p>' + esc(t.dear + ' ' + x.name + t.comma) + '</p><p>' + esc(t.confirmed) + '</p>' +
+      '<p style="background:#e3efed;padding:8px 12px;font-weight:bold;font-size:12pt">' + esc(when) + '</p>' +
+      '<p style="font-weight:bold;margin-bottom:4px">' + esc(t.bring) + '</p>' +
+      '<ul style="margin-top:0">' + x.p.reqs.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
+      '<p style="border:1px solid #c3ccd8;background:#f3f5f8;padding:8px 12px"><b>' + esc(t.reply) + ':</b><br>' + esc(t.replyItems) + '</p>' +
+      '<p style="color:#586579">' + esc(t.cant) + '</p>' +
+      '<p>' + esc(t.sign).replace('\n', '<br>') + '</p></div>';
+  }
+  function emailText() {
+    var x = parts(), t = x.t;
+    return t.subjectLabel + ': ' + t.subject + ': ' + x.p.name + ' – ' + val(x.shortDate, t.date) + ', ' + val(x.time, t.time) + '\n\n' +
+      t.dear + ' ' + x.name + t.comma + '\n\n' + t.confirmed + '\n' + val(x.longDate, t.date) + ' · ' + val(x.time, t.time) + '\n\n' +
+      t.bring + ':\n' + x.p.reqs.map(function (r) { return '- ' + r; }).join('\n') + '\n\n' +
+      t.reply + ': ' + t.replyItems + '\n\n' + t.cant + '\n\n' + t.sign;
+  }
+
+  function copyEmail(btn) {
+    var t = TEXT[state.lang];
+    btn.dataset.label = t.copy;
+    function done() {
+      btn.textContent = t.copied;
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function () { btn.textContent = t.copy; }, 2000);
+    }
+    var text = emailText();
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      var item = new ClipboardItem({
+        'text/html': new Blob([emailHtml()], { type: 'text/html' }),
+        'text/plain': new Blob([text], { type: 'text/plain' })
+      });
+      navigator.clipboard.write([item]).then(done, function () { window.copyText(text, btn, t.copied); });
+    } else {
+      window.copyText(text, btn, t.copied);
+    }
+    msg.textContent = 'Email copied. Paste it into a new email in Outlook.';
+  }
+
+  function changed() {
+    var dirty = !!(nameEl.value || dateEl.value || state.time || state.proc);
+    resetBtn.hidden = !dirty;
+  }
+
+  function stopPulse() { sampleBtn.classList.remove('pulse'); }
+
+  procsEl.addEventListener('click', function (e) {
+    var b = e.target.closest('.proc-btn');
+    if (!b) return;
+    state.proc = b.dataset.proc;
+    renderProcs();
+    renderPreview();
+    window.flash(preview);
+    var missing = !dateEl.value || !(state.time === 'other' ? otherEl.value : state.time);
+    msg.textContent = 'Email created for ' + TEXT.en.procs[state.proc].name + '.' +
+      (missing ? ' Choose a date and time to fill the highlighted gaps.' : ' Click Copy email to paste it into Outlook.');
+    changed();
+  });
+
+  preview.addEventListener('click', function (e) {
+    if (e.target.id === 'eg-copy') copyEmail(e.target);
+  });
+
+  $('eg-times').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-time]');
+    if (!b) return;
+    state.time = b.dataset.time;
+    document.querySelectorAll('[data-time]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    otherWrap.hidden = state.time !== 'other';
+    if (state.time === 'other') otherEl.focus();
+    renderPreview();
+    changed();
+  });
+
+  document.querySelectorAll('[data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.lang = b.dataset.lang;
+      document.querySelectorAll('[data-lang]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      preview.setAttribute('lang', state.lang === 'es' ? 'es' : 'en-GB');
+      renderProcs();
+      renderPreview();
+      if (state.proc) window.flash(preview);
+    });
+  });
+
+  [nameEl, dateEl, otherEl].forEach(function (el) { el.addEventListener('input', function () { renderPreview(); changed(); }); });
+
+  sampleBtn.addEventListener('click', function () {
+    stopPulse();
+    nameEl.value = 'Emily Brown';
+    dateEl.value = nextWeekday();
+    state.time = '10:45';
+    otherWrap.hidden = true;
+    document.querySelectorAll('[data-time]').forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.time === '10:45')); });
+    state.proc = 'both';
+    renderProcs();
+    renderPreview();
+    window.flash(preview);
+    msg.textContent = 'Sample loaded: Emily Brown, ID + passport. Try another procedure, or click Copy email.';
+    changed();
+  });
+
+  resetBtn.addEventListener('click', function () {
+    nameEl.value = '';
+    dateEl.value = '';
+    otherEl.value = '';
+    otherWrap.hidden = true;
+    state.time = null;
+    state.proc = null;
+    document.querySelectorAll('[data-time]').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    renderProcs();
+    renderPreview();
+    msg.textContent = 'Cleared. Click Try with sample data to start again.';
+    changed();
+    sampleBtn.focus();
+  });
+
+  renderProcs();
+  renderPreview();
+})();
+</script>
+</body>
+</html>

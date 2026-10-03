@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Self-Service Triage Tool · Carolina Pagliano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="case">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#top"><span class="brand-full">Carolina Pagliano</span><span class="brand-short">C<span class="brand-mark">.</span>P</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#work" aria-current="page">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
+      <p class="eyebrow">Case study 01 of 05</p>
+      <h1>Self-Service Triage Tool</h1>
+      <p class="lede">A bilingual guide applicants complete before booking, so they take the right path and bring the right documents.</p>
+      <dl class="cs-meta">
+        <div><dt>Key result</dt><dd>Applicants arrive prepared</dd></div>
+        <div><dt>Languages</dt><dd>English and Spanish</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap cs-body">
+    <section class="cs-block">
+      <h2><span class="n">01</span>Problem</h2>
+      <div class="cs-content">
+        <p>Applicants booked appointments without knowing what they needed, or emailed staff again and again with basic questions. Appointments were wasted and the front desk was overloaded.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">02</span>What I built</h2>
+      <div class="cs-content">
+        <p>A bilingual (English / Spanish) self-service guide applicants complete before booking. It asks which document they have now and sends them down the right path: book online, book online and bring extra proof of identity, or email first for a records check.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">03</span>How it works</h2>
+      <div class="cs-content">
+        <div class="try">
+          <span class="step-label">How to try it</span>
+          <ol class="try-steps">
+            <li>Pick an example, or answer the question yourself</li>
+            <li>See where the applicant is sent</li>
+          </ol>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="demo-tag">Live demo</span>
+            <div class="demo-bar-actions">
+              <button type="button" class="btn btn-primary btn-small pulse" data-example="renew">Example: renewing a current ID</button>
+              <button type="button" class="btn btn-primary btn-small" data-example="lost">Example: lost ID</button>
+              <button type="button" class="btn btn-primary btn-small" data-example="booklet">Example: old booklet ID</button>
+              <button type="button" class="btn btn-secondary btn-small" id="tri-reset" hidden>Start over</button>
+            </div>
+          </div>
+          <div class="demo-body">
+            <div class="demo-top">
+              <p class="helper" id="tri-hint">Click an example above, or answer the question yourself.</p>
+              <div class="seg" role="group" aria-label="Demo language">
+                <button type="button" data-lang="en" aria-pressed="true">EN</button>
+                <button type="button" data-lang="es" aria-pressed="false">ES</button>
+              </div>
+            </div>
+            <div class="tri-steps" id="tri"></div>
+            <p class="msg" id="tri-msg" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="demo-note">Simplified version. All text is illustrative.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">04</span>Result</h2>
+      <div class="cs-content">
+        <p class="result-callout">Applicants arrive prepared</p>
+        <p>Fewer back-and-forth emails. Applicants with older documents are checked before they take an appointment slot, and applicants arrive with the right paperwork.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">05</span>Built with</h2>
+      <div class="cs-content">
+        <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">Prototyped with Claude and Gemini</li></ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<nav class="cs-pager" aria-label="Case studies">
+  <div class="wrap">
+    <a class="next" href="email-generator.html"><span>Next</span><strong>Confirmation Email Generator →</strong></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Carolina Pagliano</span>
+    <span>All demo data on this site is fictional.</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  var ADDRESS = 'documents@example.org';
+
+  var T = {
+    en: {
+      step: 'Step',
+      q1: 'Which document do you have now?',
+      d_current: 'Current ID card or passport',
+      d_booklet: 'Older booklet-style ID',
+      d_none: 'None: lost, stolen or damaged',
+      q2: 'What type of document was it?',
+      w_current: 'A current-style ID card or passport',
+      w_booklet: 'An older booklet-style ID',
+      outcome: 'Outcome',
+      a_title: 'Book online',
+      b_title: 'Book online and bring extra proof of identity',
+      rules: ['One appointment per person', 'Your ID number is needed to book', 'Wait for our confirmation email'],
+      b_extra: 'Bring another proof of identity on the day: a previous passport, your birth certificate or a previous ID.',
+      book: 'Continue to booking',
+      book_off: 'Demo – booking is disabled',
+      c_title: 'Email us first for a records check',
+      c_intro: 'Older documents need a records check before you book. Email us with:',
+      c_list: ['A scanned copy of your document, if you have it', 'Your birth certificate', 'Your full name', 'Your ID number', 'A phone number'],
+      open: 'Open email',
+      webmail: 'Button not opening your email? If you use webmail, copy the address and template below.',
+      copy_addr: 'Copy address',
+      copy_tpl: 'Copy template',
+      to: 'To',
+      subject_label: 'Subject',
+      subject: 'Records check before booking',
+      body_owned: 'I would like to book an appointment. I have an older booklet-style ID, so I am sending my details for a records check.',
+      body_lost: 'I would like to book an appointment. My older booklet-style ID was lost, stolen or damaged, so I am sending my details for a records check.',
+      body_rest: 'Full name:\nID number:\nPhone:\n\nAttached: a scanned copy of my document (if I have it) and my birth certificate.\n\nThank you.',
+      hello: 'Hello,',
+      restart: 'Start again'
+    },
+    es: {
+      step: 'Paso',
+      q1: '¿Qué documento tiene ahora?',
+      d_current: 'Tarjeta de identidad o pasaporte actual',
+      d_booklet: 'Documento antiguo en formato cuadernillo',
+      d_none: 'Ninguno: perdido, robado o dañado',
+      q2: '¿Qué tipo de documento era?',
+      w_current: 'Tarjeta de identidad o pasaporte del formato actual',
+      w_booklet: 'Documento antiguo en formato cuadernillo',
+      outcome: 'Resultado',
+      a_title: 'Reserve en línea',
+      b_title: 'Reserve en línea y traiga otra prueba de identidad',
+      rules: ['Un turno por persona', 'Necesita su número de documento para reservar', 'Espere nuestro correo de confirmación'],
+      b_extra: 'El día del turno, traiga otra prueba de identidad: un pasaporte anterior, su partida de nacimiento o un documento anterior.',
+      book: 'Continuar con la reserva',
+      book_off: 'Demo: la reserva está desactivada',
+      c_title: 'Escríbanos primero para revisar sus registros',
+      c_intro: 'Los documentos antiguos necesitan una revisión antes de reservar. Envíenos un correo con:',
+      c_list: ['Una copia escaneada de su documento, si la tiene', 'Su partida de nacimiento', 'Su nombre completo', 'Su número de documento', 'Un número de teléfono'],
+      open: 'Abrir correo',
+      webmail: '¿El botón no abre su correo? Si usa correo web, copie la dirección y la plantilla de abajo.',
+      copy_addr: 'Copiar dirección',
+      copy_tpl: 'Copiar plantilla',
+      to: 'Para',
+      subject_label: 'Asunto',
+      subject: 'Revisión de registros antes de reservar',
+      body_owned: 'Quisiera reservar un turno. Tengo un documento antiguo en formato cuadernillo, por eso envío mis datos para la revisión de registros.',
+      body_lost: 'Quisiera reservar un turno. Mi documento antiguo en formato cuadernillo se perdió, fue robado o está dañado, por eso envío mis datos para la revisión de registros.',
+      body_rest: 'Nombre completo:\nNúmero de documento:\nTeléfono:\n\nAdjunto: una copia escaneada de mi documento (si la tengo) y mi partida de nacimiento.\n\nGracias.',
+      hello: 'Hola:',
+      restart: 'Empezar de nuevo'
+    }
+  };
+
+  var EXAMPLES = {
+    renew: { doc: 'current', was: null, msg: {
+      en: 'Example: someone renewing a current ID card. They can book online straight away.',
+      es: 'Ejemplo: alguien que renueva su tarjeta de identidad actual. Puede reservar en línea directamente.' } },
+    lost: { doc: 'none', was: 'current', msg: {
+      en: 'Example: someone whose ID card was lost. They can book online, but must bring extra proof of identity.',
+      es: 'Ejemplo: alguien que perdió su tarjeta de identidad. Puede reservar en línea, pero debe traer otra prueba de identidad.' } },
+    booklet: { doc: 'booklet', was: null, msg: {
+      en: 'Example: someone with an old booklet-style ID. Staff check their records by email before they take an appointment.',
+      es: 'Ejemplo: alguien con un documento antiguo en formato cuadernillo. El personal revisa sus registros por correo antes de que reserve un turno.' } },
+    cleared: { msg: { en: 'Cleared. Pick an example or answer the question.', es: 'Listo. Elija un ejemplo o responda la pregunta.' } }
+  };
+  var msgKey = null;
+  function say(key) { msgKey = key; msg.textContent = key ? EXAMPLES[key].msg[state.lang] : ''; }
+
+  var state = { lang: 'en', doc: null, was: null, hideOutcome: false, busy: false };
+  var root = document.getElementById('tri');
+  var msg = document.getElementById('tri-msg');
+  var resetBtn = document.getElementById('tri-reset');
+  var exampleBtns = Array.prototype.slice.call(document.querySelectorAll('[data-example]'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sleep(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function radio(name, value, label, checked) {
+    var id = 'tri-' + name + '-' + value;
+    return '<div class="choice"><input type="radio" name="' + name + '" id="' + id + '" value="' + value + '"' + (checked ? ' checked' : '') + '>' +
+      '<label for="' + id + '">' + esc(label) + '</label></div>';
+  }
+
+  function outcome() {
+    if (state.doc === 'current') return 'A';
+    if (state.doc === 'booklet') return 'C';
+    if (state.doc === 'none' && state.was === 'current') return 'B';
+    if (state.doc === 'none' && state.was === 'booklet') return 'C';
+    return null;
+  }
+
+  function template(t) {
+    var lost = state.doc === 'none';
+    return t.hello + '\n\n' + (lost ? t.body_lost : t.body_owned) + '\n\n' + t.body_rest;
+  }
+
+  function render() {
+    var t = T[state.lang];
+    var focusId = document.activeElement && root.contains(document.activeElement) ? document.activeElement.id : null;
+    var html =
+      '<fieldset class="choices three"><legend><span class="step-label teal">' + t.step + ' 1</span>' + esc(t.q1) + '</legend>' +
+        radio('doc', 'current', t.d_current, state.doc === 'current') +
+        radio('doc', 'booklet', t.d_booklet, state.doc === 'booklet') +
+        radio('doc', 'none', t.d_none, state.doc === 'none') +
+      '</fieldset>';
+
+    if (state.doc === 'none') {
+      html += '<fieldset class="choices two"><legend><span class="step-label teal">' + t.step + ' 2</span>' + esc(t.q2) + '</legend>' +
+        radio('was', 'current', t.w_current, state.was === 'current') +
+        radio('was', 'booklet', t.w_booklet, state.was === 'booklet') +
+      '</fieldset>';
+    }
+
+    var o = state.hideOutcome ? null : outcome();
+    if (o === 'A' || o === 'B') {
+      html += '<div class="panel ok"><span class="panel-label">' + t.outcome + ' ' + o + '</span>' +
+        '<h3>' + esc(o === 'A' ? t.a_title : t.b_title) + '</h3>' +
+        '<ul>' + t.rules.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
+        (o === 'B' ? '<div class="inset">' + esc(t.b_extra) + '</div>' : '') +
+        '<div class="demo-actions"><button type="button" class="btn btn-primary btn-small" id="tri-book">' + esc(t.book) + '</button>' +
+        '<span class="inline-msg" id="tri-book-msg" aria-live="polite"></span></div></div>';
+    } else if (o === 'C') {
+      var tpl = template(t);
+      var mailto = 'mailto:' + ADDRESS + '?subject=' + encodeURIComponent(t.subject) + '&body=' + encodeURIComponent(tpl);
+      html += '<div class="panel warn"><span class="panel-label">' + t.outcome + ' C</span>' +
+        '<h3>' + esc(t.c_title) + '</h3><p>' + esc(t.c_intro) + '</p>' +
+        '<ul>' + t.c_list.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
+        '<div class="demo-actions"><a class="btn btn-primary btn-small" href="' + esc(mailto) + '">' + esc(t.open) + '</a></div>' +
+        '<p class="inline-msg">' + esc(t.webmail) + '</p>' +
+        '<div class="addr-row"><span class="step-label">' + esc(t.to) + '</span><span class="addr">' + ADDRESS + '</span>' +
+          '<button type="button" class="btn btn-secondary btn-small" id="tri-copy-addr" data-copy-text="' + ADDRESS + '">' + esc(t.copy_addr) + '</button></div>' +
+        '<pre class="template-box">' + esc(t.subject_label + ': ' + t.subject + '\n\n' + tpl) + '</pre>' +
+        '<div class="demo-actions"><button type="button" class="btn btn-secondary btn-small" id="tri-copy-tpl" data-copy-text="' + esc(t.subject_label + ': ' + t.subject + '\n\n' + tpl) + '">' + esc(t.copy_tpl) + '</button></div>' +
+      '</div>';
+    }
+
+    root.innerHTML = html;
+    resetBtn.hidden = !state.doc;
+    if (focusId) { var f = document.getElementById(focusId); if (f) f.focus({ preventScroll: true }); }
+  }
+
+  function showOutcome() {
+    var panel = root.querySelector('.panel');
+    if (!panel) return;
+    window.flash(panel);
+    var r = panel.getBoundingClientRect();
+    if (r.bottom > window.innerHeight || r.top < 0) panel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest' });
+  }
+
+  function pickVisibly(name, value) {
+    if (name === 'doc') { state.doc = value; state.was = null; } else { state.was = value; }
+    render();
+    var input = document.getElementById('tri-' + name + '-' + value);
+    if (input) window.flash(input.nextElementSibling);
+  }
+
+  async function runExample(key) {
+    if (state.busy) return;
+    var ex = EXAMPLES[key];
+    state.busy = true;
+    exampleBtns.forEach(function (b) { b.disabled = true; b.classList.remove('pulse'); });
+    state.doc = null; state.was = null; state.hideOutcome = true;
+    say(null);
+    render();
+    await sleep(250);
+    pickVisibly('doc', ex.doc);
+    if (ex.was) { await sleep(400); pickVisibly('was', ex.was); }
+    await sleep(400);
+    state.hideOutcome = false;
+    render();
+    showOutcome();
+    say(key);
+    exampleBtns.forEach(function (b) { b.disabled = false; });
+    state.busy = false;
+  }
+
+  root.addEventListener('change', function (e) {
+    if (state.busy) return;
+    if (e.target.name === 'doc') { state.doc = e.target.value; state.was = null; render(); }
+    if (e.target.name === 'was') { state.was = e.target.value; render(); }
+    say(null);
+    if (root.querySelector('.panel')) showOutcome();
+  });
+
+  root.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    if (b.id === 'tri-book') document.getElementById('tri-book-msg').textContent = T[state.lang].book_off;
+    if (b.dataset.copyText) window.copyText(b.dataset.copyText, b, state.lang === 'es' ? 'Copiado ✓' : 'Copied ✓');
+  });
+
+  exampleBtns.forEach(function (b) { b.addEventListener('click', function () { runExample(b.dataset.example); }); });
+
+  resetBtn.addEventListener('click', function () {
+    if (state.busy) return;
+    state.doc = null; state.was = null;
+    render();
+    say('cleared');
+    exampleBtns[0].focus();
+  });
+
+  document.querySelectorAll('[data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      state.lang = b.dataset.lang;
+      document.querySelectorAll('[data-lang]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      root.setAttribute('lang', state.lang === 'es' ? 'es' : 'en-GB');
+      render();
+      say(msgKey);
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Data Formatter · Carolina Pagliano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="case">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html#top"><span class="brand-full">Carolina Pagliano</span><span class="brand-short">C<span class="brand-mark">.</span>P</span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="index.html#work" aria-current="page">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
+      <p class="eyebrow">Case study 03 of 05</p>
+      <h1>Data Formatter</h1>
+      <p class="lede">A tool that reads the day's cash report and turns every case into a clean row, ready to paste into the tracker.</p>
+      <dl class="cs-meta">
+        <div><dt>Key result</dt><dd>3–4 hours → seconds</dd></div>
+        <div><dt>When it's used</dt><dd>End of each day</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="wrap cs-body">
+    <section class="cs-block">
+      <h2><span class="n">01</span>Problem</h2>
+      <div class="cs-content">
+        <p>Documents were only added to the tracker when they arrived. The document system doesn't connect to the tracker, so everything was typed by hand. When a diplomatic pouch arrived with 150–200 documents, staff spent hours on repetitive data entry, which caused typos and tracking errors.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">02</span>What I built</h2>
+      <div class="cs-content">
+        <p>A tool that reads the day's cash report (PDF or pasted text), detects the date, and turns every case into a clean 7-column row ready to paste into the Excel tracker.</p>
+        <p>It cross-checks the fees paid to work out which documents will actually arrive. For example, an "ID + passport" case with no passport fee means an emergency passport was issued on the spot, so only the ID card is expected. Cases that need a human decision are flagged for review instead of guessed.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">03</span>How it works</h2>
+      <div class="cs-content">
+        <div class="try">
+          <span class="step-label">How to try it</span>
+          <ol class="try-steps">
+            <li>Click <strong>Try with sample data</strong> to load a sample daily report</li>
+            <li>Click <strong>Format</strong></li>
+            <li>Confirm the pending ID number</li>
+            <li>Copy the table for Excel</li>
+          </ol>
+        </div>
+        <div class="demo">
+          <div class="demo-bar">
+            <span class="demo-tag">Live demo</span>
+            <div class="demo-bar-actions">
+              <button type="button" class="btn btn-primary btn-small pulse" id="fm-sample">Try with sample data</button>
+              <button type="button" class="btn btn-secondary btn-small" id="fm-reset" hidden>Start over</button>
+            </div>
+          </div>
+          <div class="demo-body">
+            <div class="field">
+              <label for="report">Daily cash report</label>
+              <textarea id="report" class="report-box" spellcheck="false" rows="9" placeholder="Paste the daily report here, or click Try with sample data."></textarea>
+              <span class="small-note">The real tool also reads the PDF report directly.</span>
+            </div>
+            <div class="demo-actions">
+              <button type="button" class="btn btn-primary" id="fm-format" disabled>Format</button>
+            </div>
+            <div id="fm-output">
+              <div class="empty-state">Your formatted table will appear here.</div>
+            </div>
+            <div class="demo-actions">
+              <button type="button" class="btn btn-secondary btn-small" id="fm-copy" disabled>Copy table for Excel</button>
+            </div>
+            <p class="msg" id="fm-msg" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">04</span>Result</h2>
+      <div class="cs-content">
+        <p class="result-callout">3–4 hours <span class="arrow">→</span> seconds</p>
+        <p>3–4+ hours of manual entry per batch of 150–200 documents became a few seconds of upload, check and paste. Every application is tracked from the day it's started, with far fewer typing errors.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">05</span>Built with</h2>
+      <div class="cs-content">
+        <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">PDF reading (pdf.js)</li><li class="chip">Prototyped with Claude and Gemini</li></ul>
+      </div>
+    </section>
+  </div>
+</main>
+
+<nav class="cs-pager" aria-label="Case studies">
+  <div class="wrap">
+    <a class="prev" href="email-generator.html"><span>Previous</span><strong>← Confirmation Email Generator</strong></a>
+    <a class="next" href="tracker.html"><span>Next</span><strong>Master Tracker →</strong></a>
+  </div>
+</nav>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Carolina Pagliano</span>
+    <span>All demo data on this site is fictional.</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function ddmmyyyy(d) { return pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear(); }
+
+  // Fictional report, dated 31 days ago so it lines up with the tracker demo. Fees are invented.
+  // Names arrive as "SURNAME, First name", the way the report prints them; the formatter turns them into "First Surname".
+  function sample() {
+    var d = new Date();
+    d.setDate(d.getDate() - 31);
+    return [
+      'DAILY CASH REPORT',
+      'Date: ' + ddmmyyyy(d),
+      '',
+      'Case ID   | ID number   | Name           | Procedure        | ID fee | Passport fee',
+      '700000141 | 30000041    | SMITH, John    | Passport         |   0.00 |  50.00',
+      '700000142 | 30000042    | BROWN, Emily   | ID + passport    |  25.00 |  50.00',
+      '700000143 | PROVISIONAL | TAYLOR, James  | First ID         |  25.00 |   0.00',
+      '700000144 | 30000044    | WILSON, Sophia | ID (lost/stolen) |  25.00 |   0.00',
+      '700000145 | 30000045    | DAVIS, Oliver  | ID + passport    |  25.00 |   0.00',
+      '700000146 | 30000046    | EXAMPLE, Alex  | Passport         |   0.0O |',
+      '',
+      'TOTAL                                                      | 100.00 | 100.00'
+    ].join('\n');
+  }
+
+  function $(id) { return document.getElementById(id); }
+  var report = $('report'), output = $('fm-output'), msg = $('fm-msg');
+  var formatBtn = $('fm-format'), copyBtn = $('fm-copy'), sampleBtn = $('fm-sample'), resetBtn = $('fm-reset');
+  var rows = null, date = '';
+  var confirmed = {};   // case ID -> final 8-digit number, or 'keep' to leave it pending on purpose
+  var editing = {};     // case ID -> true while the number is being typed
+  var HELP = "Provisional ID number. Type the final number when it's issued, or confirm to keep it pending.";
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function fee(s) { s = (s || '').trim(); return /^\d+(\.\d{1,2})?$/.test(s) ? parseFloat(s) : null; }
+  function title(s) { return s.toLowerCase().replace(/(^|[\s'-])(\S)/g, function (m, p, c) { return p + c.toUpperCase(); }); }
+  // "SMITH, John" -> "John Smith"
+  function niceName(s) {
+    var p = s.split(',');
+    return p.length > 1 ? title(p.slice(1).join(' ').trim() + ' ' + p[0].trim()) : title(s);
+  }
+
+  function parse() {
+    var text = report.value;
+    var m = text.match(/date:\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
+    date = m ? m[1] : '';
+    rows = text.split(/\r?\n/).filter(function (l) { return /^\s*\d{9}\b/.test(l); }).map(function (line) {
+      var f = line.split('|').map(function (x) { return x.replace(/\s+/g, ' ').trim(); });
+      var idFee = fee(f[4]), ppFee = fee(f[5]);
+      if (f.length < 6 || idFee === null || ppFee === null || (!idFee && !ppFee)) return { broken: true, caseId: f[0] };
+      var ppExp = ppFee > 0;
+      var proc = f[3];
+      if (/passport/i.test(proc) && /\bid\b/i.test(proc) && !ppExp) proc = 'ID + emergency passport';
+      var provisional = !/^\d{8}$/.test(f[1]);
+      return { caseId: f[0], idNum: provisional ? null : f[1], name: niceName(f[2]), proc: proc, idExp: idFee > 0, ppExp: ppExp, provisional: provisional };
+    });
+  }
+
+  function yn(b) { return '<span class="yn ' + (b ? 'yes">Yes' : 'no">No') + '</span>'; }
+
+  function idCell(r) {
+    if (!r.provisional) return '<span class="mono">' + esc(r.idNum) + '</span>';
+    var c = r.caseId, v = confirmed[c];
+    if (editing[c]) {
+      return '<span class="id-edit"><label class="visually-hidden" for="fm-id-' + c + '">Final ID number for case ' + c + '</label>' +
+        '<input id="fm-id-' + c + '" inputmode="numeric" maxlength="8" placeholder="8 digits" value="' + (v && v !== 'keep' ? esc(v) : '') + '">' +
+        '<button type="button" class="icon-btn" data-act="confirm" data-case="' + c + '" aria-label="Confirm" title="Confirm">✔</button></span>';
+    }
+    if (v) {
+      return '<span class="id-edit"><span class="mono">' + (v === 'keep' ? 'Pending' : esc(v)) + '</span>' +
+        '<button type="button" class="icon-btn" data-act="edit" data-case="' + c + '" aria-label="Edit ID number" title="Edit">✎</button></span>';
+    }
+    return '<span class="id-edit"><button type="button" class="cell-btn" data-act="edit" data-case="' + c + '" title="' + esc(HELP) + '"><span class="pen" aria-hidden="true">✎</span>Pending</button>' +
+      '<button type="button" class="icon-btn" data-act="keep" data-case="' + c + '" aria-label="Confirm and keep pending" title="Confirm and keep pending">✔</button></span>';
+  }
+
+  function render(flashKey) {
+    if (!rows) {
+      output.innerHTML = '<div class="empty-state">Your formatted table will appear here.</div>';
+      copyBtn.disabled = true;
+      return;
+    }
+    var read = 0, toConfirm = 0, broken = 0, hasPending = false;
+    var body = rows.map(function (r) {
+      if (r.broken) {
+        broken++;
+        return '<tr class="row-bad"><td class="mono">' + esc(date || '—') + '</td><td class="mono">' + esc(r.caseId) + '</td>' +
+          '<td colspan="5" class="bad-text">Couldn\'t read this line – check the fee columns</td></tr>';
+      }
+      read++;
+      var pending = r.provisional && !confirmed[r.caseId];
+      if (pending) toConfirm++;
+      if (r.provisional) hasPending = true;
+      return '<tr data-row="' + r.caseId + '"' + (pending ? ' class="row-warn"' : '') + '>' +
+        '<td class="mono">' + esc(date || '—') + '</td><td class="mono">' + esc(r.caseId) + '</td>' +
+        '<td>' + idCell(r) + '</td><td class="wrap">' + esc(r.name) + '</td><td class="wrap">' + esc(r.proc) + '</td>' +
+        '<td>' + yn(r.idExp) + '</td><td>' + yn(r.ppExp) + '</td></tr>';
+    }).join('') || '<tr><td colspan="7">No cases found. Each case line should start with a 9-digit case number.</td></tr>';
+
+    var green = read > 0 && toConfirm === 0;
+    output.innerHTML =
+      '<div class="banner' + (green ? ' ok' : '') + '" id="fm-banner" role="status">' + read + ' cases read · ' + toConfirm + ' to confirm · ' + broken + ' couldn\'t be read' + (date ? '' : ' · no report date found') + '</div>' +
+      '<div class="table-shell"><div class="table-wrap"><table class="data-table compact" aria-label="Formatted cases">' +
+        '<thead><tr><th scope="col">Date</th><th scope="col">Case</th><th scope="col">ID no.</th><th scope="col">Name</th><th scope="col">Procedure</th><th scope="col">ID?</th><th scope="col">Passport?</th></tr></thead>' +
+        '<tbody>' + body + '</tbody></table></div></div>' +
+      (hasPending ? '<p class="helper"><strong>Pending</strong> = ' + esc(HELP) + '</p>' : '');
+    copyBtn.disabled = read === 0;
+    var wrap = output.querySelector('.table-wrap');
+    wrap.dispatchEvent(new Event('scroll'));
+    bindFade(wrap);
+    if (flashKey === 'table') window.flash(output.querySelector('table'));
+    else if (flashKey) { var tr = output.querySelector('[data-row="' + flashKey + '"]'); if (tr) window.flash(tr); window.flash($('fm-banner')); }
+  }
+
+  // The table is rebuilt on each render, so attach the edge fade here
+  function bindFade(wrap) {
+    function upd() { wrap.parentElement.classList.toggle('has-more', wrap.scrollWidth - wrap.clientWidth - wrap.scrollLeft > 4); }
+    wrap.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd);
+    upd();
+  }
+
+  function changed() {
+    resetBtn.hidden = !(report.value.trim() || rows);
+    formatBtn.disabled = !report.value.trim();
+  }
+
+  output.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-act]');
+    if (!b) return;
+    var c = b.dataset.case, act = b.dataset.act;
+    msg.classList.remove('is-error');
+    if (act === 'edit') {
+      editing[c] = true;
+      render();
+      $('fm-id-' + c).focus();
+      msg.textContent = 'Type the final 8-digit ID number, then press ✔. Leave it empty to keep it pending.';
+      return;
+    }
+    if (act === 'keep') {
+      confirmed[c] = 'keep';
+      msg.textContent = 'Case ' + c + ' confirmed. The ID number stays pending until the final one is issued.';
+      render(c);
+      return;
+    }
+    var v = $('fm-id-' + c).value.trim();
+    if (v && !/^\d{8}$/.test(v)) {
+      msg.textContent = 'ID numbers have 8 digits. Check the number for case ' + c + ', or leave it empty to keep it pending.';
+      msg.classList.add('is-error');
+      $('fm-id-' + c).focus();
+      return;
+    }
+    confirmed[c] = v || 'keep';
+    delete editing[c];
+    msg.textContent = v ? 'ID number ' + v + ' saved for case ' + c + '.' : 'Case ' + c + ' confirmed. The ID number stays pending.';
+    render(c);
+  });
+
+  output.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && e.target.matches('.id-edit input')) {
+      e.preventDefault();
+      var btn = e.target.parentNode.querySelector('[data-act="confirm"]');
+      if (btn) btn.click();
+    }
+  });
+
+  report.addEventListener('input', changed);
+
+  formatBtn.addEventListener('click', function () {
+    parse();
+    render('table');
+    var broken = rows.filter(function (r) { return r.broken; }).length;
+    var pending = rows.filter(function (r) { return r.provisional && !confirmed[r.caseId]; }).length;
+    msg.classList.remove('is-error');
+    msg.textContent = 'Formatted ' + rows.filter(function (r) { return !r.broken; }).length + ' cases into rows.' +
+      (pending ? ' One ID number is provisional: click Pending to update or confirm it.' : '') +
+      (broken ? ' One line couldn\'t be read and is shown in red.' : '');
+    changed();
+  });
+
+  sampleBtn.addEventListener('click', function () {
+    sampleBtn.classList.remove('pulse');
+    report.value = sample();
+    rows = null; confirmed = {}; editing = {};
+    render();
+    window.flash(report);
+    msg.classList.remove('is-error');
+    msg.textContent = 'Sample report loaded. Click Format to turn it into rows.';
+    changed();
+    formatBtn.focus({ preventScroll: true });
+  });
+
+  resetBtn.addEventListener('click', function () {
+    report.value = '';
+    rows = null; confirmed = {}; editing = {};
+    render();
+    msg.classList.remove('is-error');
+    msg.textContent = 'Cleared. Click Try with sample data to start again.';
+    changed();
+    sampleBtn.focus();
+  });
+
+  copyBtn.addEventListener('click', function () {
+    var tsv = rows.filter(function (r) { return !r.broken; }).map(function (r) {
+      var v = confirmed[r.caseId];
+      var id = r.provisional ? (v && v !== 'keep' ? v : 'Pending') : r.idNum;
+      return [date, r.caseId, id, r.name, r.proc, r.idExp ? 'Yes' : 'No', r.ppExp ? 'Yes' : 'No'].join('\t');
+    }).join('\n');
+    window.copyText(tsv, copyBtn);
+    msg.classList.remove('is-error');
+    msg.textContent = 'Table copied. Paste it into the tracker in Excel.';
+  });
+
+  changed();
+})();
+</script>
+</body>
+</html>
