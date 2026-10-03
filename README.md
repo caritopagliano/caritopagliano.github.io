@@ -40,7 +40,10 @@ Site-wide: case study pages always open at the top, and a round **Back to top** 
 | `sop.html` | 4-stage flow with design rules and the SOP preview image |
 | `styles.css` | All styles. Colour tokens at the top, with light and dark mode. Demo components are at the end of the file |
 | `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
-| `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is also the SOP preview), plus `monogram-cp.png` |
+| `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is also the SOP preview), `monogram-cp.png`, plus: |
+| `images/photo.jpg` | About section photo (shown at 4:5, cropped with `object-fit: cover`) |
+| `images/og-banner.png` | Link preview image (1200×630) used by the Open Graph and Twitter tags on every page |
+| `images/favicon.png` | Square 512×512 crop of the monogram, used as the browser tab icon and phone home-screen icon |
 | `image-source/mock.html` | Source of an earlier set of illustrations. No longer used by the site |
 
 ## Demo data
