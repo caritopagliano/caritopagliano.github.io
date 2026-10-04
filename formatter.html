@@ -4,23 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Data Formatter · Carolina Pagliano</title>
-<meta name="description" content="A tool that reads the day's cash report and turns every case into a clean row, ready to paste into the tracker.">
+<meta name="description" content="Turns the daily payments report into clean rows for the tracker, so nothing needs typing when documents arrive.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Data Formatter · Carolina Pagliano">
-<meta property="og:description" content="A tool that reads the day's cash report and turns every case into a clean row, ready to paste into the tracker.">
+<meta property="og:description" content="Turns the daily payments report into clean rows for the tracker, so nothing needs typing when documents arrive.">
 <meta property="og:image" content="https://caritopagliano.github.io/images/og-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://caritopagliano.github.io/formatter.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Data Formatter · Carolina Pagliano">
-<meta name="twitter:description" content="A tool that reads the day's cash report and turns every case into a clean row, ready to paste into the tracker.">
+<meta name="twitter:description" content="Turns the daily payments report into clean rows for the tracker, so nothing needs typing when documents arrive.">
 <meta name="twitter:image" content="https://caritopagliano.github.io/images/og-banner.png">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="case">
@@ -42,34 +42,19 @@
       <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
       <p class="eyebrow">Case study 03 of 05</p>
       <h1>Data Formatter</h1>
-      <p class="lede">A tool that reads the day's cash report and turns every case into a clean row, ready to paste into the tracker.</p>
-      <ul class="role-strip" aria-label="My role"><li>Self-initiated</li><li>Designed and built by me</li><li>AI-assisted build</li><li>Whole workflow built in ~1 week</li><li>In daily use</li></ul>
-      <dl class="cs-meta">
-        <div><dt>Key result</dt><dd>~3–4 hours → seconds</dd></div>
-        <div><dt>When it's used</dt><dd>End of each day</dd></div>
+      <p class="lede">Turns the daily payments report into clean rows for the tracker.</p>
+      <dl class="glance" aria-label="At a glance">
+        <div><dt>Problem</dt><dd>Every application had to be typed into the tracker by hand.</dd></div>
+        <div><dt>Built</dt><dd>A tool that reads the daily payments report and turns each case into a clean row.</dd></div>
+        <div class="glance-result"><dt>Result</dt><dd>Daily intake in seconds</dd></div>
+        <div><dt>Key decision</dt><dd>Nothing goes into the tracker unchecked.</dd></div>
       </dl>
     </div>
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block">
-      <h2><span class="n">01</span>Problem</h2>
-      <div class="cs-content">
-        <p>Documents were only added to the tracker when they arrived. The document system doesn't connect to the tracker, so everything was typed by hand. When a diplomatic pouch arrived with 150–200 documents, staff spent hours on repetitive data entry, which caused typos and tracking errors.</p>
-      </div>
-    </section>
-
-    <section class="cs-block">
-      <h2><span class="n">02</span>What I built</h2>
-      <div class="cs-content">
-        <p>A tool that reads the day's cash report (PDF or pasted text), detects the date, and turns every case into a clean 7-column row ready to paste into the Excel tracker.</p>
-        <p>It cross-checks the fees paid to work out which documents will actually arrive. For example, an "ID + passport" case with no passport fee means an emergency passport was issued on the spot, so only the ID card is expected. Cases that need a human decision are flagged for review instead of guessed.</p>
-        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Nothing goes into the tracker unchecked</strong> → errors and items like pending IDs are flagged for review first.</p></div>
-      </div>
-    </section>
-
-    <section class="cs-block">
-      <h2><span class="n">03</span>How it works</h2>
+    <section class="cs-block cs-try">
+      <h2>Try it</h2>
       <div class="cs-content">
         <div class="try">
           <span class="step-label">How to try it</span>
@@ -90,7 +75,7 @@
           </div>
           <div class="demo-body">
             <div class="field">
-              <label for="report">Daily cash report</label>
+              <label for="report">Daily payments report</label>
               <textarea id="report" class="report-box" spellcheck="false" rows="9" placeholder="Paste the daily report here, or click Try with sample data."></textarea>
               <span class="small-note">The real tool also reads the PDF report directly.</span>
             </div>
@@ -110,21 +95,50 @@
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">04</span>Result</h2>
+      <h2><span class="n">01</span>Problem</h2>
       <div class="cs-content">
-        <p class="result-callout">~3–4 hours <span class="arrow">→</span> seconds</p>
-        <p>~3–4 hours of manual entry when a pouch of 150–200 documents arrived became a few seconds of upload, check and paste each day. Every application is tracked from the day it's started, with far fewer typing errors.</p>
+        <p>Our document system doesn't connect to the tracker, so every application's details (name, ID number, procedure) had to be typed in by hand. When a delivery of 150–200 documents arrived, that meant hours of repetitive typing, and with it typos and tracking errors.</p>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">05</span>Built with</h2>
+      <h2><span class="n">02</span>What I built</h2>
       <div class="cs-content">
-        <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">PDF reading (pdf.js)</li><li class="chip">Prototyped with Claude and Gemini</li></ul>
+        <p>It reads the report (PDF or pasted text), finds the date, and produces a clean 7-column row for every case, ready to paste into the Excel tracker.</p>
+        <p>It cross-checks the fees paid to work out which documents will actually arrive. For example, an "ID + passport" case with no passport fee means an emergency passport was issued on the spot, so only the ID card is expected. Cases that need a human decision are flagged for review instead of guessed.</p>
+        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Nothing goes into the tracker unchecked</strong> → errors and items like pending IDs are flagged for review first.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">03</span>Result</h2>
+      <div class="cs-content">
+        <p class="result-callout">Daily intake in seconds</p>
+        <p>Each day's applications go into the tracker in a few seconds of paste and check. When the delivery arrives, there's nothing left to type.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">04</span>Built with</h2>
+      <div class="cs-content">
+        <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">PDF reading (pdf.js)</li><li class="chip">Gemini</li></ul>
       </div>
     </section>
   </div>
 </main>
+
+<section class="cs-cta" aria-label="Get in touch">
+  <div class="wrap cs-cta-inner">
+    <div class="cs-cta-text">
+      <h2>Want this kind of thinking on your team?</h2>
+      <p>Open to Business Operations, BizOps and PMO roles in London.</p>
+    </div>
+    <div class="cs-cta-actions">
+      <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</section>
 
 <nav class="cs-pager" aria-label="Case studies">
   <div class="wrap">
@@ -132,7 +146,6 @@
     <a class="next" href="tracker.html"><span>Next</span><strong>Master Tracker →</strong></a>
   </div>
 </nav>
-
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Carolina Pagliano</span>
@@ -152,13 +165,13 @@
     var d = new Date();
     d.setDate(d.getDate() - 31);
     return [
-      'DAILY CASH REPORT',
+      'DAILY PAYMENTS REPORT',
       'Date: ' + ddmmyyyy(d),
       '',
       'Case ID   | ID number   | Name           | Procedure        | ID fee | Passport fee',
       '700000141 | 30000041    | SMITH, John    | Passport         |   0.00 |  50.00',
       '700000142 | 30000042    | BROWN, Emily   | ID + passport    |  25.00 |  50.00',
-      '700000143 | PROVISIONAL | TAYLOR, James  | First ID         |  25.00 |   0.00',
+      '700000143 | TEMPORARY   | TAYLOR, James  | First ID         |  25.00 |   0.00',
       '700000144 | 30000044    | WILSON, Sophia | ID (lost/stolen) |  25.00 |   0.00',
       '700000145 | 30000045    | DAVIS, Oliver  | ID + passport    |  25.00 |   0.00',
       '700000146 | 30000046    | EXAMPLE, Alex  | Passport         |   0.0O |',
@@ -173,7 +186,7 @@
   var rows = null, date = '';
   var confirmed = {};   // case ID -> final 8-digit number, or 'keep' to leave it pending on purpose
   var editing = {};     // case ID -> true while the number is being typed
-  var HELP = "Provisional ID number. Type the final number when it's issued, or confirm to keep it pending.";
+  var HELP = "Temporary ID number. Type the final number when it's issued, or confirm to keep it pending.";
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function fee(s) { s = (s || '').trim(); return /^\d+(\.\d{1,2})?$/.test(s) ? parseFloat(s) : null; }
@@ -317,7 +330,7 @@
     var pending = rows.filter(function (r) { return r.provisional && !confirmed[r.caseId]; }).length;
     msg.classList.remove('is-error');
     msg.textContent = 'Formatted ' + rows.filter(function (r) { return !r.broken; }).length + ' cases into rows.' +
-      (pending ? ' One ID number is provisional: click Pending to update or confirm it.' : '') +
+      (pending ? ' One ID number is temporary: click Pending to update or confirm it.' : '') +
       (broken ? ' One line couldn\'t be read and is shown in red.' : '');
     changed();
   });

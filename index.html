@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -42,18 +42,17 @@
   <!-- 1. HERO -->
   <section class="hero" id="top">
     <div class="wrap">
-      <p class="eyebrow">Operations · London</p>
-      <h1>I find the manual work that slows teams down, and build simple tools to replace it.</h1>
+      <p class="eyebrow">Operations · BizOps &amp; PMO · London</p>
+      <h1>I find the manual work that slows teams down, and build <em class="hl">simple tools</em> to replace it.</h1>
       <p class="hero-sub">Operations professional with 10+ years across consular, public sector, legal and facilities environments. Currently leading the Passport Section at the Consulate of Argentina in London.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#work">See my work</a>
         <a class="btn btn-secondary" href="#contact">Get in touch</a>
       </div>
       <ul class="stats" aria-label="Key numbers">
-        <li class="stat"><span class="stat-value">~4&nbsp;hrs <span class="arrow" aria-label="down to">→</span> under&nbsp;30&nbsp;min</span><span class="stat-label">daily logging and notifications, with the <a href="tracker.html">Master Tracker</a></span></li>
+        <li class="stat"><span class="stat-value">~4&nbsp;hrs <span class="arrow" aria-label="down to">→</span> under&nbsp;30&nbsp;min</span><span class="stat-label">to process each delivery of 150–200 documents (ID cards and passports)</span></li>
         <li class="stat"><span class="stat-value">4 tools + 1 SOP</span><span class="stat-label">used daily by the team</span></li>
-        <li class="stat"><span class="stat-value">150–200 documents</span><span class="stat-label">per pouch, no longer typed in by hand</span></li>
-        <li class="stat"><span class="stat-value">EN · ES · PT</span><span class="stat-label">working languages</span></li>
+        <li class="stat"><span class="stat-value">~3–5&nbsp;min <span class="arrow" aria-label="down to">→</span> under&nbsp;30&nbsp;sec</span><span class="stat-label">per confirmation email</span></li>
       </ul>
     </div>
   </section>
@@ -64,20 +63,22 @@
       <div class="section-head reveal">
         <p class="eyebrow">Work</p>
         <h2>A document workflow, rebuilt</h2>
-        <p class="intro">Four connected tools and a one-page SOP I built outside my formal role, using generative AI. Together they cover every stage of a document's life, from booking to collection, and my team uses them every day.</p>
-        <p class="intro">I had to work with the resources already available, so every tool was designed around the office's limits, not the other way round.</p>
+        <p class="intro">I spotted where our document workflow was losing time and designed a simpler process. I had to work with the resources already available, so every tool was designed around the office's limits, not the other way round.</p>
+        <p class="intro">I then built it as four connected tools and a one-page SOP, using generative AI. Together they cover every stage of a document's life, from booking to collection.</p>
+        <p class="intro">I walked my colleague through each tool and handed over the SOP to follow step by step. We switched over quickly, and we both use them every day.</p>
+        <ul class="role-strip" aria-label="My role"><li>Self-initiated</li><li>Designed and built by me</li><li>AI-assisted build</li><li>Whole workflow built in ~1 week</li><li>In daily use</li></ul>
       </div>
 
-      <div class="flow reveal" role="group" aria-label="How the four tools and the SOP connect">
+      <div class="flow reveal" role="figure" aria-label="How the four tools and the SOP connect: Triage before booking, Email Generator once booking is confirmed, Formatter for daily intake, Tracker from arrival to collection, with the SOP as the guide for every stage">
         <p class="flow-title">How the tools connect</p>
         <ol class="flow-steps">
-          <li class="flow-step"><a href="triage.html"><span class="flow-num">01</span><span class="flow-name">Triage</span><span class="flow-desc">Checks applicants before they book</span></a></li>
-          <li class="flow-step"><a href="email-generator.html"><span class="flow-num">02</span><span class="flow-name">Email Generator</span><span class="flow-desc">Writes confirmation emails</span></a></li>
-          <li class="flow-step"><a href="formatter.html"><span class="flow-num">03</span><span class="flow-name">Formatter</span><span class="flow-desc">Logs new applications</span></a></li>
-          <li class="flow-step"><a href="tracker.html"><span class="flow-num">04</span><span class="flow-name">Tracker</span><span class="flow-desc">Tracks every document's status</span></a></li>
+          <li class="flow-step"><div class="flow-box"><span class="flow-num">01</span><span class="flow-name">Triage</span><span class="flow-desc">Before booking</span></div></li>
+          <li class="flow-step"><div class="flow-box"><span class="flow-num">02</span><span class="flow-name">Email Generator</span><span class="flow-desc">Booking confirmed</span></div></li>
+          <li class="flow-step"><div class="flow-box"><span class="flow-num">03</span><span class="flow-name">Formatter</span><span class="flow-desc">Daily intake</span></div></li>
+          <li class="flow-step"><div class="flow-box"><span class="flow-num">04</span><span class="flow-name">Tracker</span><span class="flow-desc">Arrival to collection</span></div></li>
         </ol>
         <div class="flow-tie" aria-hidden="true"></div>
-        <div class="flow-sop"><a href="sop.html"><span class="flow-num">05 · Standard Operating Procedure</span><span class="flow-name">SOP</span><span class="flow-desc">The guide that ties every stage together</span></a></div>
+        <div class="flow-sop"><div class="flow-box"><span class="flow-num">05</span><span class="flow-name">SOP</span><span class="flow-desc">The guide for every stage</span></div></div>
       </div>
 
       <div class="cards">
@@ -87,7 +88,7 @@
             <span class="flow-num">01</span>
             <h3>Self-Service Triage Tool</h3>
             <p>A bilingual guide that sends applicants down the right path before they book.</p>
-            <div class="card-metric"><span>Key result</span><strong>Applicants arrive prepared</strong></div>
+            <div class="card-metric"><span>Key result</span><strong>Checked before they book</strong></div>
             <a class="card-link" href="triage.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -108,8 +109,8 @@
           <div class="card-body">
             <span class="flow-num">03</span>
             <h3>Data Formatter</h3>
-            <p>Turns the daily cash report into clean rows for the tracker.</p>
-            <div class="card-metric"><span>Key result</span><strong>~3–4 hours → seconds</strong></div>
+            <p>Turns the daily payments report into clean rows for the tracker.</p>
+            <div class="card-metric"><span>Key result</span><strong>Daily intake in seconds</strong></div>
             <a class="card-link" href="formatter.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -119,8 +120,8 @@
           <div class="card-body">
             <span class="flow-num">04</span>
             <h3>Master Tracker</h3>
-            <p>A barcode-scanned workbook that tracks every document and flags delays.</p>
-            <div class="card-metric"><span>Key result</span><strong>~4 hrs → under 30 min</strong></div>
+            <p>A barcode-scanned workbook that flags delays, so the team tracks cases proactively instead of reacting to enquiries.</p>
+            <div class="card-metric"><span>Key result</span><strong>One scan per document</strong><em>Reactive → proactive</em></div>
             <a class="card-link" href="tracker.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
           </div>
         </article>
@@ -137,17 +138,7 @@
         </article>
       </div>
 
-      <div class="learning reveal">
-        <div class="learning-head">
-          <h3>Currently learning</h3>
-          <p>SQL projects will be added here.</p>
-        </div>
-        <ul class="soon-grid">
-          <li class="soon"><strong>SQL project</strong><span class="pill">Coming soon</span></li>
-          <li class="soon"><strong>SQL project</strong><span class="pill">Coming soon</span></li>
-          <li class="soon"><strong>SQL project</strong><span class="pill">Coming soon</span></li>
-        </ul>
-      </div>
+      <p class="demo-disclaimer">All names and data in the live demos are fictional.</p>
     </div>
   </section>
 
@@ -158,9 +149,8 @@
       <div class="about-text reveal">
         <p class="eyebrow">About</p>
         <h2>Making things simpler</h2>
-        <p>I'm an operations professional with 10+ years of experience in Argentina, Canada, the USA and the UK. I currently lead the Passport Section at the Consulate of Argentina in London, where I handle 50+ cases and 160+ enquiries a month and support 3 Consuls.</p>
+        <p>I'm an operations professional with 10+ years of experience in Argentina, Canada, the USA and the UK. I currently lead the Passport Section at the Consulate of Argentina in London, where I personally handle 50+ applications and 160+ enquiries a month and support 3 Consuls, in a section that processes 120–180 applications a month.</p>
         <p>The part of my work I enjoy most is making things simpler. I'm now looking for a Business Operations or PMO role where I can do this full time, and I'm learning SQL to get better with data.</p>
-        <p>Outside work I'm also a makeup artist, which keeps my creative side busy and my eye for detail sharp.</p>
         <div class="outside">
           <span class="step-label" id="outside-label">Outside work</span>
           <ul class="outside-chips" aria-labelledby="outside-label">
@@ -176,38 +166,12 @@
         </div>
         <ul class="badges" aria-label="Certifications">
           <li class="badge"><strong>Google AI Professional Certificate</strong><span>2026</span></li>
-          <li class="badge"><strong>SheCodes Introduction to Coding</strong><span>2025</span></li>
-          <li class="badge is-progress"><strong>Legal Secretary Diploma · ILSPA</strong><span>In progress</span></li>
-        </ul>
+          <li class="badge"><strong>SheCodes Introduction to Coding</strong><span>2025</span></li>        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 4. TESTIMONIALS
-       To hide this whole section, add the word hidden to the opening tag below:
-       <section class="section section--soft" id="testimonials" hidden> -->
-  <section class="section section--soft" id="testimonials">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Testimonials</p>
-        <h2>What colleagues say</h2>
-      </div>
-      <div class="quotes">
-        <figure class="quote reveal">
-          <span class="quote-mark" aria-hidden="true">“</span>
-          <p>[Testimonial coming soon]</p>
-          <footer>[Name, role]</footer>
-        </figure>
-        <figure class="quote reveal">
-          <span class="quote-mark" aria-hidden="true">“</span>
-          <p>[Testimonial coming soon]</p>
-          <footer>[Name, role]</footer>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. CONTACT -->
+  <!-- 4. CONTACT -->
   <section class="section contact" id="contact">
     <div class="wrap contact-inner reveal">
       <p class="eyebrow">Contact</p>
@@ -219,8 +183,7 @@
       </div>
       <div class="contact-actions">
         <a class="btn btn-ghost-light" href="https://www.linkedin.com/in/carolina-pagliano" target="_blank" rel="noopener">LinkedIn</a>
-        <!-- Optional: replace # with a link to your CV (PDF) -->
-        <a class="btn btn-ghost-light" href="#" title="[CV link placeholder]">Download CV</a>
+        <a class="btn btn-ghost-light" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
     </div>
   </section>

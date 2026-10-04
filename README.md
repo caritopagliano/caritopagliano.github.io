@@ -28,15 +28,21 @@ Names in the demos are written the usual way ("Emily Brown"), so it's obvious to
 
 Site-wide: case study pages always open at the top, and a round **Back to top** button appears bottom-right after scrolling.
 
+## Case study page structure
+
+Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the live demo; the email page shows the Before / After first; the SOP page shows its 4-step process) → 01 Problem → 02 What I built (with a Key decision box) → 03 Result → 04 Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
+
+Plain words are used instead of consular jargon: "daily payments report", "document delivery", "temporary ID number", "check their details".
+
 ## Files
 
 | File | What it is |
 |---|---|
-| `index.html` | Homepage: hero, work (flow diagram + 5 cards), about, testimonials, contact |
+| `index.html` | Homepage: hero, work (flow diagram + 5 cards), about, contact |
 | `triage.html` | Live demo: bilingual (EN / ES) guide. Three example buttons click through the answers visibly (about 400 ms per step), or visitors answer themselves. Shows one of three outcomes: book online, book online and bring extra proof of identity, or email first for a records check (with a copy-ready email template) |
 | `email-generator.html` | Static before / after comparison, then a live demo that starts empty. Sample data fills Emily Brown, a date, 10:45 and "ID + passport". Clicking a procedure creates the email; a separate **Copy email** button copies it (formatted for Outlook, with a plain-text fallback). Missing date or time shows highlighted placeholders |
-| `formatter.html` | Live demo: loads a fictional daily cash report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Names become "John Smith". Works out which documents are expected from the fees paid, flags a provisional ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
-| `tracker.html` | Live demo: a guided 3-step walkthrough on one screen. Step 1, documents arrive in the diplomatic pouch (click envelopes to scan them, one is not in the records). Step 2, applicants collect (scan signed slips, cases are archived). Step 3, move forward 14 days and the delayed cases are flagged. The counters and case list always come from the same data. A strip shows which of the 4 real workbook tabs each step uses. Links to a Google Sheets version |
+| `formatter.html` | Live demo: loads a fictional daily payments report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Names become "John Smith". Works out which documents are expected from the fees paid, flags a temporary ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
+| `tracker.html` | Live demo: a guided 3-step walkthrough on one screen. Step 1, the document delivery from headquarters arrives (click envelopes to scan them, one is not in the records). Step 2, applicants collect (scan signed slips, cases are archived). Step 3, move forward 14 days and the delayed cases are flagged. The counters and case list always come from the same data. A strip shows which of the 4 real workbook tabs each step uses. Links to a Google Sheets version |
 | `sop.html` | 4-stage flow with design rules and the SOP preview image |
 | `styles.css` | All styles. Colour tokens at the top, with light and dark mode. Demo components are at the end of the file |
 | `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
@@ -53,8 +59,4 @@ All demo data is fictional:
 - Case numbers: 9 digits starting with 7 (700000141…). ID numbers: 8 digits (30000041…).
 - The formatter and tracker share the same people and case numbers.
 - Email address: documents@example.org. Fees in the formatter's sample report are invented. No consulate name, logo, booking link or real fees.
-
-## Still to fill in
-
-- CV link (`href="#"` on the Download CV button in the Contact section of `index.html`).
-- About photo (placeholder box) and the two testimonial cards. To hide the Testimonials section, add `hidden` to its `<section>` tag.
+- `Carolina-Pagliano-CV.pdf` sits at the root of the site. The Download CV buttons (homepage Contact section and the end of every case study) link to it and open it in a new tab.

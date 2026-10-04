@@ -4,23 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Master Tracker · Carolina Pagliano</title>
-<meta name="description" content="An Excel workbook with 4 linked tabs, run with a USB barcode scanner, that tracks every ID card and passport from intake to collection.">
+<meta name="description" content="An Excel workbook, run with a barcode scanner, that follows every ID card and passport from intake to collection.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Master Tracker · Carolina Pagliano">
-<meta property="og:description" content="An Excel workbook with 4 linked tabs, run with a USB barcode scanner, that tracks every ID card and passport from intake to collection.">
+<meta property="og:description" content="An Excel workbook, run with a barcode scanner, that follows every ID card and passport from intake to collection.">
 <meta property="og:image" content="https://caritopagliano.github.io/images/og-banner.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://caritopagliano.github.io/tracker.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Master Tracker · Carolina Pagliano">
-<meta name="twitter:description" content="An Excel workbook with 4 linked tabs, run with a USB barcode scanner, that tracks every ID card and passport from intake to collection.">
+<meta name="twitter:description" content="An Excel workbook, run with a barcode scanner, that follows every ID card and passport from intake to collection.">
 <meta name="twitter:image" content="https://caritopagliano.github.io/images/og-banner.png">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body data-page="case">
@@ -42,40 +42,19 @@
       <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
       <p class="eyebrow">Case study 04 of 05</p>
       <h1>Master Tracker</h1>
-      <p class="lede">An Excel workbook with 4 linked tabs, run with a USB barcode scanner, that tracks every ID card and passport from intake to collection.</p>
-      <ul class="role-strip" aria-label="My role"><li>Self-initiated</li><li>Designed and built by me</li><li>AI-assisted build</li><li>Whole workflow built in ~1 week</li><li>In daily use</li></ul>
-      <dl class="cs-meta">
-        <div><dt>Key result</dt><dd>~4 hrs → under 30 min</dd></div>
-        <div><dt>Delay flags</dt><dd>Alert after 40 days, Chase after 60</dd></div>
+      <p class="lede">An Excel workbook, run with a barcode scanner, that follows every ID card and passport from intake to collection.</p>
+      <dl class="glance" aria-label="At a glance">
+        <div><dt>Problem</dt><dd>Documents were only logged when they arrived, so staff answered status enquiries by hand and noticed delays late.</dd></div>
+        <div><dt>Built</dt><dd>A barcode-scanned workbook that tracks every document and flags delays automatically.</dd></div>
+        <div class="glance-result"><dt>Result</dt><dd>One scan per document<span class="glance-second">Reactive → proactive</span></dd></div>
+        <div><dt>Key decision</dt><dd>Only delayed cases get flagged, so the team acts on the exceptions.</dd></div>
       </dl>
     </div>
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block">
-      <h2><span class="n">01</span>Problem</h2>
-      <div class="cs-content">
-        <p>The old spreadsheet only logged documents when they arrived. There was no view of earlier or later stages, so staff kept answering status enquiries by hand and delays were noticed late.</p>
-      </div>
-    </section>
-
-    <section class="cs-block">
-      <h2><span class="n">02</span>What I built</h2>
-      <div class="cs-content">
-        <p>An Excel workbook with 4 linked tabs, run with a USB barcode scanner. Each case tracks its ID card and passport separately, and an overall case status shows what needs attention, so the team only acts on the exceptions (management by exception).</p>
-        <ul class="plain">
-          <li><strong>Dashboard:</strong> totals by document type: registered, received, at the desk, collected, and delay levels.</li>
-          <li><strong>Case Tracking:</strong> one row per case, filled from the <a href="formatter.html">Formatter</a>. Formula columns look up the other tabs and work out each document's status and the overall case status. Contact emails are used to tell applicants when documents arrive.</li>
-          <li><strong>Pouch Arrival:</strong> documents come from headquarters in a sealed diplomatic bag (the "pouch"). Staff scan each document's barcode as the bag is opened and record the arrival date.</li>
-          <li><strong>Counter Handover:</strong> applicants sign a paper slip at the counter. At the end of the day, staff scan all signed slips in one go.</li>
-        </ul>
-        <p>Each document is <strong>Collected</strong>, <strong>At the desk</strong>, or, if it hasn't arrived, rated by days open: <strong>On track</strong> (up to 40 days), <strong>Alert</strong> (41–60) or <strong>Chase</strong> (over 60, raise with headquarters). The overall case status is, in order of priority: Archived · Chase · Ready to collect · Partial (some documents here, some on the way) · Alert · On track.</p>
-        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Cases are flagged at 40 and 60 days</strong> → so only delayed ones need attention.</p></div>
-      </div>
-    </section>
-
-    <section class="cs-block wide">
-      <h2><span class="n">03</span>How it works</h2>
+    <section class="cs-block cs-try wide">
+      <h2>Try it</h2>
       <div class="cs-content">
         <p>This walkthrough follows six cases through a real day: documents arrive, one applicant collects, and two weeks later the tracker flags the delayed cases on its own.</p>
         <div class="try">
@@ -99,7 +78,7 @@
               <div class="wb-strip" aria-hidden="true">
                 <span class="wb-label" data-tab="dash">Dashboard</span>
                 <span class="wb-label" data-tab="cases">Case Tracking</span>
-                <span class="wb-label" data-tab="pouch">Pouch Arrival</span>
+                <span class="wb-label" data-tab="pouch">Delivery Arrival</span>
                 <span class="wb-label" data-tab="counter">Counter Handover</span>
               </div>
               <p class="helper" id="tk-strip-caption">The real Excel workbook has these 4 tabs. Highlighted: where this step happens.</p>
@@ -130,26 +109,67 @@
           <div class="sla-bar"><span class="ok"></span><span class="warn"></span><span class="bad"></span></div>
           <div class="sla-scale"><span>0</span><span>40</span><span>60</span></div>
         </div>
+        <details class="logic">
+          <summary>How the status logic works</summary>
+          <div class="logic-body">
+            <p>The real workbook has 4 linked tabs:</p>
+            <ul class="plain">
+              <li><strong>Dashboard:</strong> totals by document type: registered, received, at the desk, collected, and delay levels.</li>
+              <li><strong>Case Tracking:</strong> one row per case, filled from the <a href="formatter.html">Formatter</a>. Formula columns look up the other tabs and work out each document's status and the overall case status. Contact emails are used to tell applicants when documents arrive.</li>
+              <li><strong>Delivery Arrival:</strong> documents arrive from headquarters in a sealed delivery every two weeks. Staff scan each document's barcode as it's opened and record the arrival date.</li>
+              <li><strong>Counter Handover:</strong> applicants sign a paper slip at the counter. At the end of the day, staff scan all signed slips in one go.</li>
+            </ul>
+            <p>Each document is <strong>Collected</strong>, <strong>At the desk</strong>, or, if it hasn't arrived, rated by how long it has been open (see the colour legend above). The overall case status is, in order of priority: Archived · Chase · Ready to collect · Partial (some documents here, some on the way) · Alert · On track.</p>
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">04</span>Result</h2>
+      <h2><span class="n">01</span>Problem</h2>
       <div class="cs-content">
-        <p class="result-callout">~4 hrs <span class="arrow">→</span> under 30 min</p>
-        <p>Daily logging and notifications went from ~4 hours to under 30 minutes. The team moved from reacting to status enquiries to tracking cases proactively.</p>
+        <p>The old spreadsheet only logged documents when they arrived. There was no view of earlier or later stages, so staff kept answering status enquiries by hand and delays were noticed late.</p>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">05</span>Built with</h2>
+      <h2><span class="n">02</span>What I built</h2>
       <div class="cs-content">
-        <ul class="chips"><li class="chip">Excel 2016</li><li class="chip">USB barcode scanner</li><li class="chip">Generative AI</li></ul>
+        <p>Each case tracks its ID card and passport separately, and an overall case status shows what needs attention, so the team only acts on the exceptions (management by exception). When a delivery arrives, staff scan each document's barcode, and the workbook finds the case and updates its status on its own.</p>
+        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Cases are flagged at 40 and 60 days</strong> → so only delayed ones need attention.</p></div>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">03</span>Result</h2>
+      <div class="cs-content">
+        <p class="result-callout">One scan per document<span class="result-second">Reactive <span class="arrow">→</span> proactive</span></p>
+        <p>Each arriving document is one barcode scan: the tracker finds the case and updates its status automatically. With the Formatter, processing a delivery went from ~4 hours to under 30 minutes, and the team now tracks cases proactively instead of reacting to status enquiries.</p>
+      </div>
+    </section>
+
+    <section class="cs-block">
+      <h2><span class="n">04</span>Built with</h2>
+      <div class="cs-content">
+        <ul class="chips"><li class="chip">Excel 2016</li><li class="chip">USB barcode scanner</li><li class="chip">Gemini</li></ul>
         <p class="small-note">Built in Excel 2016; demo shown in Google Sheets and on this page.</p>
       </div>
     </section>
   </div>
 </main>
+
+<section class="cs-cta" aria-label="Get in touch">
+  <div class="wrap cs-cta-inner">
+    <div class="cs-cta-text">
+      <h2>Want this kind of thinking on your team?</h2>
+      <p>Open to Business Operations, BizOps and PMO roles in London.</p>
+    </div>
+    <div class="cs-cta-actions">
+      <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</section>
 
 <nav class="cs-pager" aria-label="Case studies">
   <div class="wrap">
@@ -157,7 +177,6 @@
     <a class="next" href="sop.html"><span>Next</span><strong>Standard Operating Procedure →</strong></a>
   </div>
 </nav>
-
 <footer class="site-footer">
   <div class="wrap">
     <span>© <span id="year">2026</span> Carolina Pagliano</span>
@@ -193,8 +212,8 @@
     slip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 17c1-1.5 2-1.5 3 0s2 1.5 3 0"/></svg>'
   };
   var STEPS = {
-    1: { title: 'The diplomatic pouch arrives', tabs: ['pouch', 'cases'],
-         text: 'Documents arrive from headquarters in a sealed diplomatic bag, called the pouch. Click each envelope to scan its barcode.' },
+    1: { title: 'The delivery arrives', tabs: ['pouch', 'cases'],
+         text: 'Documents arrive from headquarters in a sealed delivery every two weeks. Click each envelope to scan its barcode.' },
     2: { title: 'An applicant collects', tabs: ['counter', 'cases'],
          text: "Applicants sign a paper slip at the counter. At closing, staff scan all the signed slips in one go, so there's no computer at the counter." },
     3: { title: 'Two weeks later', tabs: ['dash', 'cases'],
