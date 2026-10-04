@@ -139,7 +139,7 @@ body {
 img { max-width: 100%; display: block; }
 /* Brand serif on the two top heading levels only; h3, stats, key results, buttons and body stay in the sans */
 h1, h2 { font-family: var(--font-serif) !important; font-weight: 400 !important; letter-spacing: -0.005em; }
-h1 em.hl { font-style: italic; white-space: nowrap; padding: 0 0.08em; background: linear-gradient(transparent 58%, var(--highlight) 58%, var(--highlight) 92%, transparent 92%); }
+h1 em.hl { font-style: italic; white-space: nowrap; padding: 0.02em 0.14em 0.06em; border-radius: 0.18em; background: var(--highlight); }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   color: var(--heading);
