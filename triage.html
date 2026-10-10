@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -53,39 +53,91 @@
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block cs-try">
+    <section class="cs-block cs-try wide">
       <h2>Try it</h2>
       <div class="cs-content">
-        <div class="try">
-          <span class="step-label">How to try it</span>
-          <ol class="try-steps">
-            <li>Pick an example, or answer the question yourself</li>
-            <li>See where the applicant is sent</li>
-          </ol>
-        </div>
-        <div class="demo">
-          <div class="demo-bar">
-            <span class="demo-tag">Live demo</span>
-            <div class="demo-bar-actions">
-              <button type="button" class="btn btn-primary btn-small pulse" data-example="renew">Example: renewing a current ID</button>
-              <button type="button" class="btn btn-primary btn-small" data-example="lost">Example: lost ID</button>
-              <button type="button" class="btn btn-primary btn-small" data-example="booklet">Example: old booklet ID</button>
-              <button type="button" class="btn btn-secondary btn-small" id="tri-reset" hidden>Start over</button>
+        <p>Watch three applicants answer on their phones before booking. Tap their answer and see where the guide sends each of them.</p>
+        <div class="sim">
+          <section class="scene-card" aria-label="Simulation">
+            <div class="step-row">
+              <span class="step-label teal" id="step-label">Applicant 1 of 3</span>
+              <div class="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
             </div>
-          </div>
-          <div class="demo-body">
-            <div class="demo-top">
-              <p class="helper" id="tri-hint">Click an example above, or answer the question yourself.</p>
-              <div class="seg" role="group" aria-label="Demo language">
-                <button type="button" data-lang="en" aria-pressed="true">EN</button>
-                <button type="button" data-lang="es" aria-pressed="false">ES</button>
+            <div>
+              <div class="scene-title" id="scene-title"></div>
+              <p class="scene-help" id="scene-help"></p>
+            </div>
+
+            <div class="stage triage" id="stage">
+              <div class="stage-inner">
+                <div class="persona" id="persona">
+                  <div class="avatar" id="p-initials"></div>
+                  <div><div class="pname" id="p-name"></div><div class="psit" id="p-sit"></div></div>
+                  <div class="bubble" id="p-quote"></div>
+                </div>
+                <div class="phone" aria-label="Applicant's phone">
+                  <div class="screen" id="screen"></div>
+                </div>
               </div>
             </div>
-            <div class="tri-steps" id="tri"></div>
-            <p class="msg" id="tri-msg" aria-live="polite"></p>
-          </div>
+
+            <p class="scene-msg" id="scene-msg" aria-live="polite"></p>
+            <div class="scene-actions">
+              <button type="button" class="btn btn-primary btn-small" id="next" hidden>Next applicant</button>
+              <button type="button" class="btn btn-secondary btn-small" id="replay" hidden>Replay</button>
+              <span class="btn-hint" id="hint-btn" aria-hidden="true"><i></i><span>Click here</span></span>
+            </div>
+          </section>
+
+          <section class="tracker-card" aria-label="Where applicants are sent">
+            <div class="tracker-top">
+              <span class="step-label">Where applicants are sent</span>
+              <span class="small-note">Decided before booking</span>
+            </div>
+            <div class="paths">
+              <div class="path a" data-path="A"><span class="sq"></span><strong>Book online</strong><span class="count">0</span><span class="pdesc">Current document: book straight away</span><div class="who"></div></div>
+              <div class="path b" data-path="B"><span class="sq"></span><strong>Book online + bring extra proof</strong><span class="count">0</span><span class="pdesc">Lost a current-style ID: extra proof of identity on the day</span><div class="who"></div></div>
+              <div class="path c" data-path="C"><span class="sq"></span><strong>Email us first</strong><span class="count">0</span><span class="pdesc">Older booklet ID: staff check the details before booking</span><div class="who"></div></div>
+            </div>
+          </section>
         </div>
-        <p class="demo-note">Simplified version. All text is illustrative.</p>
+
+        <details class="try-more">
+          <summary>Try the real tool yourself<span>Live demo</span></summary>
+          <div class="try-more-body">
+            <p class="try-more-intro">Answer the questions as an applicant would, in English or Spanish, or pick one of the examples.</p>
+          <div class="try">
+            <span class="step-label">How to try it</span>
+            <ol class="try-steps">
+              <li>Pick an example, or answer the question yourself</li>
+              <li>See where the applicant is sent</li>
+            </ol>
+          </div>
+          <div class="demo">
+            <div class="demo-bar">
+              <span class="demo-tag">Live demo</span>
+              <div class="demo-bar-actions">
+                <button type="button" class="btn btn-primary btn-small pulse" data-example="renew">Example: renewing a current ID</button>
+                <button type="button" class="btn btn-primary btn-small" data-example="lost">Example: lost ID</button>
+                <button type="button" class="btn btn-primary btn-small" data-example="booklet">Example: old booklet ID</button>
+                <button type="button" class="btn btn-secondary btn-small" id="tri-reset" hidden>Start over</button>
+              </div>
+            </div>
+            <div class="demo-body">
+              <div class="demo-top">
+                <p class="helper" id="tri-hint">Click an example above, or answer the question yourself.</p>
+                <div class="seg" role="group" aria-label="Demo language">
+                  <button type="button" data-lang="en" aria-pressed="true">EN</button>
+                  <button type="button" data-lang="es" aria-pressed="false">ES</button>
+                </div>
+              </div>
+              <div class="tri-steps" id="tri"></div>
+              <p class="msg" id="tri-msg" aria-live="polite"></p>
+            </div>
+          </div>
+          <p class="demo-note">Simplified version. All text is illustrative.</p>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -129,7 +181,7 @@
     </div>
     <div class="cs-cta-actions">
       <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
@@ -147,7 +199,7 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=7"></script>
 <script>
 (function () {
   var ADDRESS = 'documents@example.org';
@@ -379,6 +431,128 @@
   });
 
   render();
+})();
+</script>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+  function $(id) { return document.getElementById(id); }
+
+  var Q = {
+    q1: { lab: 'Step 1', q: 'Which document do you have now?', opts: [['current', 'Current ID card or passport'], ['booklet', 'Older booklet-style ID'], ['none', 'None: lost, stolen or damaged']] },
+    q2: { lab: 'Step 2', q: 'What type of document was it?', opts: [['current', 'A current-style ID card or passport'], ['booklet', 'An older booklet-style ID']] }
+  };
+  var OUT = {
+    A: '<div class="res-icon a">✓</div><div class="res-title">Book online</div><ul class="res-list"><li>One appointment per person</li><li>Your ID number is needed to book</li><li>Wait for our confirmation email</li></ul><div class="fake-btn">Continue to booking</div>',
+    B: '<div class="res-icon b">!</div><div class="res-title">Book online and bring extra proof of identity</div><div class="res-note b">On the day, bring a previous passport, your birth certificate or a previous ID.</div><div class="fake-btn">Continue to booking</div>',
+    C: '<div class="res-icon c">@</div><div class="res-title">Email us first so we can check your details</div><div class="res-note c">Send a scan of your document, your birth certificate, full name, ID number and phone.</div><div class="fake-btn">Open email</div>'
+  };
+  var PEOPLE = [
+    { name: 'Emily Brown', initials: 'EB', sit: 'Renewing her ID card', quote: '“My ID card is still valid. I just need to renew it.”', taps: [['q1', 'current']], out: 'A',
+      title: 'Renewing a current ID', help: 'Emily wants to renew her ID card. Tap her answer on the phone.',
+      msg: 'Emily has a current ID card, so she can <strong>book online</strong> straight away and knows what to bring.' },
+    { name: 'James Taylor', initials: 'JT', sit: 'Lost his ID card', quote: '“I lost my ID card last month. It was the new card type.”', taps: [['q1', 'none'], ['q2', 'current']], out: 'B',
+      title: 'Lost a current-style ID', help: 'James lost his ID card. Tap his answers: there are two questions this time.',
+      msg: 'James can still <strong>book online</strong>, but now knows to <strong>bring extra proof of identity</strong>, so the appointment isn\'t wasted.' },
+    { name: 'Grace Miller', initials: 'GM', sit: 'Has an old booklet ID', quote: '“All I have is my old booklet-style ID.”', taps: [['q1', 'booklet']], out: 'C',
+      title: 'An old booklet ID', help: 'Grace only has the old booklet ID. Tap her answer on the phone.',
+      msg: 'Grace is asked to <strong>email first</strong>, so staff can check her details before she takes an appointment slot.' }
+  ];
+
+  var who = 0, tapIdx = 0, busy = false, counts;
+
+  function btnHint(on) { $('hint-btn').classList.toggle('show', on); }
+
+  function questionView(qKey, target) {
+    var q = Q[qKey];
+    return '<div class="view off-r" data-view="' + qKey + '"><div class="vlab">' + q.lab + '</div><div class="vq">' + q.q + '</div>' +
+      q.opts.map(function (o) {
+        var t = o[0] === target;
+        return '<button type="button" class="opt ' + (t ? 'target' : 'dim') + '" data-opt="' + o[0] + '"' + (t ? '' : ' tabindex="-1" aria-disabled="true"') + '>' + o[1] + (t ? '<span class="tap" aria-hidden="true">Tap</span>' : '') + '</button>';
+      }).join('') + '</div>';
+  }
+
+  async function slideTo(html) {
+    var screen = $('screen'), old = screen.querySelector('.view:not(.off-l)');
+    screen.insertAdjacentHTML('beforeend', html);
+    var fresh = screen.lastElementChild;
+    void fresh.offsetWidth;
+    if (old) old.classList.add('off-l');
+    fresh.classList.remove('off-r');
+    await wait(380);
+    fresh.classList.add('settled');
+    if (old) old.remove();
+  }
+
+  async function startPerson(i) {
+    who = i; tapIdx = 0;
+    var p = PEOPLE[i];
+    $('step-label').textContent = 'Applicant ' + (i + 1) + ' of 3';
+    document.querySelectorAll('.dots span').forEach(function (d, k) { d.classList.toggle('on', k <= i); });
+    $('scene-title').textContent = p.title;
+    $('scene-help').textContent = p.help;
+    $('scene-msg').textContent = '';
+    $('persona').classList.add('swap');
+    await wait(200);
+    $('p-initials').textContent = p.initials; $('p-name').textContent = p.name; $('p-sit').textContent = p.sit; $('p-quote').textContent = p.quote;
+    $('persona').classList.remove('swap');
+    await slideTo(questionView(p.taps[0][0], p.taps[0][1]));
+  }
+
+  async function tap(btn) {
+    if (busy) return;
+    busy = true;
+    var p = PEOPLE[who];
+    btn.classList.remove('target'); btn.classList.add('picked');
+    var t = btn.querySelector('.tap'); if (t) t.remove();
+    await wait(220);
+    tapIdx++;
+    if (tapIdx < p.taps.length) {
+      await slideTo(questionView(p.taps[tapIdx][0], p.taps[tapIdx][1]));
+    } else {
+      await slideTo('<div class="view off-r"><div class="vlab">Your result</div>' + OUT[p.out] + '</div>');
+      var row = document.querySelector('[data-path="' + p.out + '"]');
+      counts[p.out]++;
+      row.querySelector('.count').textContent = counts[p.out];
+      row.querySelector('.who').insertAdjacentHTML('beforeend', '<span>' + p.name + '</span>');
+      document.querySelectorAll('.path').forEach(function (r) { r.classList.toggle('lit', r === row); });
+      row.classList.remove('flash'); void row.offsetWidth; row.classList.add('flash');
+      $('scene-msg').innerHTML = p.msg;
+      if (who < PEOPLE.length - 1) { $('next').hidden = false; }
+      else {
+        $('scene-msg').innerHTML += ' <br>Three applicants, three different paths, all sorted out <strong>before</strong> anyone booked.';
+        $('replay').hidden = false;
+      }
+      btnHint(true);
+    }
+    busy = false;
+  }
+
+  $('screen').addEventListener('click', function (e) {
+    var b = e.target.closest('.opt.target');
+    if (b) tap(b);
+  });
+  $('next').addEventListener('click', function () {
+    if (busy) return;
+    $('next').hidden = true; btnHint(false);
+    startPerson(who + 1);
+  });
+  $('replay').addEventListener('click', reset);
+  // The "Click here" label does the same as the button it points at
+  document.getElementById('hint-btn').addEventListener('click', function () {
+    var b = Array.prototype.filter.call(document.querySelectorAll('.scene-actions .btn'), function (x) { return !x.hidden; })[0];
+    if (b) b.click();
+  });
+
+  function reset() {
+    counts = { A: 0, B: 0, C: 0 };
+    document.querySelectorAll('.path').forEach(function (r) { r.classList.remove('lit'); r.querySelector('.count').textContent = '0'; r.querySelector('.who').innerHTML = ''; });
+    $('replay').hidden = true; $('next').hidden = true; btnHint(false);
+    $('screen').innerHTML = '';
+    startPerson(0);
+  }
+  reset();
 })();
 </script>
 </body>

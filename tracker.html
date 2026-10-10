@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -56,46 +56,67 @@
     <section class="cs-block cs-try wide">
       <h2>Try it</h2>
       <div class="cs-content">
-        <p>This walkthrough follows six cases through a real day: documents arrive, one applicant collects, and two weeks later the tracker flags the delayed cases on its own.</p>
-        <div class="try">
-          <span class="step-label">How to try it</span>
-          <ol class="try-steps">
-            <li>Click <strong>Try with sample data</strong> to load 6 sample cases</li>
-            <li>Follow the 3 steps: documents arrive, an applicant collects, two weeks pass</li>
-            <li>Watch the case list and counters update</li>
-          </ol>
-        </div>
-        <div class="demo">
-          <div class="demo-bar">
-            <span class="demo-tag">Live demo</span>
-            <div class="demo-bar-actions">
-              <button type="button" class="btn btn-primary btn-small pulse" id="tk-sample">Try with sample data</button>
-              <button type="button" class="btn btn-secondary btn-small" id="tk-reset" hidden>Start over</button>
+        <p>Each click plays one step: the delivery arrives, every envelope is scanned, and an applicant collects. No typing: the scanner reads the barcode and the tracker updates itself.</p>
+        <div class="sim">
+          <!-- Scene -->
+          <section class="scene-card" aria-label="Simulation">
+            <div class="step-row">
+              <span class="step-label teal" id="step-label">Step 1 of 3</span>
+              <div class="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
             </div>
-          </div>
-          <div class="demo-body">
-            <div class="wb-strip-wrap">
-              <div class="wb-strip" aria-hidden="true">
-                <span class="wb-label" data-tab="dash">Dashboard</span>
-                <span class="wb-label" data-tab="cases">Case Tracking</span>
-                <span class="wb-label" data-tab="pouch">Delivery Arrival</span>
-                <span class="wb-label" data-tab="counter">Counter Handover</span>
+            <div>
+              <div class="scene-title" id="scene-title">The delivery arrives</div>
+              <p class="scene-help" id="scene-help">Documents come from headquarters in a sealed bag. Click the bag to open it.</p>
+            </div>
+
+            <div class="stage" id="stage">
+              <div class="stage-inner" id="desk">
+                <button type="button" class="bag" id="bag" aria-label="Open the delivery"><span><span class="seal"></span>Delivery from<br>headquarters</span></button>
+
+                <div class="env" data-i="0"><div class="doc">ID card</div><div class="barcode"></div><div class="who">Emily Brown</div><span class="tick" aria-hidden="true">✓</span></div>
+                <div class="env" data-i="1"><div class="doc">ID card</div><div class="barcode"></div><div class="who">Sophia Wilson</div><span class="tick" aria-hidden="true">✓</span></div>
+                <div class="env" data-i="2"><div class="doc">Passport</div><div class="barcode"></div><div class="who">John Smith</div><span class="tick" aria-hidden="true">✓</span></div>
+                <div class="env" data-i="3"><div class="doc">ID card</div><div class="barcode"></div><div class="who">Lucy Parker</div><span class="tick" aria-hidden="true">!</span></div>
+
+                <div class="slip" id="slip"><div class="t">Signed collection slip</div><div class="barcode"></div><div class="n">Sophia Wilson · ID card</div><div class="sig">S. Wilson</div></div>
+
+                <div class="hint hint-bag up" id="hint-bag" aria-hidden="true"><span>Click to open</span><i></i></div>
+                <div class="hint hint-scan up" id="hint-scan" aria-hidden="true"><span>Click to scan</span><i></i></div>
+                <div class="laser" id="laser"></div>
+                <div class="beep" id="beep">BEEP</div>
+                <button type="button" class="scanner" id="scanner" aria-label="Scan with the barcode scanner" disabled>
+                  <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <path d="M18 22 h56 a10 10 0 0 1 10 10 v14 a10 10 0 0 1 -10 10 h-18 l-8 34 a6 6 0 0 1 -6 4 h-10 a5 5 0 0 1 -5 -6 l8 -32 h-17 a10 10 0 0 1 -10 -10 v-14 a10 10 0 0 1 10 -10z" fill="#4A1F45"/>
+                    <rect x="74" y="27" width="8" height="24" rx="3" fill="#ff5a5a"/>
+                    <rect x="22" y="30" width="36" height="6" rx="3" fill="#D9A7C7" opacity=".8"/>
+                    <rect x="44" y="58" width="9" height="12" rx="3" fill="#D9A7C7"/>
+                  </svg>
+                </button>
               </div>
-              <p class="helper" id="tk-strip-caption">The real Excel workbook has these 4 tabs. Highlighted: where this step happens.</p>
             </div>
-            <ul class="counters" id="tk-counters" aria-label="Dashboard counters"></ul>
-            <div class="walk">
-              <div class="step-panel is-disabled" id="tk-step"></div>
-              <div class="case-list">
-                <div class="toolbar" id="tk-toolbar" hidden>
-                  <label class="toggle"><input type="checkbox" id="tk-flagged"> Show flagged only</label>
-                  <span class="small-note" id="tk-count"></span>
-                </div>
-                <div id="tk-list"></div>
-              </div>
+
+            <p class="scene-msg" id="scene-msg" aria-live="polite"></p>
+            <div class="scene-actions">
+              <button type="button" class="btn btn-primary btn-small pulse" id="next">Open the delivery</button>
+              <button type="button" class="btn btn-secondary btn-small" id="replay" hidden>Replay</button>
+              <span class="btn-hint" id="hint-btn" aria-hidden="true"><i></i><span>Click here</span></span>
             </div>
-            <p class="msg" id="tk-msg" aria-live="polite"></p>
-          </div>
+          </section>
+
+          <!-- Tracker -->
+          <section class="tracker-card" aria-label="Tracker">
+            <div class="tracker-top">
+              <span class="step-label">The tracker (Excel)</span>
+              <span class="small-note">Updates on every scan</span>
+            </div>
+            <ul class="mini-counters" id="counters"></ul>
+            <div class="table-wrap">
+              <table class="data-table compact" aria-label="Cases">
+                <thead><tr><th scope="col">Applicant</th><th scope="col">Documents</th><th scope="col">Status</th></tr></thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+          </section>
         </div>
         <p class="small-note">Want to see the real structure? <a class="ext-link" href="https://docs.google.com/spreadsheets/d/1xzHYt2N249V33yz2WzebO4KB775dw9X5/preview" target="_blank" rel="noopener">Open the spreadsheet demo (Google Sheets) <span aria-hidden="true">↗</span></a></p>
 
@@ -166,7 +187,7 @@
     </div>
     <div class="cs-cta-actions">
       <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
@@ -184,272 +205,190 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=7"></script>
 <script>
 (function () {
-  // Fictional cases. Each case lists only the documents it needs: 'way' = on the way, 'desk' = at the desk, 'collected'.
-  var SEED = [
-    { c: '700000121', name: 'Ella Jones', days: 58, docs: { id: 'way' } },
-    { c: '700000127', name: 'Grace Miller', days: 33, docs: { pp: 'way' } },
-    { c: '700000142', name: 'Emily Brown', days: 30, docs: { id: 'way', pp: 'way' } },
-    { c: '700000144', name: 'Sophia Wilson', days: 29, docs: { id: 'way' } },
-    { c: '700000141', name: 'John Smith', days: 31, docs: { pp: 'way' } },
-    { c: '700000143', name: 'James Taylor', days: 20, docs: { id: 'way' } }
-  ];
-  // Step 1: what comes out of the diplomatic pouch. Lucy Parker is not in the tracker.
-  var ENVELOPES = [
-    { c: '700000142', k: 'id', name: 'Emily Brown', icon: 'env' },
-    { c: '700000144', k: 'id', name: 'Sophia Wilson', icon: 'env' },
-    { c: '700000141', k: 'pp', name: 'John Smith', icon: 'book' },
-    { c: '700000199', k: 'id', name: 'Lucy Parker', icon: 'env' }
-  ];
-  var DOC = { id: 'ID card', pp: 'Passport' };
-  var DOC_LOWER = { id: 'ID card', pp: 'passport' };
-  var STATE_TEXT = { way: 'on the way', desk: 'at the desk', collected: 'collected' };
-  var ICON = {
-    env: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>',
-    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/></svg>',
-    slip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 17c1-1.5 2-1.5 3 0s2 1.5 3 0"/></svg>'
-  };
-  var STEPS = {
-    1: { title: 'The delivery arrives', tabs: ['pouch', 'cases'],
-         text: 'Documents arrive from headquarters in a sealed delivery every two weeks. Click each envelope to scan its barcode.' },
-    2: { title: 'An applicant collects', tabs: ['counter', 'cases'],
-         text: "Applicants sign a paper slip at the counter. At closing, staff scan all the signed slips in one go, so there's no computer at the counter." },
-    3: { title: 'Two weeks later', tabs: ['dash', 'cases'],
-         text: "Nobody needs to check every case. The tracker flags the delayed ones automatically." }
-  };
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
   function $(id) { return document.getElementById(id); }
-  var listEl = $('tk-list'), stepEl = $('tk-step'), countersEl = $('tk-counters'), msg = $('tk-msg');
-  var sampleBtn = $('tk-sample'), resetBtn = $('tk-reset'), toolbar = $('tk-toolbar'), flaggedBox = $('tk-flagged');
 
-  var cases = null, step = 1, scanned = {}, advanced = false, shown = { go: 0, part: 0, warn: 0, bad: 0 };
+  // Envelope resting spots on the desk (% of the stage), and where the barcode sits on each
+  var SPOTS = [{ x: 3, y: 6 }, { x: 41, y: 6 }, { x: 3, y: 56 }, { x: 41, y: 56 }];
+  var HOME = { x: 81, y: 22 };
 
-  function find(c) { return cases.filter(function (x) { return x.c === c; })[0]; }
-  function rate(days) { return days > 60 ? 'bad' : days > 40 ? 'warn' : 'ok'; }
+  var CASES, envs = Array.prototype.slice.call(document.querySelectorAll('.env'));
+  var ENV_CASE = [{ name: 'Emily Brown', k: 'id' }, { name: 'Sophia Wilson', k: 'id' }, { name: 'John Smith', k: 'pp' }, { name: 'Lucy Parker', k: 'id', unknown: true }];
+  var DOC = { id: 'ID card', pp: 'Passport' };
+  var phase = 0, scanned = 0, busy = false;
 
-  function status(cs) {
-    var st = Object.keys(cs.docs).map(function (k) { return cs.docs[k]; });
-    var way = st.indexOf('way') !== -1, desk = st.indexOf('desk') !== -1;
-    if (st.every(function (s) { return s === 'collected'; })) return { t: 'Archived', cls: 'done' };
-    if (way && cs.days > 60) return { t: 'Chase', cls: 'bad' };
+  function seed() {
+    CASES = [
+      { name: 'Ella Jones', docs: { id: 'way' }, days: 58 },
+      { name: 'Grace Miller', docs: { pp: 'way' }, days: 33 },
+      { name: 'Emily Brown', docs: { id: 'way', pp: 'way' }, days: 30 },
+      { name: 'Sophia Wilson', docs: { id: 'way' }, days: 29 },
+      { name: 'John Smith', docs: { pp: 'way' }, days: 31 }
+    ];
+  }
+
+  function status(c) {
+    var st = Object.keys(c.docs).map(function (k) { return c.docs[k]; });
+    var way = st.indexOf('way') > -1, desk = st.indexOf('desk') > -1;
+    if (st.every(function (s) { return s === 'collected'; })) return { t: 'Collected', cls: 'done' };
     if (!way) return { t: 'Ready to collect', cls: 'go' };
     if (desk) return { t: 'Partial', cls: 'part' };
-    if (cs.days > 40) return { t: 'Alert', cls: 'warn' };
+    if (c.days > 40) return { t: 'Alert', cls: 'warn' };
     return { t: 'On track', cls: 'ok' };
   }
-  function flagged(cs) { var s = status(cs).cls; return s === 'bad' || s === 'warn'; }
 
-  // ---------- Counters (the Dashboard) ----------
-  var TILES = [
-    { k: 'go', label: 'Ready to collect' }, { k: 'part', label: 'Partial (1 of 2 here)' },
-    { k: 'warn', label: 'Alert (41–60 days)' }, { k: 'bad', label: 'Chase (60+ days)' }
-  ];
-  countersEl.innerHTML = TILES.map(function (t) {
-    return '<li class="' + t.k + '" data-tile="' + t.k + '"><strong>–</strong><span>' + t.label + '</span></li>';
-  }).join('');
+  function render(flashName) {
+    var STATE = { way: 'on the way', desk: 'at the desk', collected: 'collected' };
+    $('rows').innerHTML = CASES.map(function (c) {
+      var s = status(c);
+      var chips = Object.keys(c.docs).map(function (k) { return '<span class="doc-chip ' + c.docs[k] + '">' + DOC[k] + ' · ' + STATE[c.docs[k]] + '</span>'; }).join('');
+      return '<tr data-name="' + c.name + '"' + (s.cls === 'done' ? ' class="row-done"' : '') + '><td class="wrap">' + c.name + '</td><td class="wrap"><span class="doc-chips">' + chips + '</span></td><td><span class="status-pill ' + s.cls + '">' + s.t + '</span></td></tr>';
+    }).join('');
+    var n = { go: 0, part: 0, warn: 0 };
+    CASES.forEach(function (c) { var k = status(c).cls; if (n[k] !== undefined) n[k]++; });
+    $('counters').innerHTML = '<li class="go"><strong>' + n.go + '</strong><span>Ready to collect</span></li><li class="part"><strong>' + n.part + '</strong><span>Partial</span></li><li class="warn"><strong>' + n.warn + '</strong><span>Alert</span></li>';
+    if (flashName) { var tr = document.querySelector('[data-name="' + flashName + '"]'); if (tr) { tr.classList.add('flash'); } }
+  }
 
-  function animateTo(el, from, to) {
-    if (reduce || from === to) { el.textContent = to; return; }
-    var start = null;
-    function tick(ts) {
-      if (!start) start = ts;
-      var p = Math.min(1, (ts - start) / 450);
-      el.textContent = Math.round(from + (to - from) * p);
-      if (p < 1) requestAnimationFrame(tick);
+  function setStep(n, title, help) {
+    $('step-label').textContent = 'Step ' + n + ' of 3';
+    document.querySelectorAll('.dots span').forEach(function (d, i) { d.classList.toggle('on', i < n); });
+    $('scene-title').textContent = title;
+    $('scene-help').textContent = help;
+  }
+
+  function placeScanner(x, y, aim) {
+    var s = $('scanner'); s.style.left = x + '%'; s.style.top = y + '%'; s.classList.toggle('aim', !!aim);
+  }
+
+  async function beepAt(x, y, w) {
+    var l = $('laser'); l.style.left = x + '%'; l.style.top = y + '%'; l.style.width = w + '%';
+    l.classList.remove('go'); void l.offsetWidth; l.classList.add('go');
+    var b = $('beep'); b.style.left = (x + w - 4) + '%'; b.style.top = (y - 9) + '%';
+    b.classList.add('show'); await wait(300); b.classList.remove('show');
+  }
+
+  function setButton(label, show) { var n = $('next'); n.textContent = label; n.hidden = !show; }
+  function btnHint(on) { $('hint-btn').classList.toggle('show', on); }
+  function ready(on) { var s = $('scanner'); s.disabled = !on; s.classList.toggle('ready', on); $('hint-scan').classList.toggle('show', on); }
+
+  async function openBag() {
+    busy = true;
+    $('next').classList.remove('pulse');
+    $('hint-bag').classList.remove('show');
+    $('stage').classList.remove('clickable');
+    $('bag').classList.add('opened');
+    await wait(350);
+    for (var i = 0; i < envs.length; i++) {
+      envs[i].style.left = SPOTS[i].x + '%'; envs[i].style.top = SPOTS[i].y + '%'; envs[i].classList.add('out');
+      await wait(160);
     }
-    requestAnimationFrame(tick);
+    await wait(400);
+    phase = 1;
+    setStep(2, 'Scan each document', 'Click the scanner to scan the next envelope. No typing: the barcode holds the case number.');
+    $('scene-msg').textContent = '4 envelopes in this delivery.';
+    setButton('Scan next envelope (1 of 4)', true);
+    ready(true);
+    busy = false;
   }
 
-  function renderCounters() {
-    TILES.forEach(function (t) {
-      var li = countersEl.querySelector('[data-tile="' + t.k + '"]'), strong = li.querySelector('strong');
-      if (!cases) { strong.textContent = '–'; shown[t.k] = 0; return; }
-      var n = cases.filter(function (cs) { return status(cs).cls === t.k; }).length;
-      if (n !== shown[t.k]) { animateTo(strong, shown[t.k], n); window.flash(li); }
-      else strong.textContent = n;
-      shown[t.k] = n;
-    });
-  }
-
-  // ---------- Case list ----------
-  function renderList(changed) {
-    if (!cases) {
-      listEl.innerHTML = '<div class="empty-state">No cases yet. Click <strong>Try with sample data</strong>.</div>';
-      toolbar.hidden = true;
-      return;
-    }
-    var rows = cases.slice().sort(function (a, b) {
-      return (status(a).cls === 'done') - (status(b).cls === 'done');
-    });
-    if (advanced && flaggedBox.checked) rows = rows.filter(flagged);
-    toolbar.hidden = !advanced;
-    $('tk-count').textContent = rows.length + ' of ' + cases.length + ' cases';
-    listEl.innerHTML = '<div class="table-shell"><div class="table-wrap"><table class="data-table compact" aria-label="Case list">' +
-      '<thead><tr><th scope="col">Case</th><th scope="col">Applicant</th><th scope="col">Documents</th><th scope="col" class="num">Days open</th><th scope="col">Status</th></tr></thead><tbody>' +
-      (rows.length ? rows.map(function (cs) {
-        var s = status(cs);
-        var chips = Object.keys(cs.docs).map(function (k) {
-          var d = cs.docs[k];
-          return '<span class="doc-chip ' + d + '">' + DOC[k] + ' · ' + STATE_TEXT[d] + '</span>';
-        }).join('');
-        return '<tr data-row="' + cs.c + '"' + (s.cls === 'done' ? ' class="row-done"' : '') + '>' +
-          '<td class="mono">' + cs.c + '</td><td class="wrap">' + cs.name + '</td>' +
-          '<td class="wrap"><span class="doc-chips">' + chips + '</span></td>' +
-          '<td class="num mono">' + cs.days + '</td>' +
-          '<td><span class="status-pill ' + s.cls + '">' + s.t + '</span></td></tr>';
-      }).join('') : '<tr><td colspan="5">Nothing flagged.</td></tr>') +
-      '</tbody></table></div></div>';
-    var wrap = listEl.querySelector('.table-wrap');
-    function upd() { wrap.parentElement.classList.toggle('has-more', wrap.scrollWidth - wrap.clientWidth - wrap.scrollLeft > 4); }
-    wrap.addEventListener('scroll', upd, { passive: true });
-    upd();
-    (changed || []).forEach(function (c) { var tr = listEl.querySelector('[data-row="' + c + '"]'); if (tr) window.flash(tr); });
-  }
-
-  // ---------- Step panel ----------
-  function dots() {
-    return '<div class="step-dots" aria-hidden="true">' + [1, 2, 3].map(function (n) { return '<span class="' + (n <= step ? 'is-on' : '') + '"></span>'; }).join('') + '</div>';
-  }
-
-  function renderStep() {
-    document.querySelectorAll('.wb-label').forEach(function (l) {
-      l.classList.toggle('is-on', !!cases && STEPS[step].tabs.indexOf(l.dataset.tab) !== -1);
-    });
-    if (!cases) {
-      stepEl.classList.add('is-disabled');
-      stepEl.innerHTML = '<div class="step-head"><span class="step-label">Step 1 of 3</span>' + dots() + '</div>' +
-        '<h3>' + STEPS[1].title + '</h3><p>The steps start once you load the sample data.</p>';
-      return;
-    }
-    stepEl.classList.remove('is-disabled');
-    var s = STEPS[step], body = '', actions = '';
-    if (step === 1) {
-      body = '<div class="items">' + ENVELOPES.map(function (e, i) {
-        var known = !!find(e.c), done = scanned[i];
-        var cls = done ? (known ? ' is-done' : ' is-unknown') : '';
-        var state = done ? (known ? 'Scanned ✓' : 'Not in our records') : 'Click to scan';
-        return '<button type="button" class="item-card' + cls + '" data-env="' + i + '"' + (done ? ' disabled' : '') + '>' +
-          ICON[e.icon] + '<span class="type">' + DOC[e.k] + '</span><span class="who">' + e.name + '</span><span class="state">' + state + '</span></button>';
-      }).join('') + '</div>' +
-        '<p class="helper">At work, a USB barcode scanner reads the code on each envelope. Here, clicking does the same.</p>';
-      var left = ENVELOPES.some(function (e, i) { return !scanned[i]; });
-      actions = '<button type="button" class="btn-link" id="tk-scan-all"' + (left ? '' : ' disabled') + '>Scan all</button>' +
-        '<button type="button" class="btn btn-primary btn-small" id="tk-next"' + (Object.keys(scanned).length ? '' : ' disabled') + '>Next step →</button>';
-    } else if (step === 2) {
-      var ready = cases.filter(function (cs) { return status(cs).cls === 'go'; });
-      var archived = cases.filter(function (cs) { return status(cs).cls === 'done'; });
-      body = ready.length || archived.length ? '<div class="items">' +
-        ready.concat(archived).map(function (cs) {
-          var done = status(cs).cls === 'done';
-          return '<button type="button" class="item-card' + (done ? ' is-done' : '') + '" data-slip="' + cs.c + '"' + (done ? ' disabled' : '') + '>' +
-            ICON.slip + '<span class="type">Signed slip</span><span class="who">' + cs.name + '</span><span class="state">' + (done ? 'Collected ✓' : 'Click to scan') + '</span></button>';
-        }).join('') + '</div>'
-        : '<p class="helper">No one is ready to collect yet. Go back to step 1 and scan an envelope.</p>';
-      actions = '<button type="button" class="btn-link" id="tk-back">← Back</button>' +
-        '<button type="button" class="btn btn-primary btn-small" id="tk-next">Next step →</button>';
+  async function scanNext() {
+    busy = true; ready(false);
+    var i = scanned, spot = SPOTS[i], e = ENV_CASE[i];
+    placeScanner(spot.x + 23, spot.y + 2, true);
+    await wait(260);
+    await beepAt(spot.x + 2, spot.y + 14, 20);
+    if (e.unknown) {
+      envs[i].classList.add('unknown', 'setaside');
+      $('scene-msg').innerHTML = 'Beep. <strong>' + e.name + '</strong> is not in our records, so the envelope is set aside for checking. The tracker doesn\'t change.';
     } else {
-      body = '<div class="demo-actions"><button type="button" class="btn btn-primary btn-small" id="tk-advance"' + (advanced ? ' disabled' : '') + '>Move forward 14 days</button></div>' +
-        (advanced ? '<p class="helper"><strong>That\'s the whole cycle.</strong> Start over to try again.</p>' : '');
-      actions = '<button type="button" class="btn-link" id="tk-back"' + (advanced ? ' disabled' : '') + '>← Back</button>';
+      envs[i].classList.add('done');
+      var c = CASES.filter(function (x) { return x.name === e.name; })[0];
+      c.docs[e.k] = 'desk';
+      render(c.name);
+      var s = status(c);
+      $('scene-msg').innerHTML = 'Beep. <strong>' + e.name + '</strong>\'s ' + (e.k === 'id' ? 'ID card' : 'passport') + ' is at the desk. ' +
+        (s.cls === 'part' ? 'The passport is still on the way, so the case is <strong>Partial</strong>.' : 'The case is <strong>Ready to collect</strong>.');
     }
-    stepEl.innerHTML = '<div class="step-head"><span class="step-label teal">Step ' + step + ' of 3</span>' + dots() + '</div>' +
-      '<h3>' + s.title + '</h3><p>' + s.text + '</p>' + body + '<div class="step-actions">' + actions + '</div>';
+    scanned++;
+    placeScanner(HOME.x, HOME.y, false);
+    await wait(250);
+    if (scanned < envs.length) {
+      setButton('Scan next envelope (' + (scanned + 1) + ' of 4)', true); ready(true);
+    } else {
+      setButton('Next: an applicant collects', true);
+      btnHint(true);
+    }
+    busy = false;
   }
 
-  function renderAll(changed) { renderCounters(); renderList(changed); renderStep(); }
-
-  // ---------- Actions ----------
-  function scan(i) {
-    var e = ENVELOPES[i];
-    scanned[i] = true;
-    var cs = find(e.c);
-    if (!cs) {
-      renderAll([]);
-      msg.innerHTML = e.name + "'s " + DOC_LOWER[e.k] + ' is <strong>not in our records</strong>: set aside for checking. No case changes.';
-      return;
-    }
-    cs.docs[e.k] = 'desk';
-    renderAll([cs.c]);
-    var s = status(cs).t;
-    var other = Object.keys(cs.docs).filter(function (k) { return cs.docs[k] === 'way'; });
-    msg.innerHTML = cs.name + "'s " + DOC_LOWER[e.k] + ' is at the desk.' +
-      (s === 'Partial' ? ' The ' + DOC_LOWER[other[0]] + ' is still on the way, so the case is <strong>Partial</strong>.' : ' The case is <strong>' + s + '</strong>.');
+  async function showSlip() {
+    busy = true;
+    btnHint(false);
+    envs.forEach(function (e) { e.style.opacity = '.35'; });
+    $('slip').classList.add('in');
+    phase = 2;
+    setStep(3, 'An applicant collects', 'Sophia Wilson signs a paper slip at the counter. At closing, staff scan every signed slip in one go. Click the scanner.');
+    $('scene-msg').textContent = '';
+    setButton('Scan the signed slip', true);
+    await wait(500); ready(true); busy = false;
   }
 
-  stepEl.addEventListener('click', function (ev) {
-    var b = ev.target.closest('button');
-    if (!b || b.disabled) return;
-    if (b.dataset.env !== undefined) { scan(+b.dataset.env); return; }
-    if (b.id === 'tk-scan-all') {
-      var changed = [], known = 0, unknown = 0;
-      ENVELOPES.forEach(function (e, i) {
-        if (scanned[i]) return;
-        scanned[i] = true;
-        var cs = find(e.c);
-        if (cs) { cs.docs[e.k] = 'desk'; changed.push(cs.c); known++; } else unknown++;
-      });
-      renderAll(changed);
-      msg.textContent = 'All envelopes scanned: ' + known + ' document' + (known === 1 ? '' : 's') + ' now at the desk' +
-        (unknown ? ', and ' + unknown + ' not in our records was set aside for checking.' : '.');
-      return;
-    }
-    if (b.dataset.slip) {
-      var cs = find(b.dataset.slip);
-      var what = Object.keys(cs.docs).filter(function (k) { return cs.docs[k] === 'desk'; });
-      what.forEach(function (k) { cs.docs[k] = 'collected'; });
-      renderAll([cs.c]);
-      msg.textContent = cs.name + ' collected the ' + what.map(function (k) { return DOC_LOWER[k]; }).join(' and ') + '. Case archived and moved to the bottom of the list.';
-      return;
-    }
-    if (b.id === 'tk-next') {
-      step++;
-      renderAll([]);
-      window.flash(stepEl);
-      msg.textContent = step === 2 ? 'Step 2: scan the signed slips of applicants who collected today.' : 'Step 3: see what happens when time passes.';
-      stepEl.querySelector('h3').setAttribute('tabindex', '-1');
-      stepEl.querySelector('h3').focus({ preventScroll: true });
-      return;
-    }
-    if (b.id === 'tk-back') { step--; renderAll([]); msg.textContent = ''; return; }
-    if (b.id === 'tk-advance') {
-      var moved = [];
-      cases.forEach(function (cs) { if (status(cs).cls !== 'done') { cs.days += 14; moved.push(cs.c); } });
-      advanced = true;
-      renderAll(moved);
-      var flags = cases.filter(flagged).sort(function (a, b) { return b.days - a.days; });
-      msg.textContent = flags.length
-        ? flags.length + ' case' + (flags.length === 1 ? '' : 's') + ' now need' + (flags.length === 1 ? 's' : '') + ' attention: ' +
-          flags.map(function (cs) { return cs.name + ' (' + status(cs).t + ')'; }).join(' and ') + '. Everything else is left alone.'
-        : 'No cases need attention.';
-    }
-  });
+  async function scanSlip() {
+    busy = true; ready(false);
+    placeScanner(58, 34, true);
+    await wait(260);
+    await beepAt(35, 44, 24);
+    $('slip').classList.add('done');
+    var c = CASES.filter(function (x) { return x.name === 'Sophia Wilson'; })[0];
+    c.docs.id = 'collected';
+    render(c.name);
+    $('scene-msg').innerHTML = 'Beep. <strong>Sophia Wilson</strong> has collected her ID card. Case closed, without anyone typing a thing.';
+    placeScanner(HOME.x, HOME.y, false);
+    phase = 3;
+    setButton('', false);
+    $('replay').hidden = false;
+    btnHint(true);
+    busy = false;
+  }
 
-  flaggedBox.addEventListener('change', function () {
-    renderList([]);
-    msg.textContent = flaggedBox.checked ? 'Showing only the cases that need attention.' : 'Showing all cases.';
-  });
+  function act() {
+    if (busy) return;
+    if (phase === 0) openBag();
+    else if (phase === 1 && scanned < envs.length) scanNext();
+    else if (phase === 1) showSlip();
+    else if (phase === 2) scanSlip();
+  }
 
-  sampleBtn.addEventListener('click', function () {
-    sampleBtn.classList.remove('pulse');
-    cases = SEED.map(function (s) { var d = {}; Object.keys(s.docs).forEach(function (k) { d[k] = s.docs[k]; }); return { c: s.c, name: s.name, days: s.days, docs: d }; });
-    step = 1; scanned = {}; advanced = false; flaggedBox.checked = false;
-    renderAll(cases.map(function (cs) { return cs.c; }));
-    resetBtn.hidden = false;
-    msg.textContent = '6 sample cases loaded. Step 1: click an envelope to scan it.';
-  });
+  function reset() {
+    phase = 0; scanned = 0; busy = false; seed(); render();
+    $('bag').classList.remove('opened');
+    envs.forEach(function (e) { e.className = 'env'; e.style.left = ''; e.style.top = ''; e.style.opacity = ''; });
+    $('slip').className = 'slip';
+    placeScanner(HOME.x, HOME.y, false); ready(false);
+    setStep(1, 'The delivery arrives', 'Documents come from headquarters in a sealed bag. Click the bag to open it.');
+    $('scene-msg').textContent = '';
+    setButton('Open the delivery', true); $('next').classList.add('pulse');
+    $('hint-bag').classList.add('show');
+    $('stage').classList.add('clickable');
+    btnHint(false);
+    $('replay').hidden = true;
+  }
 
-  resetBtn.addEventListener('click', function () {
-    cases = null; step = 1; scanned = {}; advanced = false; flaggedBox.checked = false;
-    renderAll([]);
-    resetBtn.hidden = true;
-    msg.textContent = 'Cleared. Click Try with sample data to start again.';
-    sampleBtn.focus();
+  $('next').addEventListener('click', act);
+  $('stage').addEventListener('click', function (e) { if (phase === 0 || e.target.closest('.hint.show')) act(); });
+  $('scanner').addEventListener('click', act);
+  $('replay').addEventListener('click', reset);
+  // The "Click here" label does the same as the button it points at
+  document.getElementById('hint-btn').addEventListener('click', function () {
+    var b = Array.prototype.filter.call(document.querySelectorAll('.scene-actions .btn'), function (x) { return !x.hidden; })[0];
+    if (b) b.click();
   });
-
-  renderAll([]);
+  reset();
 })();
 </script>
 </body>

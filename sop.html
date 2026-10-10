@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -53,21 +53,60 @@
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block cs-try">
+    <section class="cs-block cs-try wide">
       <h2>The process</h2>
       <div class="cs-content">
-        <ol class="sop-steps">
-          <li class="sop-step"><span class="sop-num">1</span><h3>Daily Intake</h3><p>Load the daily payments report into the <a href="formatter.html">Formatter</a>, confirm any flagged cases, and paste the result into Case Tracking.</p></li>
-          <li class="sop-step"><span class="sop-num">2</span><h3>Desk Review</h3><p>Add the final ID number when a temporary one is replaced, and add the applicant's email for arrival notices. Formula columns are never edited by hand.</p></li>
-          <li class="sop-step"><span class="sop-num">3</span><h3>Delivery Arrives</h3><p>Record the delivery date and reference, then scan each document. Documents found in the <a href="tracker.html">tracker</a> are marked "At the desk". Unknown documents are flagged for separate handling.</p></li>
-          <li class="sop-step"><span class="sop-num">4</span><h3>Document Collection</h3><p>The applicant signs a paper slip at the counter. Staff keep the barcode stub and scan all stubs in one batch at closing, and the case is archived automatically.</p></li>
-        </ol>
-        <ul class="rule-cards" aria-label="Design rules">
-          <li><span>Design rule</span>No computer at the counter: slips are scanned in one batch at closing, so service stays fast.</li>
-          <li><span>Design rule</span>Formula columns are locked.</li>
-          <li><span>Design rule</span>Unknown documents are flagged, not mixed in.</li>
-        </ul>
-        <img class="sop-img" src="images/05-sop.png" alt="Illustration of the one-page SOP and its four stages" width="1600" height="900" loading="lazy">
+        <p>Walk through the SOP stage by stage, the way a new colleague would, and follow one case from payment to collection.</p>
+        <div class="sim sop-sim">
+          <section class="scene-card" aria-label="Simulation">
+            <div class="step-row">
+              <span class="step-label teal" id="step-label">Start</span>
+              <div class="dots" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div>
+              <div class="scene-title" id="scene-title"></div>
+              <p class="scene-help" id="scene-help"></p>
+            </div>
+
+            <div class="stage sop" id="stage">
+              <div class="stage-inner">
+                <div class="doc" id="doc">
+                  <div class="doc-head"><b>Standard Operating Procedure</b><span>1 page</span></div>
+                  <div class="blk"><div class="blk-top"><span class="num"><i>1</i></span><b>Daily intake</b><span class="tags"><span>Formatter</span><span class="tab">Case Tracking</span></span></div>
+                    <div class="blk-body"><ol><li>Load the daily payments report into the Formatter.</li><li>Confirm any flagged cases.</li><li>Paste the rows into the first empty row of Case Tracking.</li></ol><div class="rule"><b>Rule:</b> nothing goes into the tracker unchecked.</div></div></div>
+                  <div class="blk"><div class="blk-top"><span class="num"><i>2</i></span><b>Desk review</b><span class="tags"><span>Tracker</span><span class="tab">Case Tracking</span></span></div>
+                    <div class="blk-body"><ol><li>Add the final ID number when a temporary one is replaced.</li><li>Add the applicant's email for the arrival notice.</li></ol><div class="rule"><b>Rule:</b> formula columns are locked. Never type over them.</div></div></div>
+                  <div class="blk"><div class="blk-top"><span class="num"><i>3</i></span><b>Delivery arrives</b><span class="tags"><span>Barcode scanner</span><span class="tab">Delivery Arrival</span></span></div>
+                    <div class="blk-body"><ol><li>Record the arrival date and the delivery reference.</li><li>Scan each document.</li><li>Found in the tracker: it's marked "At the desk".</li></ol><div class="rule"><b>Rule:</b> unknown documents are flagged, not mixed in.</div></div></div>
+                  <div class="blk"><div class="blk-top"><span class="num"><i>4</i></span><b>Collection</b><span class="tags"><span>Paper slip</span><span class="tab">Counter Handover</span></span></div>
+                    <div class="blk-body"><ol><li>The applicant signs a paper slip at the counter.</li><li>Keep the barcode stub.</li><li>Scan all the stubs in one batch at closing.</li></ol><div class="rule"><b>Rule:</b> no computer at the counter, so service stays fast.</div></div></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="scene-msg" id="scene-msg" aria-live="polite"></p>
+            <div class="scene-actions">
+              <button type="button" class="btn btn-primary btn-small" id="next">Start</button>
+              <button type="button" class="btn btn-secondary btn-small" id="replay" hidden>Replay</button>
+              <span class="btn-hint show" id="hint-btn" aria-hidden="true"><i></i><span>Click here</span></span>
+            </div>
+          </section>
+
+          <section class="tracker-card case-card" aria-label="One case">
+            <div class="tracker-top">
+              <span class="step-label">Following one case</span>
+              <span class="small-note">Fictional data</span>
+            </div>
+            <div class="case-head"><span class="case-env" aria-hidden="true"></span><div><b>Emily Brown</b><span>ID card + passport</span></div></div>
+            <div class="case-steps" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="case-status">
+              <small>Status in the tracker</small>
+              <span class="case-pill" id="pill">Not in the tracker yet</span>
+              <div class="case-what" id="what">She has just paid for her documents.</div>
+            </div>
+            <a class="case-link" id="link" href="#" hidden></a>
+          </section>
+        </div>
       </div>
     </section>
 
@@ -116,7 +155,7 @@
     </div>
     <div class="cs-cta-actions">
       <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
@@ -134,6 +173,76 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=7"></script>
+<script>
+(function () {
+  function $(id) { return document.getElementById(id); }
+  // What happens to the case at each stage (fictional), and where to see that tool in the portfolio
+  var CASE = [
+    { pill: 'On track', cls: 'ok', what: 'Her row is in Case Tracking, checked before it went in.', link: ['formatter.html', 'See the Formatter →'] },
+    { pill: 'On track', cls: 'ok', what: 'Her email is added, so the arrival notice is ready.', link: ['tracker.html', 'See the Tracker →'] },
+    { pill: 'Ready to collect', cls: 'go', what: 'Both documents were scanned in: they\'re at the desk.', link: ['tracker.html', 'See the Tracker →'] },
+    { pill: 'Archived', cls: 'arch', what: 'She signed the slip, and her stub was scanned at closing.', link: ['tracker.html', 'See the Tracker →'] }
+  ];
+  var TITLES = ['Daily intake', 'Desk review', 'Delivery arrives', 'Collection'];
+  var stage = -1;
+
+  function blocks() { return document.querySelectorAll('.stage.sop .blk'); }
+
+  function show(i) {
+    stage = i;
+    $('doc').classList.add('reading');
+    blocks().forEach(function (b, n) { b.classList.toggle('now', n === i); b.classList.toggle('done', n < i); });
+    document.querySelectorAll('.dots span').forEach(function (d, n) { d.classList.toggle('on', n <= i); });
+    document.querySelectorAll('.case-steps span').forEach(function (d, n) { d.classList.toggle('on', n <= i); });
+    $('step-label').textContent = 'Stage ' + (i + 1) + ' of 4';
+    $('scene-title').textContent = TITLES[i];
+    $('scene-help').textContent = i < 3 ? 'Read the steps, then click Next stage.' : 'Last stage. Click Finish.';
+    var c = CASE[i], pill = $('pill');
+    pill.textContent = c.pill; pill.className = 'case-pill ' + c.cls;
+    void pill.offsetWidth; pill.classList.add('flash');
+    $('what').textContent = c.what;
+    var l = $('link'); l.hidden = false; l.href = c.link[0]; l.textContent = c.link[1];
+    $('next').textContent = i < 3 ? 'Next stage' : 'Finish';
+    $('scene-msg').textContent = '';
+  }
+
+  function finish() {
+    stage = 4;
+    $('doc').classList.remove('reading');
+    blocks().forEach(function (b) { b.classList.remove('now'); b.classList.add('done'); });
+    $('step-label').textContent = 'Done';
+    $('scene-title').textContent = 'The whole workflow, on one page';
+    $('scene-help').textContent = 'Four stages, each with its tool, its tab and its rule.';
+    $('scene-msg').innerHTML = 'Anyone can pick up the process, and handovers don\'t depend on one person. <strong>That\'s what the SOP is for.</strong>';
+    $('next').hidden = true; $('replay').hidden = false;
+  }
+
+  $('next').addEventListener('click', function () { if (stage < 3) show(stage + 1); else finish(); });
+  $('replay').addEventListener('click', reset);
+  // The "Click here" label does the same as the button it points at
+  $('hint-btn').addEventListener('click', function () {
+    var b = Array.prototype.filter.call(document.querySelectorAll('.scene-actions .btn'), function (x) { return !x.hidden; })[0];
+    if (b) b.click();
+  });
+
+  function reset() {
+    stage = -1;
+    $('doc').classList.remove('reading');
+    blocks().forEach(function (b) { b.classList.remove('now', 'done'); });
+    document.querySelectorAll('.dots span, .case-steps span').forEach(function (d) { d.classList.remove('on'); });
+    $('step-label').textContent = 'Start';
+    $('scene-title').textContent = 'Your first day with the SOP';
+    $('scene-help').textContent = 'Go through the four stages in order, and follow one case.';
+    $('scene-msg').textContent = '';
+    var pill = $('pill'); pill.textContent = 'Not in the tracker yet'; pill.className = 'case-pill';
+    $('what').textContent = 'She has just paid for her documents.';
+    $('link').hidden = true;
+    $('next').hidden = false; $('next').textContent = 'Start';
+    $('replay').hidden = true;
+  }
+  reset();
+})();
+</script>
 </body>
 </html>

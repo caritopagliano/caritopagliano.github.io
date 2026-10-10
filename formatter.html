@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -53,44 +53,106 @@
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block cs-try">
+    <section class="cs-block cs-try wide">
       <h2>Try it</h2>
       <div class="cs-content">
-        <div class="try">
-          <span class="step-label">How to try it</span>
-          <ol class="try-steps">
-            <li>Click <strong>Try with sample data</strong> to load a sample daily report</li>
-            <li>Click <strong>Format</strong></li>
-            <li>Confirm the pending ID number</li>
-            <li>Copy the table for Excel</li>
-          </ol>
+        <p>Load the daily report, format it, fix what's flagged, and paste the rows into the tracker.</p>
+        <div class="sim">
+          <section class="scene-card" aria-label="Simulation">
+            <div class="step-row">
+              <span class="step-label teal" id="step-label">Step 1 of 4</span>
+              <div class="dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+            </div>
+            <div>
+              <div class="scene-title" id="scene-title"></div>
+              <p class="scene-help" id="scene-help"></p>
+            </div>
+
+            <div class="stage fmt" id="stage">
+              <div class="stage-inner">
+                <button type="button" class="pdf" id="pdf" aria-label="Load the daily payments report">
+                  <span class="pdf-badge">PDF</span>
+                  <span class="pdf-title">Daily payments report</span>
+                  <span class="pdf-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+                </button>
+
+                <div class="fwin" id="fwin" aria-label="Data formatter">
+                  <div class="f-title"><i></i>Data formatter<div class="f-actions" id="f-actions"><button type="button" class="f-btn" id="fbtn" tabindex="-1">Format</button></div></div>
+                  <div class="drop" id="drop">Drop the daily report here</div>
+                  <div class="raw" id="raw"></div>
+                  <div class="out" id="out">
+                    <table class="ftab" aria-label="Formatted cases">
+                      <thead><tr><th>Name</th><th>ID no.</th><th>Procedure</th></tr></thead>
+                      <tbody id="ftbody"></tbody>
+                    </table>
+                    <div id="alerts" style="display:grid;gap:calc(1 * var(--u))"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="scene-msg" id="scene-msg" aria-live="polite"></p>
+            <div class="scene-actions">
+              <button type="button" class="btn btn-secondary btn-small" id="replay" hidden>Replay</button>
+              <span class="btn-hint" id="hint-btn" aria-hidden="true"><i></i><span>Click here</span></span>
+            </div>
+          </section>
+
+          <section class="tracker-card" aria-label="Master tracker in Excel">
+            <div class="sheet">
+              <div class="sheet-bar"><span>Master tracker.xlsx</span><span class="tab">Case Tracking</span></div>
+              <div class="sheet-wrap">
+                <table class="xl">
+                  <thead><tr><th class="col"></th><th class="col">A</th><th class="col">B</th><th class="col">C</th><th class="col">D</th></tr></thead>
+                  <tbody id="xbody"></tbody>
+                </table>
+              </div>
+              <div class="sheet-note" id="sheet-note"></div>
+            </div>
+          </section>
         </div>
-        <div class="demo">
-          <div class="demo-bar">
-            <span class="demo-tag">Live demo</span>
-            <div class="demo-bar-actions">
-              <button type="button" class="btn btn-primary btn-small pulse" id="fm-sample">Try with sample data</button>
-              <button type="button" class="btn btn-secondary btn-small" id="fm-reset" hidden>Start over</button>
+
+        <details class="try-more">
+          <summary>Try the real tool yourself<span>Live demo</span></summary>
+          <div class="try-more-body">
+            <p class="try-more-intro">Load the sample report or paste your own, format it, and confirm the pending ID number.</p>
+          <div class="try">
+            <span class="step-label">How to try it</span>
+            <ol class="try-steps">
+              <li>Click <strong>Try with sample data</strong> to load a sample daily report</li>
+              <li>Click <strong>Format</strong></li>
+              <li>Confirm the pending ID number</li>
+              <li>Copy the table for Excel</li>
+            </ol>
+          </div>
+          <div class="demo">
+            <div class="demo-bar">
+              <span class="demo-tag">Live demo</span>
+              <div class="demo-bar-actions">
+                <button type="button" class="btn btn-primary btn-small pulse" id="fm-sample">Try with sample data</button>
+                <button type="button" class="btn btn-secondary btn-small" id="fm-reset" hidden>Start over</button>
+              </div>
+            </div>
+            <div class="demo-body">
+              <div class="field">
+                <label for="report">Daily payments report</label>
+                <textarea id="report" class="report-box" spellcheck="false" rows="9" placeholder="Paste the daily report here, or click Try with sample data."></textarea>
+                <span class="small-note">The real tool also reads the PDF report directly.</span>
+              </div>
+              <div class="demo-actions">
+                <button type="button" class="btn btn-primary" id="fm-format" disabled>Format</button>
+              </div>
+              <div id="fm-output">
+                <div class="empty-state">Your formatted table will appear here.</div>
+              </div>
+              <div class="demo-actions">
+                <button type="button" class="btn btn-secondary btn-small" id="fm-copy" disabled>Copy table for Excel</button>
+              </div>
+              <p class="msg" id="fm-msg" aria-live="polite"></p>
             </div>
           </div>
-          <div class="demo-body">
-            <div class="field">
-              <label for="report">Daily payments report</label>
-              <textarea id="report" class="report-box" spellcheck="false" rows="9" placeholder="Paste the daily report here, or click Try with sample data."></textarea>
-              <span class="small-note">The real tool also reads the PDF report directly.</span>
-            </div>
-            <div class="demo-actions">
-              <button type="button" class="btn btn-primary" id="fm-format" disabled>Format</button>
-            </div>
-            <div id="fm-output">
-              <div class="empty-state">Your formatted table will appear here.</div>
-            </div>
-            <div class="demo-actions">
-              <button type="button" class="btn btn-secondary btn-small" id="fm-copy" disabled>Copy table for Excel</button>
-            </div>
-            <p class="msg" id="fm-msg" aria-live="polite"></p>
           </div>
-        </div>
+        </details>
       </div>
     </section>
 
@@ -135,7 +197,7 @@
     </div>
     <div class="cs-cta-actions">
       <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
@@ -153,14 +215,13 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=7"></script>
 <script>
 (function () {
   function pad(n) { return (n < 10 ? '0' : '') + n; }
   function ddmmyyyy(d) { return pad(d.getDate()) + '/' + pad(d.getMonth() + 1) + '/' + d.getFullYear(); }
 
   // Fictional report, dated 31 days ago so it lines up with the tracker demo. Fees are invented.
-  // Names arrive as "SURNAME, First name", the way the report prints them; the formatter turns them into "First Surname".
   function sample() {
     var d = new Date();
     d.setDate(d.getDate() - 31);
@@ -169,12 +230,12 @@
       'Date: ' + ddmmyyyy(d),
       '',
       'Case ID   | ID number   | Name           | Procedure        | ID fee | Passport fee',
-      '700000141 | 30000041    | SMITH, John    | Passport         |   0.00 |  50.00',
-      '700000142 | 30000042    | BROWN, Emily   | ID + passport    |  25.00 |  50.00',
-      '700000143 | TEMPORARY   | TAYLOR, James  | First ID         |  25.00 |   0.00',
-      '700000144 | 30000044    | WILSON, Sophia | ID (lost/stolen) |  25.00 |   0.00',
-      '700000145 | 30000045    | DAVIS, Oliver  | ID + passport    |  25.00 |   0.00',
-      '700000146 | 30000046    | EXAMPLE, Alex  | Passport         |   0.0O |',
+      '700000141 | 30000041    | John Smith     | Passport         |   0.00 |  50.00',
+      '700000142 | 30000042    | Emily Brown    | ID + passport    |  25.00 |  50.00',
+      '700000143 | TEMPORARY   | James Taylor   | First ID         |  25.00 |   0.00',
+      '700000144 | 30000044    | Sophia Wilson  | ID (lost/stolen) |  25.00 |   0.00',
+      '700000145 | 30000045    | Oliver Davis   | ID + passport    |  25.00 |   0.00',
+      '700000146 | 30000046    | Alex Example   | Passport         |   0.0O |',
       '',
       'TOTAL                                                      | 100.00 | 100.00'
     ].join('\n');
@@ -190,12 +251,6 @@
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function fee(s) { s = (s || '').trim(); return /^\d+(\.\d{1,2})?$/.test(s) ? parseFloat(s) : null; }
-  function title(s) { return s.toLowerCase().replace(/(^|[\s'-])(\S)/g, function (m, p, c) { return p + c.toUpperCase(); }); }
-  // "SMITH, John" -> "John Smith"
-  function niceName(s) {
-    var p = s.split(',');
-    return p.length > 1 ? title(p.slice(1).join(' ').trim() + ' ' + p[0].trim()) : title(s);
-  }
 
   function parse() {
     var text = report.value;
@@ -209,7 +264,7 @@
       var proc = f[3];
       if (/passport/i.test(proc) && /\bid\b/i.test(proc) && !ppExp) proc = 'ID + emergency passport';
       var provisional = !/^\d{8}$/.test(f[1]);
-      return { caseId: f[0], idNum: provisional ? null : f[1], name: niceName(f[2]), proc: proc, idExp: idFee > 0, ppExp: ppExp, provisional: provisional };
+      return { caseId: f[0], idNum: provisional ? null : f[1], name: f[2], proc: proc, idExp: idFee > 0, ppExp: ppExp, provisional: provisional };
     });
   }
 
@@ -369,6 +424,168 @@
   });
 
   changed();
+})();
+</script>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+  function $(id) { return document.getElementById(id); }
+  // Same fictional cases as the live demo.
+  var CASES = [
+    { name: 'John Smith', id: '30000041', proc: 'Passport' },
+    { name: 'Emily Brown', id: '30000042', proc: 'ID + passport' },
+    { name: 'James Taylor', id: 'TEMPORARY', proc: 'First ID', pending: true },
+    { name: 'Sophia Wilson', id: '30000044', proc: 'ID (lost/stolen)' },
+    { name: 'Oliver Davis', id: '30000045', proc: 'ID + emergency passport', rawProc: 'ID + passport' },
+    { name: 'Alex Example', id: '30000046', proc: 'Passport', bad: true }
+  ];
+  var FINAL_ID = '30000043';
+  // Rows already in the tracker from earlier days (fictional)
+  var OLD = [['Ella Jones', '30000038', 'ID card'], ['Grace Miller', '30000039', 'Passport'], ['Lucy Parker', '30000040', 'ID + passport']];
+  var phase = 0, busy = false, fixed = false;
+
+  function setStep(n, title, help) {
+    $('step-label').textContent = 'Step ' + n + ' of 4';
+    document.querySelectorAll('.dots span').forEach(function (d, i) { d.classList.toggle('on', i < n); });
+    $('scene-title').textContent = title; $('scene-help').textContent = help;
+  }
+  function tapLabel(el, text, cls) { var old = el.querySelector(':scope > .tap'); if (old) old.remove(); if (text) el.insertAdjacentHTML('beforeend', '<span class="tap' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + text + '</span>'); }
+  function scrollTo(el) { var r = el.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' }); }
+
+  // ---- Formatter ----
+  function rawLines() {
+    $('raw').innerHTML = '<b>Daily payments report</b>' + CASES.map(function (r) { return '<span>' + r.name + ' · ' + r.id + ' · ' + (r.rawProc || r.proc) + '</span>'; }).join('');
+  }
+  function fRow(r) {
+    if (r.bad) return '<tr class="bad"><td colspan="3"><span class="ic e">✕</span>Line couldn\'t be read</td></tr>';
+    var id = r.id;
+    if (r.pending) id = fixed ? '<span class="mono">' + FINAL_ID + '</span>' : '<span class="idcell" id="idcell"><button type="button" class="pend-btn" id="pend" tabindex="-1">Pending</button></span>';
+    else id = '<span class="mono">' + id + '</span>';
+    var cls = r.pending ? (fixed ? ' class="fixed"' : ' class="warn"') : '';
+    var ic = r.pending ? '<span class="ic ' + (fixed ? 'k">✓' : 'w">!') + '</span>' : '';
+    return '<tr' + cls + (r.pending ? ' id="row-james"' : '') + '><td>' + ic + r.name + '</td><td>' + id + '</td><td>' + r.proc + '</td></tr>';
+  }
+  function renderOut() {
+    $('ftbody').innerHTML = CASES.map(fRow).join('');
+    $('alerts').innerHTML =
+      (fixed ? '<div class="al k"><span class="ic k">✓</span><span><b>Fixed:</b> final ID number added</span></div>'
+             : '<div class="al w"><span class="ic w">!</span><span><b>Check needed:</b> temporary ID number</span></div>') +
+      '<div class="al e"><span class="ic e">✕</span><span><b>Error:</b> 1 line unreadable, check by hand</span></div>';
+  }
+
+  // ---- Tracker sheet ----
+  function xRow(n, cells, cls, wait) {
+    return '<tr class="' + cls + '"><td class="rn">' + n + '</td><td>' + cells[0] + '</td><td class="mono">' + cells[1] + '</td><td>' + cells[2] + '</td><td><span class="st' + (wait ? ' wait' : '') + '">On track</span></td></tr>';
+  }
+  function renderSheet() {
+    var h = '<tr class="hdr"><td class="rn">1</td><td>Name</td><td>ID no.</td><td>Procedure</td><td>Status</td></tr>';
+    OLD.forEach(function (r, i) { h += xRow(i + 2, r, 'old'); });
+    h += '<tr class="paste" id="paste-row"><td class="rn">' + (OLD.length + 2) + '</td><td colspan="4"><button type="button" class="paste-btn" id="paste" tabindex="-1">Paste</button></td></tr>';
+    $('xbody').innerHTML = h;
+  }
+
+  // ---- Steps ----
+  async function load() {
+    busy = true;
+    tapLabel($('pdf'), ''); $('pdf').classList.remove('target');
+    $('drop').classList.add('hot');
+    $('pdf').classList.add('gone');
+    await wait(500);
+    $('fwin').classList.add('loaded');
+    phase = 1;
+    setStep(2, 'Format it', 'Click Format to turn the report into clean rows.');
+    $('scene-msg').textContent = 'The report is loaded: 6 cases.';
+    $('fbtn').classList.add('target'); tapLabel($('f-actions'), 'Click');
+    busy = false;
+  }
+  function format() {
+    $('fbtn').classList.remove('target'); tapLabel($('f-actions'), '');
+    renderOut();
+    $('fwin').classList.add('formatted');
+    $('fbtn').textContent = 'Copy for Excel';
+    phase = 2;
+    setStep(3, 'Fix what\'s flagged', 'James Taylor has a temporary ID. Click Pending to add the final one.');
+    $('scene-msg').textContent = 'Anything that needs a person is flagged, not guessed.';
+    $('pend').classList.add('target'); tapLabel($('idcell'), 'Click here', 'above');
+  }
+  async function typeId() {
+    busy = true;
+    var cell = $('idcell');
+    cell.innerHTML = '<span class="id-in typing" id="id-in"></span><button type="button" class="ok-btn" id="okbtn" tabindex="-1" aria-label="Confirm">✔</button>';
+    for (var i = 1; i <= FINAL_ID.length; i++) { $('id-in').textContent = FINAL_ID.slice(0, i); await wait(70); }
+    $('id-in').classList.remove('typing');
+    phase = 3;
+    $('scene-help').textContent = 'Click ✔ to confirm the number.';
+    $('okbtn').classList.add('target'); tapLabel(cell, 'Click', 'above');
+    busy = false;
+  }
+  function confirmId() {
+    fixed = true;
+    renderOut();
+    if (window.flash) window.flash($('row-james'));
+    phase = 4;
+    $('scene-help').textContent = 'All checked. Copy the rows for Excel.';
+    $('fbtn').classList.add('target'); tapLabel($('f-actions'), 'Click');
+  }
+  function copy() {
+    $('fbtn').classList.remove('target'); tapLabel($('f-actions'), ''); $('fbtn').textContent = 'Copied ✓';
+    phase = 5;
+    setStep(4, 'Paste into the tracker', 'Click Paste in the tracker.');
+    $('scene-msg').textContent = '5 rows copied. The unreadable line stays out.';
+    $('paste-row').classList.add('target');
+    $('paste').insertAdjacentHTML('beforeend', '<span class="paste-tap" aria-hidden="true">Click here</span>');
+    scrollTo(document.querySelector('.sheet'));
+  }
+  async function paste() {
+    busy = true;
+    var start = OLD.length + 2;
+    $('paste-row').outerHTML = CASES.filter(function (r) { return !r.bad; }).map(function (r, i) {
+      return xRow(start + i, [r.name, r.pending ? FINAL_ID : r.id, r.proc], 'new', true);
+    }).join('');
+    await wait(500);
+    document.querySelectorAll('.xl .st.wait').forEach(function (s) { s.classList.remove('wait'); s.classList.add('fill'); });
+    phase = 6;
+    $('sheet-note').textContent = '5 rows added · Status filled in automatically';
+    $('scene-msg').innerHTML = 'Status fills in by itself. <strong>Before, every row was typed by hand.</strong>';
+    $('replay').hidden = false; $('hint-btn').classList.add('show');
+    busy = false;
+  }
+
+  // One handler: the highlighted item or its pointer label runs the current step
+  document.querySelector('.sim').addEventListener('click', function (e) {
+    if (busy) return;
+    var on = function (sel) { return !!e.target.closest(sel); };
+    var onTap = on('.tap') || on('.paste-tap');
+    if (phase === 0 && (onTap || on('#pdf'))) load();
+    else if (phase === 1 && (onTap || on('#fbtn'))) format();
+    else if (phase === 2 && (onTap || on('#pend'))) typeId();
+    else if (phase === 3 && (onTap || on('#okbtn'))) confirmId();
+    else if (phase === 4 && (onTap || on('#fbtn'))) copy();
+    else if (phase === 5 && (onTap || on('#paste-row'))) paste();
+  });
+  $('replay').addEventListener('click', function () { reset(); scrollTo($('stage')); });
+  // The "Click here" label does the same as the button it points at
+  $('hint-btn').addEventListener('click', function () {
+    var b = Array.prototype.filter.call(document.querySelectorAll('.scene-actions .btn'), function (x) { return !x.hidden; })[0];
+    if (b) b.click();
+  });
+
+  function reset() {
+    phase = 0; busy = false; fixed = false;
+    $('pdf').className = 'pdf target'; $('fwin').className = 'fwin';
+    $('drop').classList.remove('hot');
+    rawLines();
+    $('ftbody').innerHTML = ''; $('alerts').innerHTML = '';
+    var f = $('fbtn'); f.className = 'f-btn'; f.textContent = 'Format'; tapLabel($('f-actions'), '');
+    renderSheet();
+    $('sheet-note').textContent = 'New rows go in the next empty row.';
+    $('replay').hidden = true; $('hint-btn').classList.remove('show');
+    setStep(1, 'The daily report arrives', 'Click the PDF to load it.');
+    $('scene-msg').textContent = '';
+    tapLabel($('pdf'), 'Click to load', 'below');
+  }
+  reset();
 })();
 </script>
 </body>

@@ -16,7 +16,9 @@ The homepage flow diagram shows Triage → Email Generator → Formatter → Tra
 
 ## Demo pattern
 
-All four live demos work the same way, so visitors learn it once:
+Every case study opens with an animated simulation: one click per step, a bouncing **Click here** pointer on whatever to click next, and a Replay button at the end. Triage, Email Generator and Formatter also keep their live demo underneath, closed by default in a **Try the real tool yourself** bar so the page stays short.
+
+The three live demos work the same way, so visitors learn it once:
 
 1. **How to try it:** 2–4 numbered steps sit directly above each demo.
 2. **Header bar:** the "Live demo" tag on the left; on the right, **Try with sample data** (or 3 example buttons on the triage) and **Start over**, which appears once something has changed.
@@ -30,7 +32,7 @@ Site-wide: case study pages always open at the top, and a round **Back to top** 
 
 ## Case study page structure
 
-Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the live demo; the email page shows the Before / After first; the SOP page shows its 4-step process) → 01 Problem → 02 What I built (with a Key decision box) → 03 Result → 04 Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
+Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the simulation, with the live demo in a closed bar underneath where there is one) → 01 Problem → 02 What I built (with a Key decision box) → 03 Result → 04 Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
 
 Plain words are used instead of consular jargon: "daily payments report", "document delivery", "temporary ID number", "check their details".
 
@@ -39,23 +41,23 @@ Plain words are used instead of consular jargon: "daily payments report", "docum
 | File | What it is |
 |---|---|
 | `index.html` | Homepage: hero, work (flow diagram + 5 cards), about, contact |
-| `triage.html` | Live demo: bilingual (EN / ES) guide. Three example buttons click through the answers visibly (about 400 ms per step), or visitors answer themselves. Shows one of three outcomes: book online, book online and bring extra proof of identity, or email first for a records check (with a copy-ready email template) |
-| `email-generator.html` | Static before / after comparison, then a live demo that starts empty. Sample data fills Emily Brown, a date, 10:45 and "ID + passport". Clicking a procedure creates the email; a separate **Copy email** button copies it (formatted for Outlook, with a plain-text fallback). Missing date or time shows highlighted placeholders |
-| `formatter.html` | Live demo: loads a fictional daily payments report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Names become "John Smith". Works out which documents are expected from the fees paid, flags a temporary ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
-| `tracker.html` | Live demo: a guided 3-step walkthrough on one screen. Step 1, the document delivery from headquarters arrives (click envelopes to scan them, one is not in the records). Step 2, applicants collect (scan signed slips, cases are archived). Step 3, move forward 14 days and the delayed cases are flagged. The counters and case list always come from the same data. A strip shows which of the 4 real workbook tabs each step uses. Links to a Google Sheets version |
-| `sop.html` | 4-stage flow with design rules and the SOP preview image |
+| `triage.html` | Two demos. First, an animated simulation: three applicants (Emily Brown, James Taylor, Grace Miller) answer on a phone; the visitor taps the highlighted answer and the matching path (Book online · Book online + bring extra proof · Email us first) lights up with their name. On phones the applicant sits above a larger phone. Below it, "Now try it yourself": the bilingual (EN / ES) guide with example buttons, where visitors answer the questions themselves |
+| `email-generator.html` | Two demos. First, an animated simulation: the visitor types the applicant's name (optional), picks the date from a calendar and the time from preset slots, picks "ID + passport", and copies the finished email into a webmail window. Beside it, "Before vs after": the old email (copied from a Word template and reformatted) next to what the generator includes, and the time per email (~3–5 min vs under 30 sec). Below it, "Now try it yourself": a live demo that starts empty. Sample data fills Emily Brown, a date, 10:45 and "ID + passport". Clicking a procedure creates the email; a separate **Copy email** button copies it (formatted for the webmail, with a plain-text fallback). Missing date or time shows highlighted placeholders |
+| `formatter.html` | Two demos. First, an animated simulation beside a small Excel tracker: the visitor loads the PDF report, clicks Format, adds the final ID number for a flagged temporary ID (warning, error and fixed alerts), copies the rows and pastes them into the tracker, where the Status column fills in by itself. Below it, "Now try it yourself": a live demo that loads a fictional daily payments report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Works out which documents are expected from the fees paid, flags a temporary ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
+| `tracker.html` | Live demo: an animated simulation beside the tracker. Each click plays one step: open the delivery bag (four envelopes land on the desk), click the barcode scanner to scan each envelope (a red line flashes, the matching tracker row updates and flashes; one envelope is not in the records and is set aside), then scan an applicant's signed slip to mark the case collected. A bouncing pointer always shows what to click next. Links to a Google Sheets version |
+| `prototype/` | Work-in-progress simulations (`tracker-sim.html`, `triage-sim.html`, `email-sim.html`, `formatter-sim.html`, `sop-sim.html`). Not linked from the site |
+| `sop.html` | Animated simulation: the one-page SOP on the left. Each **Next stage** click opens one stage (its steps, tool, tab and rule) and fades the others. On the right, one fictional case (Emily Brown) moves from "Not in the tracker yet" to On track, Ready to collect and Archived, with a link to that stage's tool page |
 | `styles.css` | All styles. Colour tokens at the top, with light and dark mode. Demo components are at the end of the file |
 | `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
-| `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is also the SOP preview), `monogram-cp.png`, plus: |
+| `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is only used on the homepage card now), `monogram-cp.png`, plus: |
 | `images/photo.jpg` | About section photo (shown at 4:5, cropped with `object-fit: cover`) |
 | `images/og-banner.png` | Link preview image (1200×630) used by the Open Graph and Twitter tags on every page |
 | `images/favicon.png` | Square 512×512 crop of the monogram, used as the browser tab icon and phone home-screen icon |
-| `image-source/mock.html` | Source of an earlier set of illustrations. No longer used by the site |
 
 ## Demo data
 
 All demo data is fictional:
-- Names: John Smith, Emily Brown, James Taylor, Sophia Wilson, Oliver Davis, Ella Jones, Grace Miller, Lucy Parker, Alex Example. The formatter's raw sample report prints them as "SMITH, John" on purpose, to show the clean-up.
+- Names: John Smith, Emily Brown, James Taylor, Sophia Wilson, Oliver Davis, Ella Jones, Grace Miller, Lucy Parker, Alex Example.
 - Case numbers: 9 digits starting with 7 (700000141…). ID numbers: 8 digits (30000041…).
 - The formatter and tracker share the same people and case numbers.
 - Email address: documents@example.org. Fees in the formatter's sample report are invented. No consulate name, logo, booking link or real fees.

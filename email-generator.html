@@ -4,24 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Confirmation Email Generator · Carolina Pagliano</title>
-<meta name="description" content="A one-click, clearly formatted confirmation email, ready to paste into Outlook.">
+<meta name="description" content="A one-click, clearly formatted confirmation email, ready to paste into the webmail.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Confirmation Email Generator · Carolina Pagliano">
-<meta property="og:description" content="A one-click, clearly formatted confirmation email, ready to paste into Outlook.">
+<meta property="og:description" content="A one-click, clearly formatted confirmation email, ready to paste into the webmail.">
 <meta property="og:image" content="https://caritopagliano.github.io/images/og-banner.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://caritopagliano.github.io/email-generator.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Confirmation Email Generator · Carolina Pagliano">
-<meta name="twitter:description" content="A one-click, clearly formatted confirmation email, ready to paste into Outlook.">
+<meta name="twitter:description" content="A one-click, clearly formatted confirmation email, ready to paste into the webmail.">
 <meta name="twitter:image" content="https://caritopagliano.github.io/images/og-banner.png?v=2">
 <link rel="icon" type="image/png" href="images/favicon.png?v=2">
 <link rel="apple-touch-icon" href="images/favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -42,10 +42,10 @@
       <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
       <p class="eyebrow">Case study 02 of 05</p>
       <h1>Confirmation Email Generator</h1>
-      <p class="lede">A one-click confirmation email, ready for Outlook.</p>
+      <p class="lede">A one-click confirmation email, ready for the webmail.</p>
       <dl class="glance" aria-label="At a glance">
-        <div><dt>Problem</dt><dd>Long, unformatted emails that applicants didn't read, typed by hand for every appointment.</dd></div>
-        <div><dt>Built</dt><dd>A generator: pick the details, click the procedure, paste into Outlook.</dd></div>
+        <div><dt>Problem</dt><dd>Long, unformatted emails that applicants didn't read, copied from a Word template and reformatted for every appointment.</dd></div>
+        <div><dt>Built</dt><dd>A generator: pick the details, click the procedure, paste into the webmail.</dd></div>
         <div class="glance-result"><dt>Result</dt><dd>~3–5 min → under 30 sec per email</dd></div>
         <div><dt>Key decision</dt><dd>Requirements as a short checklist, generated in one click.</dd></div>
       </dl>
@@ -53,101 +53,183 @@
   </section>
 
   <div class="wrap cs-body">
-    <section class="cs-block cs-try">
+    <section class="cs-block cs-try wide">
       <h2>Try it</h2>
       <div class="cs-content">
-        <div class="ba-grid" aria-label="Before and after comparison">
-          <div class="ba ba-before">
-            <div class="ba-head"><strong>Before</strong><span>Typed by hand</span></div>
-            <div class="old-mail" aria-label="Example of the old email format">
-              <p>Dear applicant,</p>
-              <p>We confirm your appointment for <b><u>MONDAY 12 OCTOBER AT 10.45</u></b>. <b>If you cannot attend, please let us know by email.</b></p>
-              <p class="red">Please send us the following information:</p>
-              <p><b>Full name:</b><br><b>ID number:</b><br><b>Date of birth:</b><br><b>Phone number:</b></p>
-              <p>We also remind you that on the day of your appointment you must bring the following <b><u>requirements:</u></b></p>
-              <p><b><u>a) Your latest ID.</u></b></p>
-              <p class="sub">o&nbsp; If you do <b><u>not have</u></b> your <b><u>current ID because it was lost or stolen</u></b>, both procedures must be completed at the same appointment, and you must present your valid passport and/or another identity document issued by the same country.</p>
-              <p class="sub">o&nbsp; If you live in this area and your ID shows an address in another country, a <b>change of address</b> must also be completed on the same day, which requires proof of address dated within the last three months in your full name, such as a utility bill, bank statement or council tax letter.</p>
-              <p><b><u>b) Your birth certificate</u></b>, original, in good condition and with all pages, together with any previous documents you may hold.</p>
+        <p>Fill in three details, pick the procedure, and the email writes itself. Alongside it, the same email the old way: copied from a Word template and reformatted.</p>
+        <div class="sim email-sim">
+          <section class="scene-card" aria-label="Simulation">
+            <div class="step-row">
+              <span class="step-label teal" id="step-label">Step 1 of 3</span>
+              <div class="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
             </div>
-          </div>
-          <div class="ba ba-after">
-            <div class="ba-head"><strong>After</strong><span>Generated in one click</span></div>
-            <div class="mail-subject">Subject: <strong>Appointment confirmed: ID + passport – Monday 12 October, 10:45</strong></div>
-            <div class="mail-paper">
-              <p>Dear Emily Brown,</p>
-              <div class="mail-when">Monday 12 October 2026 · 10:45</div>
-              <h4>Please bring</h4>
-              <ul class="mail-check"><li>Your current ID card</li><li>Your previous passport, if you have one</li><li>Proof of address dated within the last 3 months</li></ul>
-              <div class="mail-reply"><strong>Please reply with</strong><span>full name · ID number · date of birth · phone</span></div>
-              <p class="mail-note">If you can't attend, please let us know by email.</p>
+            <div>
+              <div class="scene-title" id="scene-title"></div>
+              <p class="scene-help" id="scene-help"></p>
             </div>
-          </div>
+
+            <div class="stage email" id="stage">
+              <div class="stage-inner">
+                <div class="gen" aria-label="Email generator">
+                  <div class="gen-title"><i></i>Email generator</div>
+                  <div class="fld"><b>Applicant name <span class="opt-note">(optional)</span></b><div class="inp" id="f-name"><em class="ival"></em><span class="iph">Type a name</span></div></div>
+                  <div class="fld" id="fld-date"><b>Appointment date</b>
+                    <div class="inp" id="f-date"><em class="ival"></em><span class="iph">dd/mm/yyyy</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+                    </div>
+                    <div class="cal" id="cal" aria-hidden="true">
+                      <div class="cal-head">October 2026<span>‹ ›</span></div>
+                      <div class="cal-grid" id="cal-grid"></div>
+                    </div>
+                  </div>
+                  <div class="fld"><b>Time</b>
+                    <div class="times" id="times">
+                      <span class="tchip">10:00</span><span class="tchip" id="t1045">10:45</span><span class="tchip">11:30</span><span class="tchip">12:15</span>
+                    </div>
+                  </div>
+                  <div class="fld"><b>Procedure</b>
+                    <div class="procs" id="procs">
+                      <button type="button" class="proc dim" tabindex="-1">Passport</button>
+                      <button type="button" class="proc dim" tabindex="-1">ID card</button>
+                      <button type="button" class="proc dim" id="p-both" tabindex="-1">ID + passport</button>
+                      <button type="button" class="proc dim" tabindex="-1">Emergency passport</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mail-ph" id="mail-ph" aria-hidden="true">The email appears here once the procedure is picked</div>
+                <div class="mail" id="mail" aria-live="polite">
+                  <div class="m-subj">Subject: <b>Appointment confirmed: ID + passport – Monday 12 October, 10:45</b></div>
+                  <div class="m-text">Dear Emily Brown,</div>
+                  <div class="m-when">Monday 12 October 2026 · 10:45</div>
+                  <div class="m-h">Please bring</div>
+                  <ul class="m-list"><li>Your current ID card</li><li>Your previous passport, if you have one</li><li>Proof of address (last 3 months)</li></ul>
+                  <div class="m-reply"><b>Please reply with</b><br>full name · ID number · date of birth · phone</div>
+                  <div class="m-actions" id="copy-row"><button type="button" class="m-copy" id="copy" tabindex="-1">Copy email</button></div>
+                </div>
+
+                <div class="outlook" id="outlook" aria-label="Webmail">
+                  <div class="ol-bar"><span>New message · Webmail</span><span class="ol-send">Send</span></div>
+                  <div class="ol-head"><div>To <b>Emily Brown</b></div><div>Subject <b>Appointment confirmed: ID + passport – Monday 12 October, 10:45</b></div></div>
+                  <div class="ol-body">
+                    <div>Dear Emily Brown,</div>
+                    <div class="m-when">Monday 12 October 2026 · 10:45</div>
+                    <div><b>Please bring:</b> current ID card · previous passport · proof of address</div>
+                    <div class="m-reply"><b>Please reply with</b> full name · ID number · date of birth · phone</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p class="scene-msg" id="scene-msg" aria-live="polite"></p>
+            <div class="scene-actions">
+              <button type="button" class="btn btn-secondary btn-small" id="replay" hidden>Replay</button>
+              <span class="btn-hint" id="hint-btn" aria-hidden="true"><i></i><span>Click here</span></span>
+            </div>
+          </section>
+
+          <section class="tracker-card" aria-label="Before and after">
+            <div class="tracker-top">
+              <span class="step-label">Before vs after</span>
+              <span class="small-note">Same appointment</span>
+            </div>
+            <div class="cmp before">
+              <div class="ba-head"><strong>Before</strong><span>Find template, copy, paste, reformat, personalise</span></div>
+              <div class="old-mail" aria-label="Example of the old email format">
+                <p>Dear applicant,</p>
+                <p>We confirm your appointment for <b><u>MONDAY 12 OCTOBER AT 10.45</u></b>. <b>If you cannot attend, please let us know by email.</b></p>
+                <p class="red">Please send us the following information:</p>
+                <p><b>Full name:</b><br><b>ID number:</b><br><b>Date of birth:</b><br><b>Phone number:</b></p>
+                <p>We also remind you that on the day of your appointment you must bring the following <b><u>requirements:</u></b></p>
+                <p><b><u>a) Your latest ID.</u></b></p>
+              </div>
+            </div>
+            <div class="cmp after">
+              <div class="ba-head"><strong>With the generator</strong><span>Built for you</span></div>
+              <ul class="includes">
+                <li data-inc="details"><i>✓</i>Name, date and time, filled in once</li>
+                <li data-inc="checklist"><i>✓</i>The right checklist for the procedure</li>
+                <li data-inc="reply"><i>✓</i>A "Please reply with" box</li>
+                <li data-inc="outlook"><i>✓</i>Ready to paste into the webmail</li>
+              </ul>
+            </div>
+            <div class="timebars" id="timebars">
+              <span class="step-label">Time per email</span>
+              <div class="tb"><div class="tb-top"><span>Word template + manual edits</span><strong>~3–5 min</strong></div><div class="tb-track"><div class="tb-fill slow"></div></div></div>
+              <div class="tb fast-row"><div class="tb-top"><span>With the generator</span><strong>under 30 sec</strong></div><div class="tb-track"><div class="tb-fill fast"></div></div></div>
+            </div>
+          </section>
         </div>
 
-        <div class="try">
-          <span class="step-label">How to try it</span>
-          <ol class="try-steps">
-            <li>Click <strong>Try with sample data</strong></li>
-            <li>Choose a procedure</li>
-            <li>Copy the finished email</li>
-          </ol>
-        </div>
-        <div class="demo">
-          <div class="demo-bar">
-            <span class="demo-tag">Live demo</span>
-            <div class="demo-bar-actions">
-              <button type="button" class="btn btn-primary btn-small pulse" id="eg-sample">Try with sample data</button>
-              <button type="button" class="btn btn-secondary btn-small" id="eg-reset" hidden>Start over</button>
-            </div>
+        <details class="try-more">
+          <summary>Try the real tool yourself<span>Live demo</span></summary>
+          <div class="try-more-body">
+            <p class="try-more-intro">Fill in your own details or use the sample data, pick a procedure, and copy the finished email, in English or Spanish.</p>
+          <div class="try">
+            <span class="step-label">How to try it</span>
+            <ol class="try-steps">
+              <li>Click <strong>Try with sample data</strong></li>
+              <li>Choose a procedure</li>
+              <li>Copy the finished email</li>
+            </ol>
           </div>
-          <div class="demo-body">
-            <div class="demo-top">
-              <span class="step-label">Email language</span>
-              <div class="seg" role="group" aria-label="Email language">
-                <button type="button" data-lang="es" aria-pressed="false">Español</button>
-                <button type="button" data-lang="en" aria-pressed="true">English</button>
+          <div class="demo">
+            <div class="demo-bar">
+              <span class="demo-tag">Live demo</span>
+              <div class="demo-bar-actions">
+                <button type="button" class="btn btn-primary btn-small pulse" id="eg-sample">Try with sample data</button>
+                <button type="button" class="btn btn-secondary btn-small" id="eg-reset" hidden>Start over</button>
               </div>
             </div>
-            <div class="eg-grid">
-              <div class="field"><label for="eg-name">Applicant name (optional)</label><input id="eg-name" type="text" autocomplete="off" placeholder="e.g. Emily Brown"></div>
-              <div class="field"><label for="eg-date">Appointment date</label><input id="eg-date" type="date"></div>
-            </div>
-            <div class="field">
-              <span class="step-label" id="eg-time-label">Time</span>
-              <div class="chip-btns" role="group" aria-labelledby="eg-time-label" id="eg-times">
-                <button type="button" class="chip-btn" data-time="10:00" aria-pressed="false">10:00</button>
-                <button type="button" class="chip-btn" data-time="10:45" aria-pressed="false">10:45</button>
-                <button type="button" class="chip-btn" data-time="11:30" aria-pressed="false">11:30</button>
-                <button type="button" class="chip-btn" data-time="12:15" aria-pressed="false">12:15</button>
-                <button type="button" class="chip-btn" data-time="other" aria-pressed="false">Other</button>
-                <span class="time-other" id="eg-other-wrap" hidden><label class="visually-hidden" for="eg-other">Other time</label><input class="chip-btn" id="eg-other" type="time"></span>
+            <div class="demo-body">
+              <div class="demo-top">
+                <span class="step-label">Email language</span>
+                <div class="seg" role="group" aria-label="Email language">
+                  <button type="button" data-lang="es" aria-pressed="false">Español</button>
+                  <button type="button" data-lang="en" aria-pressed="true">English</button>
+                </div>
               </div>
+              <div class="eg-grid">
+                <div class="field"><label for="eg-name">Applicant name (optional)</label><input id="eg-name" type="text" autocomplete="off" placeholder="e.g. Emily Brown"></div>
+                <div class="field"><label for="eg-date">Appointment date</label><input id="eg-date" type="date"></div>
+              </div>
+              <div class="field">
+                <span class="step-label" id="eg-time-label">Time</span>
+                <div class="chip-btns" role="group" aria-labelledby="eg-time-label" id="eg-times">
+                  <button type="button" class="chip-btn" data-time="10:00" aria-pressed="false">10:00</button>
+                  <button type="button" class="chip-btn" data-time="10:45" aria-pressed="false">10:45</button>
+                  <button type="button" class="chip-btn" data-time="11:30" aria-pressed="false">11:30</button>
+                  <button type="button" class="chip-btn" data-time="12:15" aria-pressed="false">12:15</button>
+                  <button type="button" class="chip-btn" data-time="other" aria-pressed="false">Other</button>
+                  <span class="time-other" id="eg-other-wrap" hidden><label class="visually-hidden" for="eg-other">Other time</label><input class="chip-btn" id="eg-other" type="time"></span>
+                </div>
+              </div>
+              <div class="field">
+                <span class="step-label">Procedure: click one to create the email</span>
+                <div class="proc-grid" id="eg-procs"></div>
+              </div>
+              <div class="preview" id="eg-preview"></div>
+              <p class="msg" id="eg-msg" aria-live="polite"></p>
             </div>
-            <div class="field">
-              <span class="step-label">Procedure: click one to create the email</span>
-              <div class="proc-grid" id="eg-procs"></div>
-            </div>
-            <div class="preview" id="eg-preview"></div>
-            <p class="msg" id="eg-msg" aria-live="polite"></p>
           </div>
-        </div>
-        <p class="demo-note">The real tool covers 17 procedures, including children's documents and urgent cases. The demo shows 4. Requirements are illustrative.</p>
+          <p class="demo-note">The real tool covers 17 procedures, including children's documents and urgent cases. The demo shows 4. Requirements are illustrative.</p>
+          </div>
+        </details>
       </div>
     </section>
 
     <section class="cs-block">
       <h2><span class="n">01</span>Problem</h2>
       <div class="cs-content">
-        <p>Confirmation emails were long blocks of unformatted text. Applicants didn't read them, so they arrived without the required documents and didn't reply with the information we asked for. Each email was also written by hand, checking requirements and retyping every detail.</p>
+        <p>Confirmation emails were long blocks of unformatted text. Applicants didn't read them, so they arrived without the required documents and didn't reply with the information we asked for. Each email was also copied from a Word template, pasted into the webmail, then reformatted and personalised by hand.</p>
       </div>
     </section>
 
     <section class="cs-block">
       <h2><span class="n">02</span>What I built</h2>
       <div class="cs-content">
-        <p>Staff choose the language (English or Spanish), the applicant's name, the date and the time, then click the procedure. The email, subject line included, is ready to paste into Outlook. Requirements appear as a short checklist, and the information we need back sits in its own box.</p>
-        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Requirements as a short checklist, generated in one click</strong> → no retyping for staff, and nothing for applicants to miss.</p></div>
+        <p>Staff choose the language (English or Spanish), the applicant's name, the date and the time, then click the procedure. The email, subject line included, is ready to paste into the webmail. Requirements appear as a short checklist, and the information we need back sits in its own box.</p>
+        <div class="decision"><span class="decision-label">Key decision</span><p><strong>Requirements as a short checklist, generated in one click</strong> → no copy-pasting or reformatting for staff, and nothing for applicants to miss.</p></div>
       </div>
     </section>
 
@@ -176,7 +258,7 @@
     </div>
     <div class="cs-cta-actions">
       <a class="btn btn-primary" href="index.html#contact">Get in touch</a>
-      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn btn-secondary" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
     </div>
   </div>
 </section>
@@ -194,7 +276,7 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=7"></script>
 <script>
 (function () {
   // All requirements are illustrative.
@@ -295,7 +377,7 @@
       '</div>';
   }
 
-  // Formatted version for pasting into Outlook (inline styles), plus a plain-text fallback
+  // Formatted version for pasting into the webmail (inline styles), plus a plain-text fallback
   function emailHtml() {
     var x = parts(), t = x.t;
     var when = val(x.longDate, t.date) + ' · ' + val(x.time, t.time);
@@ -335,7 +417,7 @@
     } else {
       window.copyText(text, btn, t.copied);
     }
-    msg.textContent = 'Email copied. Paste it into a new email in Outlook.';
+    msg.textContent = 'Email copied. Paste it into a new email in the webmail.';
   }
 
   function changed() {
@@ -354,7 +436,7 @@
     window.flash(preview);
     var missing = !dateEl.value || !(state.time === 'other' ? otherEl.value : state.time);
     msg.textContent = 'Email created for ' + TEXT.en.procs[state.proc].name + '.' +
-      (missing ? ' Choose a date and time to fill the highlighted gaps.' : ' Click Copy email to paste it into Outlook.');
+      (missing ? ' Choose a date and time to fill the highlighted gaps.' : ' Click Copy email to paste it into the webmail.');
     changed();
   });
 
@@ -418,6 +500,140 @@
 
   renderProcs();
   renderPreview();
+})();
+</script>
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function wait(ms) { return new Promise(function (r) { setTimeout(r, reduce ? 0 : ms); }); }
+  function $(id) { return document.getElementById(id); }
+  // phase: 0 name · 1 open calendar · 2 pick day · 3 pick time · 4 procedure · 5 copy · 6 done
+  var phase = 0, busy = false;
+
+  // October 2026 starts on a Thursday (Monday-first grid: 3 blanks)
+  var g = '<b>M</b><b>T</b><b>W</b><b>T</b><b>F</b><b>S</b><b>S</b><i></i><i></i><i></i>';
+  for (var d = 1; d <= 31; d++) g += '<span' + (d === 12 ? ' id="d12"' : '') + '>' + d + '</span>';
+  $('cal-grid').innerHTML = g;
+
+  function setStep(n, title, help) {
+    $('step-label').textContent = 'Step ' + n + ' of 3';
+    document.querySelectorAll('.dots span').forEach(function (d, i) { d.classList.toggle('on', i < n); });
+    $('scene-title').textContent = title; $('scene-help').textContent = help;
+  }
+  function tick(key) { var li = document.querySelector('[data-inc="' + key + '"]'); li.classList.add('done'); li.classList.remove('flash'); void li.offsetWidth; li.classList.add('flash'); }
+  function tapLabel(el, text, cls) { var old = el.querySelector(':scope > .tap'); if (old) old.remove(); if (text) el.insertAdjacentHTML('beforeend', '<span class="tap' + (cls ? ' ' + cls : '') + '" aria-hidden="true">' + text + '</span>'); }
+  function target(el, text, cls) { el.classList.add('target'); tapLabel(el, text, cls); }
+  function untarget(el) { el.classList.remove('target'); tapLabel(el, ''); }
+  function val(id) { return $(id).querySelector('.ival'); }
+
+  async function typeName() {
+    busy = true;
+    var f = $('f-name'); untarget(f); f.classList.add('active', 'typing');
+    var text = 'Emily Brown';
+    for (var i = 1; i <= text.length; i++) { val('f-name').textContent = text.slice(0, i); await wait(55 + Math.random() * 45); }
+    f.classList.remove('active', 'typing');
+    phase = 1;
+    $('scene-help').textContent = 'Next, the date. Click the date field to open the calendar.';
+    target($('f-date'), 'Click', 'inside');
+    busy = false;
+  }
+  function openCal() {
+    phase = 2;
+    var f = $('f-date'); untarget(f); f.classList.add('active');
+    $('cal').classList.add('open');
+    $('scene-help').textContent = 'Pick Monday 12 from the calendar.';
+    target($('d12'), 'Click', 'above');
+  }
+  async function pickDay() {
+    busy = true;
+    untarget($('d12')); $('d12').classList.add('target');
+    await wait(180);
+    $('cal').classList.remove('open'); $('d12').classList.remove('target');
+    $('f-date').classList.remove('active');
+    val('f-date').textContent = 'Mon 12 Oct 2026';
+    phase = 3;
+    $('scene-help').textContent = 'Last detail: the time. The usual slots are preset, so it is one click.';
+    target($('t1045'), 'Click', 'above');
+    busy = false;
+  }
+  function pickTime() {
+    var t = $('t1045'); untarget(t); t.classList.add('picked');
+    tick('details');
+    phase = 4;
+    setStep(2, 'Pick the procedure', 'Click the procedure. The generator adds the right requirements for it.');
+    $('scene-msg').textContent = 'Name, date and time are in. Nothing else to type.';
+    var b = $('p-both'); b.classList.remove('dim'); b.tabIndex = 0; target(b, 'Click');
+  }
+  async function pickProc() {
+    busy = true;
+    var b = $('p-both'); untarget(b); b.classList.add('picked');
+    $('mail-ph').classList.add('off');
+    var mail = $('mail'); mail.classList.add('on');
+    var parts = Array.prototype.slice.call(mail.children);
+    for (var i = 0; i < parts.length; i++) {
+      parts[i].classList.add('in');
+      if (parts[i].classList.contains('m-list')) tick('checklist');
+      if (parts[i].classList.contains('m-reply')) tick('reply');
+      await wait(110);
+    }
+    phase = 5;
+    setStep(3, 'Copy it into the webmail', 'One click copies the whole formatted email, subject line included.');
+    $('scene-msg').textContent = 'Compare it with the old email under Before vs after: the date stands out, the requirements are a short checklist, and what we need back has its own box.';
+    var c = $('copy'); c.classList.add('target'); c.tabIndex = 0; tapLabel($('copy-row'), 'Click');
+    busy = false;
+  }
+  async function copyMail() {
+    busy = true;
+    var c = $('copy'); tapLabel($('copy-row'), ''); c.classList.remove('target'); c.textContent = 'Copied ✓';
+    await wait(250);
+    $('mail').classList.add('fly');
+    $('outlook').classList.add('in');
+    await wait(450);
+    tick('outlook');
+    $('timebars').classList.add('show');
+    phase = 6;
+    $('scene-msg').innerHTML = 'Pasted into the webmail and ready to send: <strong>under 30 seconds</strong> instead of ~3–5 minutes copying and reformatting a Word template.';
+    $('replay').hidden = false; $('hint-btn').classList.add('show');
+    busy = false;
+  }
+
+  // One handler for the whole desk: the highlighted item or its pointer label runs the current step
+  $('stage').addEventListener('click', function (e) {
+    if (busy) return;
+    var on = function (sel) { return !!e.target.closest(sel); };
+    var onTap = on('.tap');
+    if (phase === 0 && (onTap || on('#f-name'))) typeName();
+    else if (phase === 1 && (onTap || on('#f-date'))) openCal();
+    else if (phase === 2 && (onTap || on('#d12'))) pickDay();
+    else if (phase === 3 && (onTap || on('#t1045'))) pickTime();
+    else if (phase === 4 && (onTap || on('#p-both'))) pickProc();
+    else if (phase === 5 && (onTap || on('#copy'))) copyMail();
+  });
+  $('replay').addEventListener('click', reset);
+  // The "Click here" label does the same as the button it points at
+  $('hint-btn').addEventListener('click', function () {
+    var b = Array.prototype.filter.call(document.querySelectorAll('.scene-actions .btn'), function (x) { return !x.hidden; })[0];
+    if (b) b.click();
+  });
+
+  function reset() {
+    phase = 0; busy = false;
+    ['f-name', 'f-date'].forEach(function (id) { val(id).textContent = ''; var f = $(id); f.className = 'inp'; tapLabel(f, ''); });
+    $('cal').classList.remove('open'); untarget($('d12'));
+    document.querySelectorAll('.tchip').forEach(function (t) { t.className = 'tchip'; tapLabel(t, ''); });
+    document.querySelectorAll('.proc').forEach(function (p) { p.className = 'proc dim'; p.tabIndex = -1; tapLabel(p, ''); });
+    $('mail-ph').classList.remove('off');
+    var mail = $('mail'); mail.className = 'mail'; Array.prototype.forEach.call(mail.children, function (x) { x.classList.remove('in'); });
+    tapLabel($('copy-row'), ''); var c = $('copy'); c.className = 'm-copy'; c.textContent = 'Copy email'; c.tabIndex = -1;
+    $('outlook').classList.remove('in');
+    document.querySelectorAll('.includes li').forEach(function (li) { li.classList.remove('done', 'flash'); });
+    $('timebars').classList.remove('show');
+    $('replay').hidden = true; $('hint-btn').classList.remove('show');
+    setStep(1, 'Fill in the booking', 'Emily Brown booked ID + passport for Monday 12 October at 10:45. Click the name field to type her name.');
+    $('scene-msg').textContent = '';
+    target($('f-name'), 'Click to type', 'inside');
+  }
+  reset();
 })();
 </script>
 </body>
