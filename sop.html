@@ -3,25 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF7FA">
 <title>Standard Operating Procedure · Carolina Pagliano</title>
-<meta name="description" content="One page that runs the whole document workflow, from daily intake to collection.">
+<meta name="description" content="One page that runs document tracking, from daily intake to collection.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Standard Operating Procedure · Carolina Pagliano">
-<meta property="og:description" content="One page that runs the whole document workflow, from daily intake to collection.">
+<meta property="og:description" content="One page that runs document tracking, from daily intake to collection.">
 <meta property="og:image" content="https://caritopagliano.github.io/images/og-banner.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://caritopagliano.github.io/sop.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Standard Operating Procedure · Carolina Pagliano">
-<meta name="twitter:description" content="One page that runs the whole document workflow, from daily intake to collection.">
+<meta name="twitter:description" content="One page that runs document tracking, from daily intake to collection.">
 <meta name="twitter:image" content="https://caritopagliano.github.io/images/og-banner.png?v=2">
 <link rel="icon" type="image/png" href="images/favicon.png?v=2">
 <link rel="apple-touch-icon" href="images/favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="redesign.css?v=8">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -42,7 +44,8 @@
       <a class="back" href="index.html#work"><span aria-hidden="true">←</span> All work</a>
       <p class="eyebrow">Case study 05 of 05</p>
       <h1>Standard Operating Procedure (SOP)</h1>
-      <p class="lede">One page that runs the whole document workflow.</p>
+      <p class="lede">One page that runs document tracking, from daily intake to collection.</p>
+      <ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 to 05 after it"><li><a href="triage.html"><i>01</i><span>Triage</span></a></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li class="on" aria-current="page"><i>05</i><span>SOP</span></li></ol>
       <dl class="glance" aria-label="At a glance">
         <div><dt>Problem</dt><dd>Process knowledge lived in people's heads, with no single view of where each document was.</dd></div>
         <div><dt>Built</dt><dd>A one-page SOP that follows each document's journey and names the tool for every step.</dd></div>
@@ -56,7 +59,7 @@
     <section class="cs-block cs-try wide">
       <h2>The process</h2>
       <div class="cs-content">
-        <p>Walk through the SOP stage by stage, the way a new colleague would, and follow one case from payment to collection.</p>
+        <p>The SOP covers everything after the appointment. Walk through it stage by stage and follow one case to collection.</p>
         <div class="sim sop-sim">
           <section class="scene-card" aria-label="Simulation">
             <div class="step-row">
@@ -73,7 +76,7 @@
                 <div class="doc" id="doc">
                   <div class="doc-head"><b>Standard Operating Procedure</b><span>1 page</span></div>
                   <div class="blk"><div class="blk-top"><span class="num"><i>1</i></span><b>Daily intake</b><span class="tags"><span>Formatter</span><span class="tab">Case Tracking</span></span></div>
-                    <div class="blk-body"><ol><li>Load the daily payments report into the Formatter.</li><li>Confirm any flagged cases.</li><li>Paste the rows into the first empty row of Case Tracking.</li></ol><div class="rule"><b>Rule:</b> nothing goes into the tracker unchecked.</div></div></div>
+                    <div class="blk-body"><ol><li>Load the daily intake report into the Formatter.</li><li>Confirm any flagged cases.</li><li>Paste the rows into the first empty row of Case Tracking.</li></ol><div class="rule"><b>Rule:</b> nothing goes into the tracker unchecked.</div></div></div>
                   <div class="blk"><div class="blk-top"><span class="num"><i>2</i></span><b>Desk review</b><span class="tags"><span>Tracker</span><span class="tab">Case Tracking</span></span></div>
                     <div class="blk-body"><ol><li>Add the final ID number when a temporary one is replaced.</li><li>Add the applicant's email for the arrival notice.</li></ol><div class="rule"><b>Rule:</b> formula columns are locked. Never type over them.</div></div></div>
                   <div class="blk"><div class="blk-top"><span class="num"><i>3</i></span><b>Delivery arrives</b><span class="tags"><span>Barcode scanner</span><span class="tab">Delivery Arrival</span></span></div>
@@ -102,7 +105,7 @@
             <div class="case-status">
               <small>Status in the tracker</small>
               <span class="case-pill" id="pill">Not in the tracker yet</span>
-              <div class="case-what" id="what">She has just paid for her documents.</div>
+              <div class="case-what" id="what">She has just had her appointment.</div>
             </div>
             <a class="case-link" id="link" href="#" hidden></a>
           </section>
@@ -173,7 +176,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=7"></script>
+<script src="site.js?v=8"></script>
 <script>
 (function () {
   function $(id) { return document.getElementById(id); }
@@ -236,7 +239,7 @@
     $('scene-help').textContent = 'Go through the four stages in order, and follow one case.';
     $('scene-msg').textContent = '';
     var pill = $('pill'); pill.textContent = 'Not in the tracker yet'; pill.className = 'case-pill';
-    $('what').textContent = 'She has just paid for her documents.';
+    $('what').textContent = 'She has just had her appointment.';
     $('link').hidden = true;
     $('next').hidden = false; $('next').textContent = 'Start';
     $('replay').hidden = true;

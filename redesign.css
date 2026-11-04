@@ -1,0 +1,87 @@
+/* Case study page style. Loaded after styles.css, it only restyles: no content changes.
+   Same language as home-redesign.html: hairline borders instead of soft shadows, one small radius,
+   Plex Mono "case file" labels, the pipeline stations, slips and the collection-slip contact band. */
+
+:root {
+  --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --radius: 6px;
+  --radius-sm: 4px;
+  --shadow: none;
+  --shadow-hover: none;
+}
+body { font-family: var(--font-body); }
+a, button, summary { touch-action: manipulation; }
+
+/* No fade-up on every block: motion is kept for the simulations */
+.reveal, .reveal.is-pending { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+
+/* Labels become "case file" labels */
+.eyebrow, .step-label, .demo-tag, .glance dt, .decision-label, .cs-pager a span, .cs-meta dt {
+  font-family: var(--font-mono) !important; font-weight: 500 !important; letter-spacing: .08em; text-transform: uppercase;
+}
+
+/* ---------- Case header ---------- */
+.cs-hero {
+  border-bottom: 1px solid var(--line-strong);
+  background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 28px 28px; background-position: -1px -1px;
+}
+.cs-hero .wrap { position: relative; }
+.cs-hero h1 { font-size: clamp(2.6rem, 1.6rem + 3.6vw, 4.4rem); line-height: 1.02; letter-spacing: -.02em; }
+.cs-hero .eyebrow { display: table; margin-top: 24px; padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); color: var(--primary); font-size: .72rem; }
+.back { font-family: var(--font-mono); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; }
+
+/* Where this tool sits in the workflow: the homepage pipeline, small */
+.mini-pipe { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.mini-pipe li { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 5px 6px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--surface); font-size: .84rem; color: var(--muted); }
+.mini-pipe li + li::before { content: ""; width: 14px; height: 2px; margin-left: -20px; margin-right: 4px; background: var(--line-strong); }
+.mini-pipe a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.mini-pipe a:hover { color: var(--primary); }
+.mini-pipe i { font: 600 .66rem var(--font-mono); font-style: normal; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line-strong); color: var(--muted); }
+.mini-pipe li.on { border-color: var(--primary); color: var(--heading); font-weight: 600; background: var(--primary-soft); }
+.mini-pipe li.on i { background: var(--primary); border-color: var(--primary); color: #fff; }
+@media (max-width: 640px) { .mini-pipe li:not(.on) span { display: none; } .mini-pipe li + li::before { width: 8px; margin-left: -12px; } }
+
+/* At a glance becomes a slip with a tear line */
+.glance { position: relative; border: 1px solid var(--line-strong) !important; border-radius: var(--radius) !important; box-shadow: none !important; background: var(--surface); padding-left: 14px; }
+.glance::before { content: ""; position: absolute; left: 8px; top: 12px; bottom: 12px; border-left: 2px dashed var(--line-strong); }
+.glance dt { font-size: .68rem; }
+.glance .glance-result { background: var(--primary-soft); position: relative; }
+
+/* ---------- Sections: numbered stations ---------- */
+.cs-block { border-top: 1px solid var(--line-strong); }
+.cs-block h2 { align-items: center; gap: 14px; }
+.cs-block h2 .n { flex: none; display: inline-grid; place-items: center; width: 38px; height: 38px; border: 2px solid var(--primary); border-radius: 50%; background: var(--bg); font-size: .72rem !important; color: var(--primary) !important; }
+.decision { border: 0 !important; border-left: 4px solid var(--primary) !important; border-radius: 4px !important; background: var(--primary-soft) !important; box-shadow: none !important; }
+.result-callout { position: relative; justify-self: start; padding: 16px 22px 16px 28px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); }
+.result-callout::before { content: ""; position: absolute; left: 10px; top: 10px; bottom: 10px; border-left: 2px dashed var(--line-strong); }
+.chips .chip { padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: transparent; color: var(--muted); font: 500 .74rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; }
+
+/* Cards and panels: hairlines, no soft shadows */
+.scene-card, .tracker-card, .demo, .try-more, .sheet, .legend li, .badge { box-shadow: none !important; border-color: var(--line-strong) !important; }
+.try-more > summary { font-family: var(--font-body); }
+
+/* ---------- "Want this kind of thinking on your team?" as the collection slip ---------- */
+.cs-cta { background: var(--band-bg); color: var(--band-fg); border-top: 0; }
+.cs-cta-inner { margin-block: clamp(32px, 5vw, 56px); padding: clamp(24px, 4vw, 40px) !important; border: 1px solid var(--band-line); border-radius: var(--radius); }
+.cs-cta h2 { color: var(--band-fg); }
+.cs-cta p { color: var(--band-muted); }
+.cs-cta-actions { position: relative; padding-left: 28px; border-left: 2px dashed var(--band-line); }
+@media (max-width: 760px) { .cs-cta-actions { padding-left: 0; padding-top: 20px; border-left: 0; border-top: 2px dashed var(--band-line); width: 100%; } }
+.cs-cta .btn-primary { background: var(--band-btn-bg); color: var(--band-btn-fg); }
+.cs-cta .btn-secondary { background: transparent; color: var(--band-fg); border-color: var(--band-line); }
+.cs-cta .btn-secondary:hover { border-color: var(--band-fg); }
+
+/* ---------- Previous / Next as stations ---------- */
+.cs-pager { background: var(--bg); border-top: 1px solid var(--line-strong); }
+.cs-pager a { padding: 14px 18px !important; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); transition: border-color .2s, transform .2s; }
+.cs-pager a:hover { border-color: var(--primary); }
+.cs-pager .prev:hover { transform: translateX(-3px); }
+.cs-pager .next:hover { transform: translateX(3px); }
+.cs-pager a span { font-size: .68rem !important; }
+
+/* Two groups in the pipeline strip: before the appointment (01–02) and after it (03–05) */
+.mini-pipe li:nth-child(3) { margin-left: 24px; }
+.mini-pipe li:nth-child(3)::before { width: 0; height: 22px; margin-left: -20px; margin-right: 10px; background: none; border-left: 2px dashed var(--line-strong); }
+@media (max-width: 640px) { .mini-pipe li:nth-child(3) { margin-left: 16px; } .mini-pipe li:nth-child(3)::before { margin-left: -14px; margin-right: 6px; } }

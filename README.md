@@ -12,7 +12,7 @@ The case studies follow a document's real journey:
 4. **Master Tracker** (`tracker.html`)
 5. **Standard Operating Procedure** (`sop.html`)
 
-The homepage flow diagram shows Triage → Email Generator → Formatter → Tracker, with the SOP underneath as the guide that ties every stage together. Each case study page has the same five sections (Problem · What I built · How it works · Result · Built with) and Previous / Next links in this order.
+The homepage shows the tools as one pipeline in two groups: **Before the appointment** (Triage, Email Generator) and **After the appointment · document tracking** (Formatter, Tracker, and the SOP as the guide for those two). Each case study page has the same five sections (Problem · What I built · How it works · Result · Built with) and Previous / Next links in this order.
 
 ## Demo pattern
 
@@ -34,20 +34,21 @@ Site-wide: case study pages always open at the top, and a round **Back to top** 
 
 Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the simulation, with the live demo in a closed bar underneath where there is one) → 01 Problem → 02 What I built (with a Key decision box) → 03 Result → 04 Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
 
-Plain words are used instead of consular jargon: "daily payments report", "document delivery", "temporary ID number", "check their details".
+Plain words are used instead of consular jargon: "daily intake report", "document delivery", "temporary ID number", "check their details".
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `index.html` | Homepage: hero, work (flow diagram + 5 cards), about, contact |
+| `index.html` | Homepage: hero with "One document's journey" (plays once, then Replay), results as tear-off slips, work as one pipeline in two groups, about (photo card + outside-work pills), contact as a collection slip. Its page-specific styles are inline in the file |
 | `triage.html` | Two demos. First, an animated simulation: three applicants (Emily Brown, James Taylor, Grace Miller) answer on a phone; the visitor taps the highlighted answer and the matching path (Book online · Book online + bring extra proof · Email us first) lights up with their name. On phones the applicant sits above a larger phone. Below it, "Now try it yourself": the bilingual (EN / ES) guide with example buttons, where visitors answer the questions themselves |
 | `email-generator.html` | Two demos. First, an animated simulation: the visitor types the applicant's name (optional), picks the date from a calendar and the time from preset slots, picks "ID + passport", and copies the finished email into a webmail window. Beside it, "Before vs after": the old email (copied from a Word template and reformatted) next to what the generator includes, and the time per email (~3–5 min vs under 30 sec). Below it, "Now try it yourself": a live demo that starts empty. Sample data fills Emily Brown, a date, 10:45 and "ID + passport". Clicking a procedure creates the email; a separate **Copy email** button copies it (formatted for the webmail, with a plain-text fallback). Missing date or time shows highlighted placeholders |
 | `formatter.html` | Two demos. First, an animated simulation beside a small Excel tracker: the visitor loads the PDF report, clicks Format, adds the final ID number for a flagged temporary ID (warning, error and fixed alerts), copies the rows and pastes them into the tracker, where the Status column fills in by itself. Below it, "Now try it yourself": a live demo that loads a fictional daily payments report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Works out which documents are expected from the fees paid, flags a temporary ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
 | `tracker.html` | Live demo: an animated simulation beside the tracker. Each click plays one step: open the delivery bag (four envelopes land on the desk), click the barcode scanner to scan each envelope (a red line flashes, the matching tracker row updates and flashes; one envelope is not in the records and is set aside), then scan an applicant's signed slip to mark the case collected. A bouncing pointer always shows what to click next. Links to a Google Sheets version |
-| `prototype/` | Work-in-progress simulations (`tracker-sim.html`, `triage-sim.html`, `email-sim.html`, `formatter-sim.html`, `sop-sim.html`). Not linked from the site |
+| `prototype/` | Not linked from the site, don't upload. Simulation prototypes, `saved-redesign-2026-11-04/` (the approved redesign), `home-mix.html` (passport-touch variant), and `live-before-redesign/` (the site as it was before the redesign) |
 | `sop.html` | Animated simulation: the one-page SOP on the left. Each **Next stage** click opens one stage (its steps, tool, tab and rule) and fades the others. On the right, one fictional case (Emily Brown) moves from "Not in the tracker yet" to On track, Ready to collect and Archived, with a link to that stage's tool page |
-| `styles.css` | All styles. Colour tokens at the top, with light and dark mode. Demo components are at the end of the file |
+| `styles.css` | Shared styles. Colour tokens at the top, with light and dark mode. Demo components and simulations are at the end of the file |
+| `redesign.css` | Case study page style, loaded after `styles.css`: hairline borders, mono "case file" labels, the pipeline strip, slips and the collection-slip band |
 | `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
 | `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is only used on the homepage card now), `monogram-cp.png`, plus: |
 | `images/photo.jpg` | About section photo (shown at 4:5, cropped with `object-fit: cover`) |

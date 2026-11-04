@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF7FA">
 <title>Carolina Pagliano · Operations &amp; Process Improvement</title>
 <meta name="description" content="Operations professional in London who builds simple, AI-assisted tools that replace manual work.">
 <meta property="og:type" content="website">
@@ -20,8 +21,127 @@
 <link rel="apple-touch-icon" href="images/favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css?v=8">
+<style>
+  /* Redesign prototype: three families only (Instrument Serif headings, Instrument Sans text, Plex Mono "case" labels),
+     hairline borders instead of soft shadows, one small corner radius, and the document's journey as the visual language. */
+  :root { --font-body: "Instrument Sans", "Segoe UI", system-ui, sans-serif; --r: 6px; }
+  body { font-family: var(--font-body); }
+  a, button { touch-action: manipulation; }
+  .mono { font-family: var(--font-mono); font-size: .74rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .grid-paper { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 28px 28px; background-position: -1px -1px; }
+
+  /* ---------- Hero ---------- */
+  .x-hero { padding-block: clamp(40px, 7vw, 88px) clamp(40px, 6vw, 72px); }
+  .x-hero .wrap { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 980px) { .x-hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 56px; } }
+  .x-hero h1 { font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.4rem); line-height: 1.02; letter-spacing: -.02em; margin-top: 14px; }
+  .x-hero h1 em { font-style: italic; color: var(--primary); }
+  .x-hero .hero-sub { margin-top: 22px; }
+  .x-hero .hero-actions { margin-top: 28px; }
+
+  /* The journey: one case moving through the five stages, once, then it stops */
+  .journey { position: relative; border: 1px solid var(--line-strong); border-radius: var(--r); background-color: var(--surface); overflow: hidden; }
+  .journey-top { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface); }
+  .journey-body { position: relative; padding: 26px 18px 18px; }
+  .j-line { position: absolute; left: 34px; top: 40px; bottom: 74px; width: 2px; background: var(--line-strong); }
+  .j-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: var(--primary); transition: height .6s ease; }
+  .j-stations { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; position: relative; }
+  .j-st { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; }
+  .j-dot { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--line-strong); background: var(--surface); display: grid; place-items: center; font: 600 .74rem var(--font-mono); color: var(--muted); transition: background-color .3s, border-color .3s, color .3s; z-index: 1; }
+  .j-st b { display: block; color: var(--heading); font-size: .98rem; }
+  .j-st span.j-when { font-size: .82rem; color: var(--muted); }
+  .j-tag { font: 500 .7rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border: 1px solid transparent; border-radius: 4px; color: transparent; transition: color .3s, border-color .3s, background-color .3s; white-space: nowrap; }
+  .j-st.done .j-dot { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .j-st.now .j-dot { border-color: var(--primary); color: var(--primary); box-shadow: 0 0 0 5px var(--primary-soft); }
+  .j-st.done .j-tag, .j-st.now .j-tag { color: var(--primary); border-color: var(--line-strong); background: var(--primary-soft); }
+  .j-sop { margin-top: 16px; display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px dashed var(--primary); border-radius: var(--r); color: var(--heading); font-size: .9rem; transition: background-color .3s; }
+  .j-sop.on { background: var(--primary-soft); }
+  .j-sop .j-dot { width: 26px; height: 26px; font-size: .66rem; }
+  .j-env { position: absolute; right: 18px; top: 18px; padding: 7px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--surface); box-shadow: 0 6px 14px rgb(var(--shadow-c) / .12); font: 500 .7rem/1.35 var(--font-mono); color: var(--ink); text-align: right; transition: transform .6s cubic-bezier(.4,.1,.2,1); }
+  .j-env b { display: block; font-family: var(--font-body); font-size: .84rem; color: var(--heading); }
+  .j-replay { font: 600 .82rem var(--font-body); color: var(--primary); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .j-replay[hidden] { display: none; }
+
+  @media (max-width: 520px) { .j-st { grid-template-columns: 34px 1fr; } .j-tag { grid-column: 2; justify-self: start; margin-top: -4px; } }
+
+  /* ---------- Stats as tear-off slips ---------- */
+  .tslips { list-style: none; margin: 44px 0 0; padding: 0; display: grid; gap: 14px; grid-column: 1 / -1; }
+  @media (min-width: 760px) { .tslips { grid-template-columns: repeat(3, 1fr); } }
+  .tslip { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; padding: 16px 18px 16px 22px; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); }
+  .tslip::before { content: ""; position: absolute; left: 8px; top: 10px; bottom: 10px; border-left: 2px dashed var(--line-strong); }
+  .tslip .mono { grid-column: 1 / -1; }
+  .tslip .was { font: 500 1.05rem var(--font-body); color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); text-decoration-thickness: 2px; align-self: end; }
+  .tslip .was.blank { text-decoration: none; min-height: 1.3em; }
+  .tslip .now { font: 700 1.5rem/1.1 var(--font-body); color: var(--heading); font-variant-numeric: tabular-nums; }
+  .tslip .stamp { align-self: center; justify-self: end; grid-row: 2 / span 2; grid-column: 2; padding: 4px 8px; border: 2px solid var(--primary); border-radius: 4px; color: var(--primary); font: 600 .66rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; transform: rotate(-6deg); }
+  .tslip .what { grid-column: 1 / -1; font-size: .86rem; color: var(--muted); }
+
+  /* ---------- Work: one pipeline instead of a diagram + five cards ---------- */
+  .x-work { padding-block: clamp(56px, 8vw, 104px); border-top: 1px solid var(--line); }
+  .x-work .section-head { max-width: 760px; }
+  .x-work .intro + .intro { margin-top: 12px; }
+  .tags-row { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .tags-row li { padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 4px; font: 500 .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+  .pipe { list-style: none; margin: 48px 0 0; padding: 0; position: relative; }
+  .pipe::before { content: ""; position: absolute; left: 21px; top: 30px; bottom: 30px; width: 2px; background: var(--line-strong); }
+  .pipe > li + li { margin-top: 14px; }
+  .stn-row { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; align-items: center; color: inherit; text-decoration: none; }
+  .stn-dot { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--primary); background: var(--bg); display: grid; place-items: center; font: 600 .8rem var(--font-mono); color: var(--primary); z-index: 1; transition: background-color .2s, color .2s; }
+  .stn-card { display: grid; gap: 14px; padding: 18px 20px; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); transition: border-color .2s, transform .2s; }
+  @media (min-width: 900px) { .stn-card { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 190px; align-items: center; gap: 24px; } }
+  .stn-row:hover .stn-card, .stn-row:focus-visible .stn-card { border-color: var(--primary); transform: translateX(4px); }
+  .stn-row:hover .stn-dot, .stn-row:focus-visible .stn-dot { background: var(--primary); color: #fff; }
+  .stn-row:focus-visible { outline: none; }
+  .stn-row:focus-visible .stn-card { box-shadow: 0 0 0 3px var(--primary-soft); }
+  .stn-name h3 { font-size: 1.2rem; margin-top: 4px; }
+  .stn-name p { margin-top: 6px; color: var(--muted); font-size: .94rem; }
+  .stn-result { display: grid; gap: 4px; padding-left: 14px; border-left: 2px solid var(--accent-deco); }
+  .stn-result strong { color: var(--heading); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+  .stn-result em { font-style: normal; color: var(--muted); font-size: .88rem; }
+  .stn-img { display: none; }
+  @media (min-width: 900px) { .stn-img { display: block; width: 190px; height: 107px; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; } }
+  .stn-go { font-weight: 600; color: var(--primary); font-size: .9rem; }
+  .pipe li.is-sop .stn-card { border-style: dashed; border-color: var(--primary); background: var(--primary-soft); }
+  .pipe li.is-sop .stn-dot { border-style: dashed; }
+  .pipe li.grp { position: relative; z-index: 1; margin: 26px 0 10px 56px; }
+  .pipe li.grp:first-child { margin-top: 0; }
+  .pipe li.grp .mono { display: inline-block; padding: 3px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--bg); color: var(--primary); }
+  .demo-disclaimer { margin-top: 22px; }
+
+  /* ---------- About ---------- */
+  .x-about { padding-block: clamp(56px, 8vw, 104px); border-top: 1px solid var(--line); }
+  .x-about .wrap { display: grid; gap: 36px; align-items: start; }
+  @media (min-width: 900px) { .x-about .wrap { grid-template-columns: 300px minmax(0, 1fr); gap: 56px; } }
+  .badge-card { border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); overflow: hidden; }
+  .badge-card img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-bottom: 1px solid var(--line); }
+  .badge-card dl { margin: 0; padding: 14px 16px; display: grid; gap: 8px; }
+  .badge-card dl div { display: grid; grid-template-columns: 92px 1fr; gap: 8px; font-size: .88rem; }
+  .badge-card dt { font: 500 .68rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .badge-card dd { margin: 0; color: var(--ink); }
+  .x-about h2 { margin-top: 10px; }
+  .x-about .about-text p + p { margin-top: 14px; }
+  .x-about .about-text > p { color: var(--ink); }
+  .x-about .outside { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .x-about .outside-chip { border-color: var(--line-strong); }
+  .x-about .badges { margin-top: 20px; }
+
+  /* ---------- Contact as the collection slip ---------- */
+  .x-contact { padding-block: clamp(56px, 8vw, 96px); background: var(--band-bg); color: var(--band-fg); }
+  .collect { display: grid; border: 1px solid var(--band-line); border-radius: var(--r); overflow: hidden; }
+  @media (min-width: 900px) { .collect { grid-template-columns: minmax(0, 1fr) 340px; } }
+  .collect-main { padding: clamp(24px, 4vw, 44px); display: grid; gap: 14px; align-content: start; }
+  .collect-main .mono, .collect-stub .mono { color: var(--band-muted); }
+  .collect-main h2 { color: var(--band-fg); font-size: clamp(2.2rem, 1.6rem + 2vw, 3.2rem); }
+  .collect-main p { color: var(--band-muted); }
+  .collect-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .collect-stub { position: relative; padding: clamp(24px, 4vw, 44px) 28px; display: grid; gap: 12px; align-content: center; background: rgba(255,255,255,.06); border-top: 2px dashed var(--band-line); }
+  @media (min-width: 900px) { .collect-stub { border-top: 0; border-left: 2px dashed var(--band-line); } }
+  .collect-stub .email-text { font-size: 1.05rem; font-weight: 600; color: var(--band-fg); overflow-wrap: anywhere; }
+  .collect-stub .barcode { height: 34px; background: repeating-linear-gradient(90deg, var(--band-fg) 0 2px, transparent 2px 4px, var(--band-fg) 4px 5px, transparent 5px 8px, var(--band-fg) 8px 11px, transparent 11px 12px); opacity: .55; border-radius: 2px; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -39,121 +159,100 @@
 
 <main id="main">
 
-  <!-- 1. HERO -->
-  <section class="hero" id="top">
+  <!-- 1. HERO: the claim on the left, the document's journey on the right -->
+  <section class="x-hero" id="top">
     <div class="wrap">
-      <p class="eyebrow">Operations · BizOps &amp; PMO · London</p>
-      <h1>I find the manual work that slows teams down, and build <em class="hl">simple tools</em> to replace it.</h1>
-      <p class="hero-sub">Operations professional with 10+ years of international experience across consular, public sector, legal and facilities roles. Currently leading the Passport Section at the Consulate of Argentina in London.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#work">See my work</a>
-        <a class="btn btn-secondary" href="#contact">Get in touch</a>
+      <div>
+        <p class="mono">Operations · BizOps &amp; PMO · London</p>
+        <h1>I find the manual work that slows teams down, and build <em>simple tools</em> to replace it.</h1>
+        <p class="hero-sub">Operations professional with 10+ years of international experience across consular, public sector, legal and facilities roles. Currently leading the Passport Section at the Consulate of Argentina in London.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#work">See my work</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
       </div>
-      <ul class="stats" aria-label="Key numbers">
-        <li class="stat"><span class="stat-value">~4&nbsp;hrs <span class="arrow" aria-label="down to">→</span> under&nbsp;30&nbsp;min</span><span class="stat-label">to process each delivery of up to 200 documents (ID cards and passports)</span></li>
-        <li class="stat"><span class="stat-value">4 tools + 1 SOP</span><span class="stat-label">used daily by the team</span></li>
-        <li class="stat"><span class="stat-value">~3–5&nbsp;min <span class="arrow" aria-label="down to">→</span> under&nbsp;30&nbsp;sec</span><span class="stat-label">per confirmation email</span></li>
+
+      <figure class="journey" aria-label="One document's journey through the five tools">
+        <div class="journey-top"><span class="mono">One document's journey · Case 700000142</span><button type="button" class="j-replay" id="j-replay" hidden>Replay</button></div>
+        <div class="journey-body grid-paper">
+          <div class="j-line" aria-hidden="true"><div class="j-fill" id="j-fill"></div></div>
+          <ol class="j-stations" id="j-stations">
+            <li class="j-st"><span class="j-dot">01</span><div><b>Triage</b><span class="j-when">Before booking</span></div><span class="j-tag">Checked</span></li>
+            <li class="j-st"><span class="j-dot">02</span><div><b>Email Generator</b><span class="j-when">Booking confirmed</span></div><span class="j-tag">Email sent</span></li>
+            <li class="j-st"><span class="j-dot">03</span><div><b>Formatter</b><span class="j-when">Daily intake</span></div><span class="j-tag">In the tracker</span></li>
+            <li class="j-st"><span class="j-dot">04</span><div><b>Tracker</b><span class="j-when">Arrival to collection</span></div><span class="j-tag">Collected</span></li>
+          </ol>
+          <div class="j-sop" id="j-sop"><span class="j-dot">05</span><span><b>SOP</b> · the guide for Formatter and Tracker</span></div>
+        </div>
+      </figure>
+
+      <ul class="tslips" aria-label="Key numbers">
+        <li class="tslip"><span class="mono">Each delivery · up to 200 documents</span><span class="was">~4&nbsp;hrs</span><span class="stamp">Faster</span><span class="now">under 30&nbsp;min</span></li>
+        <li class="tslip"><span class="mono">Built and handed over</span><span class="was blank" aria-hidden="true"></span><span class="stamp">In daily use</span><span class="now">4 tools + 1 SOP</span></li>
+        <li class="tslip"><span class="mono">Each confirmation email</span><span class="was">~3–5&nbsp;min</span><span class="stamp">Faster</span><span class="now">under 30&nbsp;sec</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- 2. BODY OF WORK -->
-  <section class="section section--soft" id="work">
+  <!-- 2. WORK: the five case studies as stations on one line -->
+  <section class="x-work" id="work">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Work</p>
+      <div class="section-head">
+        <p class="mono">Work</p>
         <h2>A document workflow, rebuilt</h2>
-        <p class="intro">I spotted where our document workflow was losing time and designed a simpler process. I had to work with the resources already available, so every tool was designed around the office's limits, not the other way round.</p>
-        <p class="intro">I then built it as four connected tools and a one-page SOP, using generative AI. Together they cover every stage of a document's life, from booking to collection.</p>
-        <p class="intro">I walked my colleague through each tool and handed over the SOP to follow step by step. We switched over quickly, and we both use them every day.</p>
-        <ul class="role-strip" aria-label="My role"><li>Self-initiated</li><li>Designed and built by me</li><li>AI-assisted build</li><li>Whole workflow built in ~1 week</li><li>In daily use</li></ul>
+        <p class="intro">I spotted where our document workflow was losing time and designed a simpler process. I had to work with the resources already available, so every tool was designed around the office’s limits, not the other way round.</p>
+        <p class="intro">I then built it as four connected tools and a one-page SOP, using generative AI. Together they cover every stage of a document’s life, from booking to collection.</p>
+        <ul class="tags-row" aria-label="My role"><li>Self-initiated</li><li>Designed and built by me</li><li>AI-assisted build</li><li>Built in ~1 week</li><li>In daily use</li></ul>
       </div>
 
-      <div class="flow reveal" role="figure" aria-label="How the four tools and the SOP connect: Triage before booking, Email Generator once booking is confirmed, Formatter for daily intake, Tracker from arrival to collection, with the SOP as the guide for every stage">
-        <p class="flow-title">How the tools connect</p>
-        <ol class="flow-steps">
-          <li class="flow-step"><div class="flow-box"><span class="flow-num">01</span><span class="flow-name">Triage</span><span class="flow-desc">Before booking</span></div></li>
-          <li class="flow-step"><div class="flow-box"><span class="flow-num">02</span><span class="flow-name">Email Generator</span><span class="flow-desc">Booking confirmed</span></div></li>
-          <li class="flow-step"><div class="flow-box"><span class="flow-num">03</span><span class="flow-name">Formatter</span><span class="flow-desc">Daily intake</span></div></li>
-          <li class="flow-step"><div class="flow-box"><span class="flow-num">04</span><span class="flow-name">Tracker</span><span class="flow-desc">Arrival to collection</span></div></li>
-        </ol>
-        <div class="flow-tie" aria-hidden="true"></div>
-        <div class="flow-sop"><div class="flow-box"><span class="flow-num">05</span><span class="flow-name">SOP</span><span class="flow-desc">The guide for every stage</span></div></div>
-      </div>
-
-      <div class="cards">
-        <article class="card reveal">
-          <img class="card-img" src="images/01-triage.png" alt="Illustration of the triage tool" width="1600" height="900" loading="lazy">
-          <div class="card-body">
-            <span class="flow-num">01</span>
-            <h3>Self-Service Triage Tool</h3>
-            <p>A bilingual guide that sends applicants down the right path before they book.</p>
-            <div class="card-metric"><span>Key result</span><strong>Checked before they book</strong></div>
-            <a class="card-link" href="triage.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <img class="card-img" src="images/02-email-generator.png" alt="Illustration of the email generator, showing an old email beside the new formatted one" width="1600" height="900" loading="lazy">
-          <div class="card-body">
-            <span class="flow-num">02</span>
-            <h3>Confirmation Email Generator</h3>
-            <p>A clearly formatted confirmation email, ready to paste in one click.</p>
-            <div class="card-metric"><span>Key result</span><strong>~3–5 min → under 30 sec per email</strong></div>
-            <a class="card-link" href="email-generator.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <img class="card-img" src="images/03-formatter.png" alt="Illustration of the formatter" width="1600" height="900" loading="lazy">
-          <div class="card-body">
-            <span class="flow-num">03</span>
-            <h3>Data Formatter</h3>
-            <p>Turns the daily payments report into clean rows for the tracker.</p>
-            <div class="card-metric"><span>Key result</span><strong>Daily intake in seconds</strong></div>
-            <a class="card-link" href="formatter.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <img class="card-img" src="images/04-tracker.png" alt="Illustration of the master tracker" width="1600" height="900" loading="lazy">
-          <div class="card-body">
-            <span class="flow-num">04</span>
-            <h3>Master Tracker</h3>
-            <p>A barcode-scanned workbook that flags delays, so the team tracks cases proactively instead of reacting to enquiries.</p>
-            <div class="card-metric"><span>Key result</span><strong>One scan per document</strong><em>Reactive → proactive</em></div>
-            <a class="card-link" href="tracker.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-
-        <article class="card reveal">
-          <img class="card-img" src="images/05-sop.png" alt="Illustration of the one-page SOP" width="1600" height="900" loading="lazy">
-          <div class="card-body">
-            <span class="flow-num">05</span>
-            <h3>Standard Operating Procedure (SOP)</h3>
-            <p>A one-page procedure that ties all the tools together.</p>
-            <div class="card-metric"><span>Key result</span><strong>4 stages, end to end</strong></div>
-            <a class="card-link" href="sop.html">View case study <span class="arrow" aria-hidden="true">→</span></a>
-          </div>
-        </article>
-      </div>
-
-      <p class="demo-disclaimer">All names and data in the live demos are fictional.</p>
+      <ol class="pipe">
+        <li class="grp"><span class="mono">Before the appointment</span></li>
+        <li><a class="stn-row" href="triage.html"><span class="stn-dot">01</span><span class="stn-card">
+          <span class="stn-name"><span class="mono">Before booking</span><h3>Self-Service Triage Tool</h3><p>A bilingual guide, sent to applicants instead of the booking site, so they check before they book.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>Checked before they book</strong><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/01-triage.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+        <li><a class="stn-row" href="email-generator.html"><span class="stn-dot">02</span><span class="stn-card">
+          <span class="stn-name"><span class="mono">Booking confirmed</span><h3>Confirmation Email Generator</h3><p>A clearly formatted confirmation email, ready to paste in one click.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>~3–5 min → under 30 sec</strong><em>per email</em><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/02-email-generator.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+        <li class="grp"><span class="mono">After the appointment · document tracking</span></li>
+        <li><a class="stn-row" href="formatter.html"><span class="stn-dot">03</span><span class="stn-card">
+          <span class="stn-name"><span class="mono">Daily intake</span><h3>Data Formatter</h3><p>Turns the daily intake report into clean rows for the tracker.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>Daily intake in seconds</strong><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/03-formatter.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+        <li><a class="stn-row" href="tracker.html"><span class="stn-dot">04</span><span class="stn-card">
+          <span class="stn-name"><span class="mono">Arrival to collection</span><h3>Master Tracker</h3><p>A barcode-scanned workbook that flags delays, so the team tracks cases proactively.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>One scan per document</strong><em>Reactive → proactive</em><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/04-tracker.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+        <li class="is-sop"><a class="stn-row" href="sop.html"><span class="stn-dot">05</span><span class="stn-card">
+          <span class="stn-name"><span class="mono">The guide for document tracking</span><h3>Standard Operating Procedure</h3><p>A one-page procedure for Formatter and Tracker, from daily intake to collection.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>4 stages, end to end</strong><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/05-sop.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+      </ol>
+      <p class="demo-disclaimer">All names and data in the demos are fictional.</p>
     </div>
   </section>
 
-  <!-- 3. ABOUT -->
-  <section class="section" id="about">
-    <div class="wrap about">
-      <img class="about-photo reveal" src="images/photo.jpg" alt="Carolina Pagliano" width="959" height="1198" loading="lazy">
-      <div class="about-text reveal">
-        <p class="eyebrow">About</p>
+  <!-- 3. ABOUT: photo and key facts as a staff-badge style card -->
+  <section class="x-about" id="about">
+    <div class="wrap">
+      <div class="badge-card">
+        <img src="images/photo.jpg" alt="Carolina Pagliano" width="959" height="1198" loading="lazy">
+        <dl>
+          <div><dt>Role</dt><dd>Passport Section lead</dd></div>
+          <div><dt>Experience</dt><dd>10+ years, 4 countries</dd></div>
+          <div><dt>Looking for</dt><dd>BizOps · PMO, London</dd></div>
+          <div><dt>Learning</dt><dd>SQL and Python</dd></div>
+        </dl>
+      </div>
+      <div class="about-text">
+        <p class="mono">About</p>
         <h2>Making things simpler</h2>
-        <p>I'm an operations professional with 10+ years of international experience in Argentina, Canada, the USA and the UK, across administrative, customer-facing and process roles.</p>
+        <p>I’m an operations professional with 10+ years of international experience in Argentina, Canada, the USA and the UK, across administrative, customer-facing and process roles.</p>
         <p>I currently lead the Passport Section at the Consulate of Argentina in London. The section processes around 130 applications a month: I personally handle 50+ of them, answer 160+ enquiries a month and support 3 Consuls.</p>
-        <p>What I enjoy most is turning slow, manual work into simple processes a team can rely on. I'm now looking for a Business Operations or PMO role where I can do that full time. I'm also learning SQL to strengthen my data analysis skills.</p>
+        <p>What I enjoy most is turning slow, manual work into simple processes a team can rely on. I’m now looking for a Business Operations or PMO role where I can do that full time. I’ve just started learning SQL and Python, for data analysis and automation.</p>
         <div class="outside">
-          <span class="step-label" id="outside-label">Outside work</span>
+          <span class="mono" id="outside-label">Outside work</span>
           <ul class="outside-chips" aria-labelledby="outside-label">
             <li class="outside-chip"><svg class="flag-ar" viewBox="0 0 18 12" aria-hidden="true"><rect width="18" height="12" fill="#ffffff"/><rect width="18" height="4" fill="#74ACDF"/><rect y="8" width="18" height="4" fill="#74ACDF"/><circle cx="9" cy="6" r="1.5" fill="#F6B40E"/></svg>Buenos Aires born, London based</li>
             <li class="outside-chip"><span class="chip-icon" aria-hidden="true">🌱</span>Vegan, always trying new places and new recipes</li>
@@ -167,24 +266,31 @@
         </div>
         <ul class="badges" aria-label="Certifications">
           <li class="badge"><strong>Google AI Professional Certificate</strong><span>2026</span></li>
-          <li class="badge"><strong>SheCodes Introduction to Coding</strong><span>2025</span></li>        </ul>
+          <li class="badge"><strong>SheCodes Introduction to Coding</strong><span>2025</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 4. CONTACT -->
-  <section class="section contact" id="contact">
-    <div class="wrap contact-inner reveal">
-      <p class="eyebrow">Contact</p>
-      <h2>Let's talk</h2>
-      <p class="contact-line">Open to Business Operations, BizOps and PMO roles in London.</p>
-      <div class="email-row">
-        <span class="email-text" id="email">carolinapagliano@gmail.com</span>
-        <button class="btn btn-light btn-small" type="button" data-copy="carolinapagliano@gmail.com" aria-live="polite">Copy email</button>
-      </div>
-      <div class="contact-actions">
-        <a class="btn btn-ghost-light" href="https://www.linkedin.com/in/carolina-pagliano" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-ghost-light" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
+  <!-- 4. CONTACT: the collection slip, with a tear-off stub -->
+  <section class="x-contact" id="contact">
+    <div class="wrap">
+      <div class="collect">
+        <div class="collect-main">
+          <p class="mono">Contact</p>
+          <h2>Let’s talk</h2>
+          <p>Open to Business Operations, BizOps and PMO roles in London.</p>
+          <div class="collect-actions">
+            <a class="btn btn-light" href="https://www.linkedin.com/in/carolina-pagliano" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-ghost-light" href="Carolina-Pagliano-CV.pdf?v=2" target="_blank" rel="noopener">Download CV</a>
+          </div>
+        </div>
+        <div class="collect-stub">
+          <span class="mono">Email</span>
+          <span class="email-text" id="email">carolinapagliano@gmail.com</span>
+          <button class="btn btn-light btn-small" type="button" data-copy="carolinapagliano@gmail.com" aria-live="polite">Copy email</button>
+          <div class="barcode" aria-hidden="true"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -197,6 +303,32 @@
   </div>
 </footer>
 
-<script src="site.js?v=7"></script>
+<script src="site.js?v=8"></script>
+<script>
+(function () {
+  // Plays once (about 6 seconds), then stops on the last stage. Reduced motion: shows the finished state straight away.
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sts = document.querySelectorAll('#j-stations .j-st');
+  var fill = document.getElementById('j-fill'), sop = document.getElementById('j-sop'), replay = document.getElementById('j-replay');
+  var timer = null;
+  function show(i) {
+    sts.forEach(function (s, n) { s.classList.toggle('done', n < i); s.classList.toggle('now', n === i); });
+    fill.style.height = (Math.min(i, 3) / 3 * 100) + '%';
+    sop.classList.toggle('on', i >= 0);
+  }
+  function play() {
+    clearInterval(timer); replay.hidden = true;
+    if (reduce) { show(3); sts[3].classList.add('done'); replay.hidden = true; return; }
+    var i = 0; show(0);
+    timer = setInterval(function () {
+      i++;
+      if (i > 3) { clearInterval(timer); sts[3].classList.remove('now'); sts[3].classList.add('done'); replay.hidden = false; return; }
+      show(i);
+    }, 1400);
+  }
+  replay.addEventListener('click', play);
+  play();
+})();
+</script>
 </body>
 </html>

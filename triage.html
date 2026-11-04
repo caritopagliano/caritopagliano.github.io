@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF7FA">
 <title>Self-Service Triage Tool · Carolina Pagliano</title>
 <meta name="description" content="A bilingual check applicants complete before booking, so each one is sent down the right path.">
 <meta property="og:type" content="website">
@@ -21,7 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css?v=7">
+<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="redesign.css?v=8">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -43,9 +45,10 @@
       <p class="eyebrow">Case study 01 of 05</p>
       <h1>Self-Service Triage Tool</h1>
       <p class="lede">A bilingual check applicants complete before booking.</p>
+      <ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 to 05 after it"><li class="on" aria-current="page"><i>01</i><span>Triage</span></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li><a href="sop.html"><i>05</i><span>SOP</span></a></li></ol>
       <dl class="glance" aria-label="At a glance">
         <div><dt>Problem</dt><dd>Applicants booked without knowing what they needed, wasting appointments and filling staff inboxes.</dd></div>
-        <div><dt>Built</dt><dd>A bilingual guide that sends each applicant down the right path before they book.</dd></div>
+        <div><dt>Built</dt><dd>A bilingual guide we send instead of the booking link, so each applicant takes the right path before they book.</dd></div>
         <div class="glance-result"><dt>Result</dt><dd>Checked before they book</dd></div>
         <div><dt>Key decision</dt><dd>Asks which document people hold, not which procedure they need.</dd></div>
       </dl>
@@ -199,7 +202,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=7"></script>
+<script src="site.js?v=8"></script>
 <script>
 (function () {
   var ADDRESS = 'documents@example.org';
