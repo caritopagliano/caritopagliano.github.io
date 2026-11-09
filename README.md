@@ -32,7 +32,7 @@ Site-wide: case study pages always open at the top, and a round **Back to top** 
 
 ## Case study page structure
 
-Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the simulation, with the live demo in a closed bar underneath where there is one) → 01 Problem → 02 What I built (with a Key decision box) → 03 Result → 04 Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
+Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the simulation, with the live demo in a closed bar underneath where there is one) → Problem → What I built (with a Key decision box) → Result → Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
 
 Plain words are used instead of consular jargon: "daily intake report", "document delivery", "temporary ID number", "check their details".
 
@@ -40,7 +40,7 @@ Plain words are used instead of consular jargon: "daily intake report", "documen
 
 | File | What it is |
 |---|---|
-| `index.html` | Homepage: hero with "One document's journey" (plays once, then Replay), results as tear-off slips, work as one pipeline in two groups, about (photo card + outside-work pills), contact as a collection slip. Its page-specific styles are inline in the file |
+| `index.html` | Homepage: hero with the tools timeline (plays once and stops; Formatter, Tracker and the SOP sit in a "Document tracking" panel), results as tear-off slips, work as one pipeline in two groups, about (photo card + outside-work pills), contact as a collection slip. Its page-specific styles are inline in the file |
 | `triage.html` | Two demos. First, an animated simulation: three applicants (Emily Brown, James Taylor, Grace Miller) answer on a phone; the visitor taps the highlighted answer and the matching path (Book online · Book online + bring extra proof · Email us first) lights up with their name. On phones the applicant sits above a larger phone. Below it, "Now try it yourself": the bilingual (EN / ES) guide with example buttons, where visitors answer the questions themselves |
 | `email-generator.html` | Two demos. First, an animated simulation: the visitor types the applicant's name (optional), picks the date from a calendar and the time from preset slots, picks "ID + passport", and copies the finished email into a webmail window. Beside it, "Before vs after": the old email (copied from a Word template and reformatted) next to what the generator includes, and the time per email (~3–5 min vs under 30 sec). Below it, "Now try it yourself": a live demo that starts empty. Sample data fills Emily Brown, a date, 10:45 and "ID + passport". Clicking a procedure creates the email; a separate **Copy email** button copies it (formatted for the webmail, with a plain-text fallback). Missing date or time shows highlighted placeholders |
 | `formatter.html` | Two demos. First, an animated simulation beside a small Excel tracker: the visitor loads the PDF report, clicks Format, adds the final ID number for a flagged temporary ID (warning, error and fixed alerts), copies the rows and pastes them into the tracker, where the Status column fills in by itself. Below it, "Now try it yourself": a live demo that loads a fictional daily payments report, then **Format** turns it into a 7-column table (Date · Case · ID no. · Name · Procedure · ID? · Passport?). Works out which documents are expected from the fees paid, flags a temporary ID number (click **Pending** to type the final number, or ✔ to keep it pending) and marks an unreadable line in red. Copies tab-separated rows for Excel |
@@ -50,7 +50,7 @@ Plain words are used instead of consular jargon: "daily intake report", "documen
 | `styles.css` | Shared styles. Colour tokens at the top, with light and dark mode. Demo components and simulations are at the end of the file |
 | `redesign.css` | Case study page style, loaded after `styles.css`: hairline borders, mono "case file" labels, the pipeline strip, slips and the collection-slip band |
 | `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
-| `images/` | Card images `01-triage.png` to `05-sop.png` (`05-sop.png` is only used on the homepage card now), `monogram-cp.png`, plus: |
+| `images/` | Before/after homepage images `case-triage.svg`, `case-email-generator.svg`, `case-formatter.svg`, `case-tracker.svg`, `case-sop.svg`. The older `01-triage.png` to `05-sop.png` are no longer used, `monogram-cp.png`, plus: |
 | `images/photo.jpg` | About section photo (shown at 4:5, cropped with `object-fit: cover`) |
 | `images/og-banner.png` | Link preview image (1200×630) used by the Open Graph and Twitter tags on every page |
 | `images/favicon.png` | Square 512×512 crop of the monogram, used as the browser tab icon and phone home-screen icon |

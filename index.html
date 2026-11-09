@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <style>
   /* Redesign prototype: three families only (Instrument Serif headings, Instrument Sans text, Plex Mono "case" labels),
      hairline borders instead of soft shadows, one small corner radius, and the document's journey as the visual language. */
@@ -86,12 +86,12 @@
   .tags-row li { padding: 4px 10px; border: 1px solid var(--line-strong); border-radius: 4px; font: 500 .72rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 
   .pipe { list-style: none; margin: 48px 0 0; padding: 0; position: relative; }
-  .pipe::before { content: ""; position: absolute; left: 21px; top: 30px; bottom: 30px; width: 2px; background: var(--line-strong); }
+  .pipe::before { content: ""; position: absolute; left: 21px; top: 30px; bottom: var(--pipe-end, 30px); width: 2px; background: var(--line-strong); }
   .pipe > li + li { margin-top: 14px; }
   .stn-row { position: relative; display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 18px; align-items: center; color: inherit; text-decoration: none; }
   .stn-dot { width: 44px; height: 44px; border-radius: 50%; border: 2px solid var(--primary); background: var(--bg); display: grid; place-items: center; font: 600 .8rem var(--font-mono); color: var(--primary); z-index: 1; transition: background-color .2s, color .2s; }
   .stn-card { display: grid; gap: 14px; padding: 18px 20px; border: 1px solid var(--line-strong); border-radius: var(--r); background: var(--surface); transition: border-color .2s, transform .2s; }
-  @media (min-width: 900px) { .stn-card { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 190px; align-items: center; gap: 24px; } }
+  @media (min-width: 900px) { .stn-card { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 250px; align-items: center; gap: 24px; } }
   .stn-row:hover .stn-card, .stn-row:focus-visible .stn-card { border-color: var(--primary); transform: translateX(4px); }
   .stn-row:hover .stn-dot, .stn-row:focus-visible .stn-dot { background: var(--primary); color: #fff; }
   .stn-row:focus-visible { outline: none; }
@@ -102,10 +102,10 @@
   .stn-result strong { color: var(--heading); font-size: 1.05rem; font-variant-numeric: tabular-nums; }
   .stn-result em { font-style: normal; color: var(--muted); font-size: .88rem; }
   .stn-img { display: none; }
-  @media (min-width: 900px) { .stn-img { display: block; width: 190px; height: 107px; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; } }
+  @media (min-width: 900px) { .stn-img { display: block; width: 250px; height: 141px; object-fit: cover; border-radius: 4px; } }
   .stn-go { font-weight: 600; color: var(--primary); font-size: .9rem; }
-  .pipe li.is-sop .stn-card { border-style: dashed; border-color: var(--primary); background: var(--primary-soft); }
-  .pipe li.is-sop .stn-dot { border-style: dashed; }
+  .pipe li.is-sop .stn-card { border-style: solid; border-color: var(--primary); background: var(--primary-soft); }
+  .pipe li.is-sop .stn-dot { border-style: solid; }
   .pipe li.grp { position: relative; z-index: 1; margin: 26px 0 10px 56px; }
   .pipe li.grp:first-child { margin-top: 0; }
   .pipe li.grp .mono { display: inline-block; padding: 3px 10px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--bg); color: var(--primary); }
@@ -141,6 +141,14 @@
   @media (min-width: 900px) { .collect-stub { border-top: 0; border-left: 2px dashed var(--band-line); } }
   .collect-stub .email-text { font-size: 1.05rem; font-weight: 600; color: var(--band-fg); overflow-wrap: anywhere; }
   .collect-stub .barcode { height: 34px; background: repeating-linear-gradient(90deg, var(--band-fg) 0 2px, transparent 2px 4px, var(--band-fg) 4px 5px, transparent 5px 8px, var(--band-fg) 8px 11px, transparent 11px 12px); opacity: .55; border-radius: 2px; }
+  /* Document tracking: Formatter, Tracker and the SOP that guides them, in one panel */
+  .journey .j-line { z-index: 1; }
+  .j-group { margin: 2px -8px 0; padding: 10px 8px; display: grid; gap: 12px; border: 1px solid var(--primary); border-radius: var(--r); background: var(--primary-soft); }
+  .j-group-label { padding-left: 46px; color: var(--primary); }
+  .j-sub { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .j-group .j-sop, .j-group .j-sop.on { margin-top: 0; padding: 10px 0 2px 4px; border: 0; border-top: 1px solid var(--line-strong); border-radius: 0; background: transparent; }
+  .j-sop .j-dot svg { width: 14px; height: 14px; }
+  .stn-dot svg { width: 18px; height: 18px; }
 </style>
 </head>
 <body>
@@ -172,17 +180,22 @@
         </div>
       </div>
 
-      <figure class="journey" aria-label="One document's journey through the five tools">
-        <div class="journey-top"><span class="mono">One document's journey · Case 700000142</span><button type="button" class="j-replay" id="j-replay" hidden>Replay</button></div>
+      <figure class="journey" aria-label="One document's journey through the four tools, with the SOP as the guide for Formatter and Tracker">
+        <div class="journey-top"><span class="mono">The tools I built &middot; one document, booking to collection</span></div>
         <div class="journey-body grid-paper">
           <div class="j-line" aria-hidden="true"><div class="j-fill" id="j-fill"></div></div>
           <ol class="j-stations" id="j-stations">
             <li class="j-st"><span class="j-dot">01</span><div><b>Triage</b><span class="j-when">Before booking</span></div><span class="j-tag">Checked</span></li>
             <li class="j-st"><span class="j-dot">02</span><div><b>Email Generator</b><span class="j-when">Booking confirmed</span></div><span class="j-tag">Email sent</span></li>
-            <li class="j-st"><span class="j-dot">03</span><div><b>Formatter</b><span class="j-when">Daily intake</span></div><span class="j-tag">In the tracker</span></li>
-            <li class="j-st"><span class="j-dot">04</span><div><b>Tracker</b><span class="j-when">Arrival to collection</span></div><span class="j-tag">Collected</span></li>
+            <li class="j-group">
+              <span class="mono j-group-label">Document tracking</span>
+              <ol class="j-sub">
+                <li class="j-st"><span class="j-dot">03</span><div><b>Formatter</b><span class="j-when">Daily intake</span></div><span class="j-tag">In the tracker</span></li>
+                <li class="j-st"><span class="j-dot">04</span><div><b>Tracker</b><span class="j-when">Arrival to collection</span></div><span class="j-tag">Collected</span></li>
+              </ol>
+              <div class="j-sop" id="j-sop"><span class="j-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><span><b>SOP</b> &middot; the guide for both tools</span></div>
+            </li>
           </ol>
-          <div class="j-sop" id="j-sop"><span class="j-dot">05</span><span><b>SOP</b> · the guide for Formatter and Tracker</span></div>
         </div>
       </figure>
 
@@ -210,24 +223,24 @@
         <li><a class="stn-row" href="triage.html"><span class="stn-dot">01</span><span class="stn-card">
           <span class="stn-name"><span class="mono">Before booking</span><h3>Self-Service Triage Tool</h3><p>A bilingual guide, sent to applicants instead of the booking site, so they check before they book.</p></span>
           <span class="stn-result"><span class="mono">Key result</span><strong>Checked before they book</strong><span class="stn-go">View case study →</span></span>
-          <img class="stn-img" src="images/01-triage.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+          <img class="stn-img" src="images/case-triage.svg" alt="" width="640" height="360" loading="lazy"></span></a></li>
         <li><a class="stn-row" href="email-generator.html"><span class="stn-dot">02</span><span class="stn-card">
           <span class="stn-name"><span class="mono">Booking confirmed</span><h3>Confirmation Email Generator</h3><p>A clearly formatted confirmation email, ready to paste in one click.</p></span>
           <span class="stn-result"><span class="mono">Key result</span><strong>~3–5 min → under 30 sec</strong><em>per email</em><span class="stn-go">View case study →</span></span>
-          <img class="stn-img" src="images/02-email-generator.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+          <img class="stn-img" src="images/case-email-generator.svg" alt="" width="640" height="360" loading="lazy"></span></a></li>
         <li class="grp"><span class="mono">After the appointment · document tracking</span></li>
         <li><a class="stn-row" href="formatter.html"><span class="stn-dot">03</span><span class="stn-card">
           <span class="stn-name"><span class="mono">Daily intake</span><h3>Data Formatter</h3><p>Turns the daily intake report into clean rows for the tracker.</p></span>
           <span class="stn-result"><span class="mono">Key result</span><strong>Daily intake in seconds</strong><span class="stn-go">View case study →</span></span>
-          <img class="stn-img" src="images/03-formatter.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+          <img class="stn-img" src="images/case-formatter.svg" alt="" width="640" height="360" loading="lazy"></span></a></li>
         <li><a class="stn-row" href="tracker.html"><span class="stn-dot">04</span><span class="stn-card">
           <span class="stn-name"><span class="mono">Arrival to collection</span><h3>Master Tracker</h3><p>A barcode-scanned workbook that flags delays, so the team tracks cases proactively.</p></span>
           <span class="stn-result"><span class="mono">Key result</span><strong>One scan per document</strong><em>Reactive → proactive</em><span class="stn-go">View case study →</span></span>
-          <img class="stn-img" src="images/04-tracker.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
-        <li class="is-sop"><a class="stn-row" href="sop.html"><span class="stn-dot">05</span><span class="stn-card">
-          <span class="stn-name"><span class="mono">The guide for document tracking</span><h3>Standard Operating Procedure</h3><p>A one-page procedure for Formatter and Tracker, from daily intake to collection.</p></span>
-          <span class="stn-result"><span class="mono">Key result</span><strong>4 stages, end to end</strong><span class="stn-go">View case study →</span></span>
-          <img class="stn-img" src="images/05-sop.png" alt="" width="1600" height="900" loading="lazy"></span></a></li>
+          <img class="stn-img" src="images/case-tracker.svg" alt="" width="640" height="360" loading="lazy"></span></a></li>
+        <li class="is-sop"><a class="stn-row" href="sop.html"><span class="stn-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><span class="stn-card">
+          <span class="stn-name"><span class="mono">The guide for Formatter and Tracker</span><h3>Standard Operating Procedure</h3><p>A one-page procedure for Formatter and Tracker, from daily intake to collection.</p></span>
+          <span class="stn-result"><span class="mono">Key result</span><strong>4 stages, intake to collection</strong><span class="stn-go">View case study →</span></span>
+          <img class="stn-img" src="images/case-sop.svg" alt="" width="640" height="360" loading="lazy"></span></a></li>
       </ol>
       <p class="demo-disclaimer">All names and data in the demos are fictional.</p>
     </div>
@@ -303,30 +316,48 @@
   </div>
 </footer>
 
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 <script>
 (function () {
   // Plays once (about 6 seconds), then stops on the last stage. Reduced motion: shows the finished state straight away.
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var sts = document.querySelectorAll('#j-stations .j-st');
-  var fill = document.getElementById('j-fill'), sop = document.getElementById('j-sop'), replay = document.getElementById('j-replay');
-  var timer = null;
+  var dots = document.querySelectorAll('#j-stations .j-st .j-dot');
+  var line = document.querySelector('.j-line'), fill = document.getElementById('j-fill'), sop = document.getElementById('j-sop');
+  var timer = null, current = 0;
+  function centre(el) { var r = el.getBoundingClientRect(); return r.top + r.height / 2; }
+  function fillTo(i) { fill.style.height = (centre(dots[Math.min(i, 3)]) - centre(dots[0])) + 'px'; }
+  // Both timelines stop at Tracker: the SOP sits beside the stages it covers, not after them.
+  function place() {
+    var box = line.parentNode.getBoundingClientRect();
+    line.style.top = (centre(dots[0]) - box.top) + 'px';
+    line.style.bottom = 'auto';
+    line.style.height = (centre(dots[3]) - centre(dots[0])) + 'px';
+    fillTo(current);
+    var pipe = document.querySelector('.pipe');
+    var tracker = document.querySelector('.pipe li.is-sop').previousElementSibling.querySelector('.stn-dot');
+    pipe.style.setProperty('--pipe-end', (pipe.getBoundingClientRect().bottom - centre(tracker)) + 'px');
+  }
   function show(i) {
+    current = i;
     sts.forEach(function (s, n) { s.classList.toggle('done', n < i); s.classList.toggle('now', n === i); });
-    fill.style.height = (Math.min(i, 3) / 3 * 100) + '%';
+    fillTo(i);
     sop.classList.toggle('on', i >= 0);
   }
   function play() {
-    clearInterval(timer); replay.hidden = true;
-    if (reduce) { show(3); sts[3].classList.add('done'); replay.hidden = true; return; }
+    clearInterval(timer);
+    if (reduce) { show(3); sts[3].classList.add('done'); return; }
     var i = 0; show(0);
     timer = setInterval(function () {
       i++;
-      if (i > 3) { clearInterval(timer); sts[3].classList.remove('now'); sts[3].classList.add('done'); replay.hidden = false; return; }
+      if (i > 3) { clearInterval(timer); sts[3].classList.remove('now'); sts[3].classList.add('done'); return; }
       show(i);
     }, 1400);
   }
-  replay.addEventListener('click', play);
+  place();
+  window.addEventListener('resize', place);
+  window.addEventListener('load', place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
   play();
 })();
 </script>

@@ -85,3 +85,8 @@ a, button, summary { touch-action: manipulation; }
 .mini-pipe li:nth-child(3) { margin-left: 24px; }
 .mini-pipe li:nth-child(3)::before { width: 0; height: 22px; margin-left: -20px; margin-right: 10px; background: none; border-left: 2px dashed var(--line-strong); }
 @media (max-width: 640px) { .mini-pipe li:nth-child(3) { margin-left: 16px; } .mini-pipe li:nth-child(3)::before { margin-left: -14px; margin-right: 6px; } }
+
+/* Label above the pipeline strip, and the SOP's document icon */
+.mini-pipe-label { margin: 26px 0 0; font: 500 .72rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.mini-pipe-label + .mini-pipe { margin-top: 10px; }
+.mini-pipe i svg { width: 12px; height: 12px; }

@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
-<link rel="stylesheet" href="redesign.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="redesign.css?v=9">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +45,7 @@
       <p class="eyebrow">Case study 01 of 05</p>
       <h1>Self-Service Triage Tool</h1>
       <p class="lede">A bilingual check applicants complete before booking.</p>
-      <ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 to 05 after it"><li class="on" aria-current="page"><i>01</i><span>Triage</span></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li><a href="sop.html"><i>05</i><span>SOP</span></a></li></ol>
+      <p class="mini-pipe-label">Where this tool sits in the document's journey</p><ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 and 04 after it, with the SOP as the guide for those two"><li class="on" aria-current="page"><i>01</i><span>Triage</span></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li><a href="sop.html"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></i><span>SOP</span></a></li></ol>
       <dl class="glance" aria-label="At a glance">
         <div><dt>Problem</dt><dd>Applicants booked without knowing what they needed, wasting appointments and filling staff inboxes.</dd></div>
         <div><dt>Built</dt><dd>A bilingual guide we send instead of the booking link, so each applicant takes the right path before they book.</dd></div>
@@ -145,14 +145,14 @@
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">01</span>Problem</h2>
+      <h2>Problem</h2>
       <div class="cs-content">
         <p>Applicants booked appointments without knowing what they needed, or emailed staff again and again with basic questions. Appointments were wasted and the front desk was overloaded.</p>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">02</span>What I built</h2>
+      <h2>What I built</h2>
       <div class="cs-content">
         <p>Applicants answer one or two questions about the document they have now. The guide then sends them down one of three paths: book online, book online and bring extra proof of identity, or email first so staff can check their details. Everything is available in English and Spanish.</p>
         <div class="decision"><span class="decision-label">Key decision</span><p><strong>Asks which document applicants hold, not which procedure they need</strong> → most people don't know the procedure name.</p></div>
@@ -160,7 +160,7 @@
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">03</span>Result</h2>
+      <h2>Result</h2>
       <div class="cs-content">
         <p class="result-callout">Checked before they book</p>
         <p>Before, applicants booked without knowing what they needed. Now each one is sent down the right path first, and anyone with an older document has their details checked before they take an appointment.</p>
@@ -168,7 +168,7 @@
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">04</span>Built with</h2>
+      <h2>Built with</h2>
       <div class="cs-content">
         <ul class="chips"><li class="chip">HTML/JavaScript</li><li class="chip">Gemini</li></ul>
       </div>
@@ -202,7 +202,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 <script>
 (function () {
   var ADDRESS = 'documents@example.org';

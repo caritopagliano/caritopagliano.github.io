@@ -22,8 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
-<link rel="stylesheet" href="redesign.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="redesign.css?v=9">
 </head>
 <body data-page="case">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -45,11 +45,11 @@
       <p class="eyebrow">Case study 05 of 05</p>
       <h1>Standard Operating Procedure (SOP)</h1>
       <p class="lede">One page that runs document tracking, from daily intake to collection.</p>
-      <ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 to 05 after it"><li><a href="triage.html"><i>01</i><span>Triage</span></a></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li class="on" aria-current="page"><i>05</i><span>SOP</span></li></ol>
+      <p class="mini-pipe-label">Where this tool sits in the document's journey</p><ol class="mini-pipe" aria-label="Where this tool sits: 01 and 02 before the appointment, 03 and 04 after it, with the SOP as the guide for those two"><li><a href="triage.html"><i>01</i><span>Triage</span></a></li><li><a href="email-generator.html"><i>02</i><span>Email Generator</span></a></li><li><a href="formatter.html"><i>03</i><span>Formatter</span></a></li><li><a href="tracker.html"><i>04</i><span>Tracker</span></a></li><li class="on" aria-current="page"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></i><span>SOP</span></li></ol>
       <dl class="glance" aria-label="At a glance">
         <div><dt>Problem</dt><dd>Process knowledge lived in people's heads, with no single view of where each document was.</dd></div>
-        <div><dt>Built</dt><dd>A one-page SOP that follows each document's journey and names the tool for every step.</dd></div>
-        <div class="glance-result"><dt>Result</dt><dd>4 stages, end to end</dd></div>
+        <div><dt>Built</dt><dd>A one-page SOP that follows each document from intake to collection and names the tool for every step.</dd></div>
+        <div class="glance-result"><dt>Result</dt><dd>4 stages, intake to collection</dd></div>
         <div><dt>Key decision</dt><dd>One page that shows which tool to use at each step.</dd></div>
       </dl>
     </div>
@@ -114,35 +114,35 @@
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">01</span>Problem</h2>
+      <h2>Problem</h2>
       <div class="cs-content">
         <p>Process knowledge lived in people's heads, so onboarding and handovers were slow, and there was no single view of which documents never arrived, which were received and which hadn't been collected.</p>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">02</span>What I built</h2>
+      <h2>What I built</h2>
       <div class="cs-content">
-        <p>It ties all the tools together and gives full visibility of:</p>
+        <p>It ties Formatter and Tracker together and gives full visibility of:</p>
         <ul class="visibility">
           <li>Documents that never arrived</li>
           <li>Documents received</li>
           <li>Documents not yet collected</li>
         </ul>
-        <div class="decision"><span class="decision-label">Key decision</span><p><strong>One page that follows the document's journey and shows which tool to use at each step</strong> → anyone new can run the process from day one.</p></div>
+        <div class="decision"><span class="decision-label">Key decision</span><p><strong>One page that follows the document from intake to collection and shows which tool to use at each step</strong> → anyone new can run the process from day one.</p></div>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">03</span>Result</h2>
+      <h2>Result</h2>
       <div class="cs-content">
-        <p class="result-callout">4 stages, end to end</p>
+        <p class="result-callout">4 stages, intake to collection</p>
         <p>My colleague learned the full process from the SOP and runs it step by step. Because everything is written down, cover and handovers no longer depend on one person.</p>
       </div>
     </section>
 
     <section class="cs-block">
-      <h2><span class="n">04</span>Built with</h2>
+      <h2>Built with</h2>
       <div class="cs-content">
         <ul class="chips"><li class="chip">Gemini</li></ul>
       </div>
@@ -176,7 +176,7 @@
   </div>
 </footer>
 
-<script src="site.js?v=8"></script>
+<script src="site.js?v=9"></script>
 <script>
 (function () {
   function $(id) { return document.getElementById(id); }
