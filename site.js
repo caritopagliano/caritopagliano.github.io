@@ -7,6 +7,27 @@
     window.scrollTo(0, 0);
   }
 
+  // Light / dark switch: follows the device until the visitor picks, then remembers it
+  var rootEl = document.documentElement;
+  var darkMq = window.matchMedia('(prefers-color-scheme: dark)');
+  var switches = document.querySelectorAll('.theme-switch');
+  function isDark() { var t = rootEl.getAttribute('data-theme'); return t ? t === 'dark' : darkMq.matches; }
+  function syncTheme() {
+    var d = isDark();
+    switches.forEach(function (b) { b.setAttribute('aria-checked', String(d)); });
+  }
+  switches.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var next = isDark() ? 'light' : 'dark';
+      rootEl.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) { m.content = next === 'dark' ? '#1A1520' : '#FBF7FA'; });
+      syncTheme();
+    });
+  });
+  if (darkMq.addEventListener) darkMq.addEventListener('change', syncTheme); else if (darkMq.addListener) darkMq.addListener(syncTheme);
+  syncTheme();
+
   // Header border once the page scrolls
   var header = document.querySelector('.site-header');
   function onScroll() {

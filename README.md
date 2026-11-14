@@ -30,6 +30,8 @@ Names in the demos are written the usual way ("Emily Brown"), so it's obvious to
 
 Site-wide: case study pages always open at the top, and a round **Back to top** button appears bottom-right after scrolling.
 
+Light / dark: a sliding switch (sun · moon) sits at the end of the header on every page. The site follows the visitor's device setting until they click it; their choice is then saved in the browser (`localStorage`, key `theme`) and used on every page. A small script in each page's `<head>` applies the saved choice before the page draws, so there is no flash of the wrong colours.
+
 ## Case study page structure
 
 Every case study follows the same order: title and one-line subtitle → **At a glance** summary (Problem · Built · Result · Key decision) → **Try it** (the simulation, with the live demo in a closed bar underneath where there is one) → Problem → What I built (with a Key decision box) → Result → Built with → a "Want this kind of thinking on your team?" block with Get in touch / Download CV → Previous / Next links.
@@ -49,7 +51,7 @@ Plain words are used instead of consular jargon: "daily intake report", "documen
 | `sop.html` | Animated simulation: the one-page SOP on the left. Each **Next stage** click opens one stage (its steps, tool, tab and rule) and fades the others. On the right, one fictional case (Emily Brown) moves from "Not in the tracker yet" to On track, Ready to collect and Archived, with a link to that stage's tool page |
 | `styles.css` | Shared styles. Colour tokens at the top, with light and dark mode. Demo components and simulations are at the end of the file |
 | `redesign.css` | Case study page style, loaded after `styles.css`: hairline borders, mono "case file" labels, the pipeline strip, slips and the collection-slip band |
-| `site.js` | Shared script: sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
+| `site.js` | Shared script: light/dark switch, sticky header border, back-to-top button, case pages open at the top, fade-in on scroll, `flash()` highlight, `copyText()` helper, table edge fade |
 | `images/` | Before/after homepage images `case-triage.svg`, `case-email-generator.svg`, `case-formatter.svg`, `case-tracker.svg`, `case-sop.svg`. The older `01-triage.png` to `05-sop.png` are no longer used, `monogram-cp.png`, plus: |
 | `images/photo.jpg` | About section photo (shown at 4:5, cropped with `object-fit: cover`) |
 | `images/og-banner.png` | Link preview image (1200×630) used by the Open Graph and Twitter tags on every page |
